@@ -45,7 +45,7 @@ DiagramBase::DiagramBase(QWidget *parent):
 
     connect(_menuBar->getMainMenu(), &MainMenu::showGrideView, this, [this]()
     {
-        _pal->setBrush(QPalette::Base, QPixmap(":/icons/base/background.png"));
+        _pal->setBrush(QPalette::Base  , QPixmap(":/icons/base/background.png"));
         _pal->setColor(QPalette::HighlightedText, Qt::blue);
         setPalette(*_pal);
     });
@@ -152,12 +152,15 @@ void  DiagramBase::wheelEvent(QWheelEvent *event)
 void  DiagramBase::ExportPdf()
 {
 #if QT_CONFIG(printdialog)
-    QPrinter      printer;
+    QPrinter  printer(QPrinter::HighResolution);
+    printer.setOrientation(QPrinter::Landscape);
+
     QPrintDialog  dialog(&printer, this);
 
     if (dialog.exec() == QDialog::Accepted)
     {
         QPainter  painter(&printer);
+
         scene->render(&painter);
     }
 

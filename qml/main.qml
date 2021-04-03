@@ -42,7 +42,7 @@ QQC2.ApplicationWindow {
 
         initialItem: LauncherPage {
             id: launcherPage
-            onLaunched: stackView.push(page)
+//            onLaunched: stackView.push(page)
 
             }
 
