@@ -8,6 +8,8 @@
 #include <QPrintDialog>
 #include <QFileDialog>
 #include <QSvgGenerator>
+#include <QStandardPaths>
+#include <QMessageBox>
 #endif
 #endif
 
@@ -20,7 +22,7 @@
 #include <QGraphicsRectItem>
 #include "mainmenu.h"
 #include "diagramview.h"
-
+#include "exportdialog.h"
 #include "diagramtextitem.h"
 
 DiagramBase::DiagramBase(QWidget *parent):
@@ -38,47 +40,53 @@ DiagramBase::DiagramBase(QWidget *parent):
 
     updateZoomLabel();
 
-    connect(this, &DiagramBase::zoomChanged, this, &DiagramBase::updateZoomLabel);
-
-
-    _menuBar = new MenuBar(this);
-
-    _pal = new QPalette();
-
-    connect(_menuBar->getMainMenu(), &MainMenu::showGrideView, this, [this]()
+    /// all connections
     {
-        _pal->setBrush(QPalette::Base, QPixmap(":/icons/base/background.png"));
-        _pal->setColor(QPalette::HighlightedText, Qt::blue);
-        setPalette(*_pal);
-    });
-    connect(_menuBar->getMainMenu(), &MainMenu::HideGrideView, this, [this]()
-    {
+        connect(this, &DiagramBase::zoomChanged, this, &DiagramBase::updateZoomLabel);
+
+
+        _menuBar = new MenuBar(this);
+
         _pal = new QPalette();
-        _pal->setBrush(QPalette::Base, Qt::white);
-        setPalette(*_pal);
-        this->update();
-    });
+
+        connect(_menuBar->getMainMenu(), &MainMenu::showGrideView, this, [this]()
+        {
+            _pal->setBrush(QPalette::Base, QPixmap(":/icons/base/background.png"));
+            _pal->setColor(QPalette::HighlightedText, Qt::blue);
+            setPalette(*_pal);
+        });
+        connect(_menuBar->getMainMenu(), &MainMenu::HideGrideView, this, [this]()
+        {
+            _pal = new QPalette();
+            _pal->setBrush(QPalette::Base, Qt::white);
+            setPalette(*_pal);
+            this->update();
+        });
 
 
-    connect(_menuBar, &MenuBar::SetCursorPan, this, [this]()
-    {
-        setCursor(Qt::OpenHandCursor);
-        ui->graphicsView->setDragMode(QGraphicsView::ScrollHandDrag);
-        ui->graphicsView->setInteractive(false);
-    });
-    connect(_menuBar, &MenuBar::SetCursorSelect, this, [this]()
-    {
-        setCursor(Qt::ArrowCursor);
-        ui->graphicsView->setDragMode(QGraphicsView::RubberBandDrag);
-        ui->graphicsView->setInteractive(true);
-    });
-    connect(_menuBar, &MenuBar::CloseWindow, this, &DiagramBase::close);
+        connect(_menuBar, &MenuBar::SetCursorPan, this, [this]()
+        {
+            setCursor(Qt::OpenHandCursor);
+            ui->graphicsView->setDragMode(QGraphicsView::ScrollHandDrag);
+            ui->graphicsView->setInteractive(false);
+        });
+        connect(_menuBar, &MenuBar::SetCursorSelect, this, [this]()
+        {
+            setCursor(Qt::ArrowCursor);
+            ui->graphicsView->setDragMode(QGraphicsView::RubberBandDrag);
+            ui->graphicsView->setInteractive(true);
+        });
 
-    connect(_menuBar->getMainMenu(), &MainMenu::ExportAsPDF, this, &DiagramBase::ExportPdf);
+        connect(_menuBar, &MenuBar::CloseWindow, this, &DiagramBase::close);
 
-    connect(_menuBar->getMainMenu(), &MainMenu::ExportAsSVG, this, &DiagramBase::ExportSvg);
+        connect(_menuBar->getMainMenu(), &MainMenu::ExportAsPDF, this, &DiagramBase::ExportPdf);
 
-    connect(_menuBar, &MenuBar::addText, this, &DiagramBase::InsertDiagramText);
+        connect(_menuBar->getMainMenu(), &MainMenu::ExportAsSVG, this, &DiagramBase::ExportSvg);
+
+        connect(_menuBar->getMainMenu(), &MainMenu::ExportAsPNG, this, &DiagramBase::ExportPNG);
+
+        connect(_menuBar, &MenuBar::addText, this, &DiagramBase::InsertDiagramText);
+    }
 }
 
 DiagramBase::~DiagramBase()
@@ -197,7 +205,60 @@ void  DiagramBase::ExportSvg()
     scene->render(&painter);
 
     painter.end();
-//! [end painting]
+    //! [end painting]
+}
+
+void  DiagramBase::ExportPNG()
+{
+    ExportDialog  exportDialog(this);
+
+    exportDialog.setExportSize(ui->graphicsView->size());
+    QString  fileName;
+    QString  picLocation = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation).value(0, QDir::currentPath());
+
+    if (m_currentPath.isEmpty())
+    {
+        fileName = picLocation + QLatin1String("/export.png");
+    }
+    else
+    {
+        const QFileInfo  fi(m_currentPath);
+        fileName = fi.absolutePath() + QLatin1Char('/') + fi.baseName() + QLatin1String(".png");
+    }
+
+    exportDialog.setExportFileName(fileName);
+
+    while (true)
+    {
+        if (exportDialog.exec() != QDialog::Accepted)
+        {
+            break;
+        }
+
+        const QSize  imageSize = exportDialog.exportSize();
+        QImage       image(imageSize, QImage::Format_ARGB32);
+        image.fill(Qt::transparent);
+        QPainter  painter;
+        painter.begin(&image);
+        scene->render(&painter, QRectF(QPointF(), QSizeF(imageSize)));
+        painter.end();
+
+        const QString  fileName = exportDialog.exportFileName();
+
+        if (image.save(fileName))
+        {
+            const QString  message = tr("Exported %1, %2x%3, %4 bytes")
+                                     .arg(QDir::toNativeSeparators(fileName)).arg(imageSize.width()).arg(imageSize.height())
+                                     .arg(QFileInfo(fileName).size());
+// statusBar()->showMessage(message);
+            break;
+        }
+        else
+        {
+            QMessageBox::critical(this, tr("Export Image"),
+                                  tr("Could not write file '%1'.").arg(QDir::toNativeSeparators(fileName)));
+        }
+    }
 }
 
 void  DiagramBase::updateZoomLabel()

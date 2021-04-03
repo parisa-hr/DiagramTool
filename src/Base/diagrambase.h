@@ -35,8 +35,6 @@ public:
 
     QGraphicsScene* getScene();
 
-    ////
-
     qreal           zoomFactor() const;
 
 protected:
@@ -56,7 +54,9 @@ private:
 private slots:
     void            ExportPdf();
 
-    void ExportSvg();
+    void            ExportSvg();
+
+    void            ExportPNG();
 
     void            updateZoomLabel();
 
@@ -71,8 +71,8 @@ private:
     MenuBar         *_menuBar;
     QPalette        *_pal;
     DiagramTextItem *_textItem;
-    QString path;
-
+    QString          path;
+    QString          m_currentPath;
 };
 
 #endif // DIAGRAMBASE_H

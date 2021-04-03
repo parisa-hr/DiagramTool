@@ -19,6 +19,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 HEADERS += \
     src/Base/diagrambase.h \
     src/Base/diagramtextitem.h \
+    src/Base/exportdialog.h \
     src/Base/menubar.h \
     src/Base/mainmenu.h \
     src/Base/aboutdialog.h \
@@ -36,6 +37,7 @@ SOURCES += \
         main.cpp \
     src/Base/diagrambase.cpp \
     src/Base/diagramtextitem.cpp \
+    src/Base/exportdialog.cpp \
     src/Base/menubar.cpp \
     src/Base/mainmenu.cpp \
     src/Base/aboutdialog.cpp \
