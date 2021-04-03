@@ -6,6 +6,8 @@
 #if QT_CONFIG(printdialog)
 #include <QPrinter>
 #include <QPrintDialog>
+#include <QFileDialog>
+#include <QSvgGenerator>
 #endif
 #endif
 
@@ -31,7 +33,7 @@ DiagramBase::DiagramBase(QWidget *parent):
     {
         scene = new QGraphicsScene(this);
         ui->graphicsView->setScene(scene);
-        ui->graphicsView->setAlignment(Qt::AlignHCenter | Qt::AlignHCenter);
+        ui->graphicsView->setAlignment(Qt::AlignHCenter);
     }
 
     updateZoomLabel();
@@ -165,6 +167,33 @@ void  DiagramBase::ExportPdf()
     }
 
 #endif
+}
+
+void DiagramBase::ExportSvg()
+{
+    QString newPath = QFileDialog::getSaveFileName(this, tr("Save SVG"),
+        path, tr("SVG files (*.svg)"));
+
+    if (newPath.isEmpty())
+        return;
+
+    path = newPath;
+
+//![configure SVG generator]
+    QSvgGenerator generator;
+    generator.setFileName(path);
+    generator.setSize(QSize(200, 200));
+    generator.setViewBox(QRect(0, 0, 200, 200));
+    generator.setTitle(tr("SVG Generator Example Drawing"));
+    generator.setDescription(tr("An SVG drawing created by the SVG Generator "
+                                "Example provided with Qt."));
+//![configure SVG generator]
+//![begin painting]
+    QPainter painter;
+    painter.begin(&generator);
+
+    painter.end();
+//![end painting]
 }
 
 void  DiagramBase::updateZoomLabel()

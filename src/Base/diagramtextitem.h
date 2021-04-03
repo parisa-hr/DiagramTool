@@ -29,6 +29,8 @@ signals:
     void      selectedChange(QGraphicsItem *item);
 
 protected:
+
+
     QVariant  itemChange(GraphicsItemChange change, const QVariant &value) override;
 
     void      focusOutEvent(QFocusEvent *event) override;

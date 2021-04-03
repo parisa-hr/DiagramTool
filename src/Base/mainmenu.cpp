@@ -55,3 +55,21 @@ void  MainMenu::on_pb_New_clicked()
 {
   emit  NewFile();
 }
+
+void MainMenu::on_pb_ExportPng_clicked()
+{
+
+    emit ExportAsPNG();
+
+}
+
+void MainMenu::on_pb_ExportSvg_clicked()
+{
+    emit ExportAsSVG();
+
+}
+
+void MainMenu::on_pb_print_clicked()
+{
+   emit doPrint();
+}

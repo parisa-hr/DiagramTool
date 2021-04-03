@@ -56,6 +56,8 @@ private:
 private slots:
     void            ExportPdf();
 
+    void ExportSvg();
+
     void            updateZoomLabel();
 
     void            InsertDiagramText();
@@ -69,6 +71,8 @@ private:
     MenuBar         *_menuBar;
     QPalette        *_pal;
     DiagramTextItem *_textItem;
+    QString path;
+
 };
 
 #endif // DIAGRAMBASE_H
