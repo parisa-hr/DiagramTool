@@ -76,6 +76,8 @@ DiagramBase::DiagramBase(QWidget *parent):
 
     connect(_menuBar->getMainMenu(), &MainMenu::ExportAsPDF, this, &DiagramBase::ExportPdf);
 
+    connect(_menuBar->getMainMenu(), &MainMenu::ExportAsSVG, this, &DiagramBase::ExportSvg);
+
     connect(_menuBar, &MenuBar::addText, this, &DiagramBase::InsertDiagramText);
 }
 
@@ -186,13 +188,13 @@ void  DiagramBase::ExportSvg()
     generator.setFileName(path);
     generator.setSize(QSize(200, 200));
     generator.setViewBox(QRect(0, 0, 200, 200));
-    generator.setTitle(tr("SVG Generator Example Drawing"));
     generator.setDescription(tr("An SVG drawing created by the SVG Generator "
                                 "Example provided with Qt."));
 //! [configure SVG generator]
 //! [begin painting]
     QPainter  painter;
     painter.begin(&generator);
+    scene->render(&painter);
 
     painter.end();
 //! [end painting]
