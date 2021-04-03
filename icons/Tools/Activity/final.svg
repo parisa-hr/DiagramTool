@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:v="http://vecta.io"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="0 0 64 64"
+   fill="#fff"
+   fill-rule="evenodd"
+   stroke="#000"
+   stroke-linecap="round"
+   stroke-linejoin="round"
+   version="1.1"
+   id="svg6"
+   sodipodi:docname="final.svg"
+   inkscape:version="1.0.1 (0767f8302a, 2020-10-17)">
+  <metadata
+     id="metadata12">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs10" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1366"
+     inkscape:window-height="672"
+     id="namedview8"
+     showgrid="false"
+     inkscape:zoom="2.0507812"
+     inkscape:cx="-44.430471"
+     inkscape:cy="22.560359"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="kldzpjer2fa-3"
+     inkscape:document-rotation="0" />
+  <g
+     id="kldzpjer2fa"
+     class="Group.cls"
+     transform="matrix(0.26079566,0,0,0.26079566,11.136346,11.136346)"
+     v:abox="{&quot;x&quot;:390,&quot;y&quot;:10,&quot;width&quot;:160,&quot;height&quot;:160}"
+     v:symbol="YH5B4hElgCtkLH8nSLcg8p"
+     stroke="#ff0000">
+    <g
+       class="Prim.cls"
+       id="g37"
+       style="stroke-width:15.57157815;stroke-miterlimit:4;stroke-dasharray:none">
+      <g
+         id="kldzpjer2fa-3"
+         class="Group.cls"
+         transform="matrix(1.3613629,0,0,1.3613629,-31.972094,-28.909027)"
+         v:abox="{&quot;x&quot;:390,&quot;y&quot;:10,&quot;width&quot;:164.5,&quot;height&quot;:160}"
+         v:symbol="YH5B4hElgCtkLH8nSLcg8p"
+         stroke="#ff0000"
+         v:unit="{&quot;rounded&quot;:&quot;px&quot;,&quot;strokeWidth&quot;:&quot;px&quot;}"
+         rx="8"
+         stroke-width="8">
+        <g
+           class="Prim.cls"
+           id="g39">
+          <g
+             id="kldzpjes2fb"
+             v:unit="{&quot;strokeWidth&quot;:&quot;px&quot;}"
+             class="">
+            <circle
+               cx="82.251396"
+               cy="80.001404"
+               stroke-width="8"
+               fill="none"
+               stroke="#ff0000"
+               stroke-opacity="1"
+               id="ellipse19"
+               style="stroke-width:6.02154;stroke-miterlimit:4;stroke-dasharray:none"
+               r="61.06274" />
+            <g
+               class="Text.cls"
+               id="g27">
+              <rect
+                 x="0"
+                 y="0"
+                 width="164.5"
+                 height="160"
+                 fill="none"
+                 stroke="none"
+                 id="rect21" />
+              <text
+                 fill="#4f4f4f"
+                 fill-opacity="1"
+                 stroke="none"
+                 class=""
+                 id="text25"><tspan
+                   x="82.25"
+                   y="84.620003"
+                   id="tspan23" /></text>
+            </g>
+          </g>
+          <g
+             id="kldzpjet2fc"
+             transform="translate(32.9,32)"
+             v:unit="{&quot;strokeWidth&quot;:&quot;px&quot;}"
+             class="">
+            <ellipse
+               cx="49.350002"
+               cy="48"
+               rx="35.113979"
+               ry="34.153416"
+               stroke-width="5.69224"
+               fill="#ff0000"
+               stroke="#ff0000"
+               fill-opacity="1"
+               stroke-opacity="1"
+               id="ellipse30" />
+            <g
+               class="Text.cls"
+               id="g36">
+              <rect
+                 x="0"
+                 y="0"
+                 width="98.700005"
+                 height="96"
+                 fill="none"
+                 stroke="none"
+                 id="rect32" />
+              <text
+                 fill="#4f4f4f"
+                 fill-opacity="1"
+                 stroke="none"
+                 id="text34" />
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

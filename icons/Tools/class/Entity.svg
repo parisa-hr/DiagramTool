@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="128"
+   height="128"
+   stroke="#fffc2f"
+   stroke-linecap="round"
+   stroke-linejoin="miter"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="1.2182"
+   version="1.1"
+   id="svg6"
+   sodipodi:docname="Entity.svg"
+   inkscape:version="1.0.1 (0767f8302a, 2020-10-17)">
+  <metadata
+     id="metadata12">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs10" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1366"
+     inkscape:window-height="672"
+     id="namedview8"
+     showgrid="false"
+     inkscape:zoom="2.6448363"
+     inkscape:cx="62.165492"
+     inkscape:cy="69.162508"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg6"
+     inkscape:document-rotation="0" />
+  <path
+     d="m 20.853001,63.375681 c 0,-23.4544 19.1519,-42.3365 42.9414,-42.3365 23.7895,0 42.941399,18.8821 42.941399,42.3365 0,23.4544 -19.151799,42.336599 -42.941399,42.336599 -23.7896,0 -42.9414,-18.882099 -42.9414,-42.336599 z"
+     fill="#ffdc8c"
+     fill-rule="nonzero"
+     id="path2"
+     style="stroke:#ff0000;stroke-opacity:1;stroke-width:3.327;stroke-miterlimit:4;stroke-dasharray:none" />
+  <path
+     d="m 31.588401,107.37578 h 64.4121"
+     stroke-linecap="butt"
+     fill="none"
+     id="path4"
+     style="stroke:#ff0000;stroke-opacity:1;stroke-width:3.327;stroke-miterlimit:4;stroke-dasharray:none" />
+</svg>

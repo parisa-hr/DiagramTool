@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:v="http://vecta.io"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="0 0 64 64"
+   fill="#fff"
+   fill-rule="evenodd"
+   stroke="#000"
+   stroke-linecap="round"
+   stroke-linejoin="round"
+   version="1.1"
+   id="svg4"
+   sodipodi:docname="Decision.svg"
+   inkscape:version="1.0.1 (0767f8302a, 2020-10-17)">
+  <metadata
+     id="metadata10">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs8" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1366"
+     inkscape:window-height="672"
+     id="namedview6"
+     showgrid="false"
+     inkscape:zoom="4.1015625"
+     inkscape:cx="26.260212"
+     inkscape:cy="36.01962"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4"
+     inkscape:document-rotation="0" />
+  <g
+     id="kldzq7kp2h2"
+     transform="matrix(0.30269728,0,0,0.30269728,4.7572448,1.730272)"
+     v:symbol="P8pxul3XOHRMwEyWHG3Jds"
+     class=""
+     v:unit="{&quot;strokeWidth&quot;:&quot;px&quot;}"
+     style="stroke-width:5.28581;stroke-miterlimit:4;stroke-dasharray:none">
+    <path
+       d="M 90,0 0,100 90,200 180,100 Z"
+       fill="#ff0000"
+       stroke="#ffffff"
+       stroke-width="8"
+       id="path42"
+       style="stroke-width:5.28581;stroke-miterlimit:4;stroke-dasharray:none" />
+    <g
+       class="Text.cls"
+       id="g48"
+       style="stroke-width:5.28581;stroke-miterlimit:4;stroke-dasharray:none">
+      <rect
+         x="0"
+         y="0"
+         width="180"
+         height="200"
+         fill="none"
+         stroke="none"
+         id="rect44"
+         style="stroke-width:5.28581;stroke-miterlimit:4;stroke-dasharray:none" />
+      <text
+         fill="#303030"
+         fill-opacity="1"
+         stroke="none"
+         id="text46"
+         style="stroke-width:5.28581;stroke-miterlimit:4;stroke-dasharray:none" />
+    </g>
+  </g>
+</svg>

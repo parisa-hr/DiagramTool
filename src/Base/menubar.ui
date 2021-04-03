@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MenuBar</class>
+ <widget class="QWidget" name="MenuBar">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>939</width>
+    <height>57</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <item row="0" column="12">
+    <widget class="QWidget" name="widget_Menu" native="true">
+     <property name="styleSheet">
+      <string notr="true">QWidget #widget_Menu
+{
+background-color: qlineargradient(spread:repeat, x1:0.478, y1:1, x2:0.473, y2:0, stop:0.0845771 rgba(7, 0, 43, 245), stop:1 rgba(255, 255, 255, 255));
+        border:4px solid #FFFF00;
+        border-radius: 0px;
+        border-top: none;
+        border-right: none;
+        border-bottom-color: rgb(164, 0, 0);
+        border-left: none;
+}
+
+QWidget #widget_Menu:hover
+{
+background-color: qlineargradient(spread:repeat, x1:0.478, y1:1, x2:0.473, y2:0, stop:0.0845771 rgba(7, 0, 43, 245), stop:1 rgba(255, 255, 255, 255));
+        border:4px solid #FFFF00;
+        border-radius: 0px;
+        border-top: none;
+        border-right: none;
+        border-bottom-color:rgb(198, 22, 22);
+        border-left: none;
+}
+QToolButton
+{
+        background-color: transparent;
+        border:2px solid transparent;
+        border-radius: 5px;
+}
+
+QToolButton::hover
+{
+background-color: transparent;
+border:1px solid rgb(255, 255, 255);
+border-radius: 5px;
+}
+QToolButton::pressed
+{
+background-color: rgba(65, 66, 154,127);
+border:1px solid rgb(255, 255, 255);
+border-radius: 5px;
+}
+
+QToolButton::checked
+{
+background-color: rgba(65, 66, 154,127);
+border:1px solid rgb(255, 255, 255);
+border-radius: 5px;
+}</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="24">
+       <widget class="Line" name="line_7">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="6">
+       <widget class="Line" name="line_5">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="16">
+       <widget class="QToolButton" name="tb_addText">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p  style=&quot;background-color:white&quot;&gt;&lt;font face=&quot;Times New Roman&quot; color=&quot;dark blue&quot;&gt;TextBox&lt;/font&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../../qml.qrc">
+          <normaloff>:/icons/Tools/AppFont.svg</normaloff>:/icons/Tools/AppFont.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="9">
+       <widget class="Line" name="line_3">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="10">
+       <widget class="QToolButton" name="tb_changeColor">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p  style=&quot;background-color:white&quot;&gt;&lt;font face=&quot;Times New Roman&quot; color=&quot;dark blue&quot;&gt;Change Color&lt;/font&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../../qml.qrc">
+          <normaloff>:/icons/Tools/color_fill.svg</normaloff>:/icons/Tools/color_fill.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="autoRaise">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="14">
+       <widget class="QToolButton" name="tb_Select">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p  style=&quot;background-color:white&quot;&gt;&lt;font face=&quot;Times New Roman&quot; color=&quot;dark blue&quot;&gt;Select&lt;/font&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../../qml.qrc">
+          <normaloff>:/icons/Tools/cursor.svg</normaloff>:/icons/Tools/cursor.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="autoRaise">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="15">
+       <widget class="Line" name="line_6">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="13">
+       <widget class="QToolButton" name="tb_Pan">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p  style=&quot;background-color:white&quot;&gt;&lt;font face=&quot;Times New Roman&quot; color=&quot;dark blue&quot;&gt;Pan&lt;/font&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../../qml.qrc">
+          <normaloff>:/icons/Tools/pan.png</normaloff>:/icons/Tools/pan.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="autoRaise">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="23" alignment="Qt::AlignBottom">
+       <widget class="QComboBox" name="comboSize">
+        <property name="maximumSize">
+         <size>
+          <width>48</width>
+          <height>48</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="8">
+       <widget class="QToolButton" name="tb_redo">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p  style=&quot;background-color:white&quot;&gt;&lt;font face=&quot;Times New Roman&quot; color=&quot;dark blue&quot;&gt;Redo&lt;/font&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../../qml.qrc">
+          <normaloff>:/icons/Tools/mActionRedo_Clicked.svg</normaloff>:/icons/Tools/mActionRedo_Clicked.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="autoRaise">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="18" alignment="Qt::AlignBottom">
+       <widget class="QToolButton" name="tb_bold">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../../qml.qrc">
+          <normaloff>:/icons/Tools/textbold.png</normaloff>:/icons/Tools/textbold.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>28</width>
+          <height>28</height>
+         </size>
+        </property>
+        <property name="autoRaise">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="4">
+       <widget class="QToolButton" name="tb_save">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p  style=&quot;background-color:white&quot;&gt;&lt;font face=&quot;Times New Roman&quot; color=&quot;dark blue&quot;&gt;Save&lt;/font&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../../qml.qrc">
+          <normaloff>:/icons/Tools/Save.svg</normaloff>:/icons/Tools/Save.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="autoRaise">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="22" alignment="Qt::AlignBottom">
+       <widget class="QFontComboBox" name="fontComboBox"/>
+      </item>
+      <item row="0" column="17">
+       <widget class="Line" name="line_8">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="Line" name="line_2">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="26">
+       <layout class="QHBoxLayout" name="DiagramMenu"/>
+      </item>
+      <item row="0" column="19" alignment="Qt::AlignBottom">
+       <widget class="QToolButton" name="tb_Italic">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../../qml.qrc">
+          <normaloff>:/icons/Tools/textitalic.png</normaloff>:/icons/Tools/textitalic.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>28</width>
+          <height>28</height>
+         </size>
+        </property>
+        <property name="autoRaise">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QToolButton" name="tb_Menu">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../../qml.qrc">
+          <normaloff>:/icons/Tools/Menu_icon.svg</normaloff>:/icons/Tools/Menu_icon.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="autoRaise">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="12">
+       <widget class="Line" name="line">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="27">
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="0" column="2">
+       <widget class="QToolButton" name="toolButton">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p  style=&quot;background-color:white&quot;&gt;&lt;font face=&quot;Times New Roman&quot; color=&quot;dark blue&quot;&gt;Home&lt;/font&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../../qml.qrc">
+          <normaloff>:/icons/Tools/Home.svg</normaloff>:/icons/Tools/Home.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="autoRaise">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="Line" name="line_4">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="7">
+       <widget class="QToolButton" name="tb_undo">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p  style=&quot;background-color:white&quot;&gt;&lt;font face=&quot;Times New Roman&quot; color=&quot;dark blue&quot;&gt;Undo&lt;/font&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../../qml.qrc">
+          <normaloff>:/icons/Tools/mActionUndo_clicked.svg</normaloff>:/icons/Tools/mActionUndo_clicked.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="autoRaise">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="20" alignment="Qt::AlignBottom">
+       <widget class="QToolButton" name="tb_under">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../../qml.qrc">
+          <normaloff>:/icons/Tools/textunder.png</normaloff>:/icons/Tools/textunder.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>28</width>
+          <height>28</height>
+         </size>
+        </property>
+        <property name="autoRaise">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="21">
+       <widget class="Line" name="line_9">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../../qml.qrc"/>
+ </resources>
+ <connections/>
+</ui>

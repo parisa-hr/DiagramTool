@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="128"
+   height="128"
+   stroke="#fa0000"
+   stroke-linecap="round"
+   stroke-linejoin="miter"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   version="1.1"
+   id="svg8"
+   sodipodi:docname="untitled-drawing.svg"
+   inkscape:version="1.0.1 (0767f8302a, 2020-10-17)">
+  <metadata
+     id="metadata14">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs12" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1366"
+     inkscape:window-height="672"
+     id="namedview10"
+     showgrid="false"
+     inkscape:zoom="1.573013"
+     inkscape:cx="-23.107546"
+     inkscape:cy="74.894964"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg8" />
+  <path
+     d="m 51.1634,21.4274 25,-15.6639"
+     stroke-linecap="butt"
+     fill="none"
+     stroke-width="3.527"
+     id="path2" />
+  <path
+     d="m 13.6635,70.1104 c 0,-27.6109 22.3,-49.8393 50,-49.8393 27.7,0 50,22.2284 50,49.8393 0,27.6109 -22.3,49.8395 -50,49.8395 -27.7,0 -50,-22.2283 -50,-49.8395 z"
+     fill="#ffdc8c"
+     fill-rule="nonzero"
+     stroke-width="3.327"
+     id="path4" />
+  <path
+     d="m 51.1634,21.4274 25,12.8158"
+     stroke-linecap="butt"
+     fill="none"
+     stroke-width="3.527"
+     id="path6" />
+</svg>

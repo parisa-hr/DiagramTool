@@ -1,0 +1,12 @@
+[Icon Theme]
+Name=DiagramTool
+Comment=Qt Quick Controls 2 DiagramTool Demo Icon Theme
+Inherits=gnome,hicolor,Numix,breeze
+
+
+Directory=DiagramIcons
+
+[DiagramIcons]
+Size=32
+Context=Applications
+Type=Scalable
