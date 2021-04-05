@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QMenu>
+#include <QPrinter>
 #include "menubar.h"
 
 class QGraphicsScene;
@@ -57,6 +58,10 @@ private slots:
     void            ExportSvg();
 
     void            ExportPNG();
+
+    void            PrintPreview();
+
+    void            print(QPrinter *printer);
 
     void            updateZoomLabel();
 

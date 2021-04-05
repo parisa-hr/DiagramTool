@@ -3,21 +3,27 @@
 
 #if defined (QT_PRINTSUPPORT_LIB)
 #include <QtPrintSupport/qtprintsupportglobal.h>
+#if QT_CONFIG(printer)
 #if QT_CONFIG(printdialog)
-#include <QPrinter>
 #include <QPrintDialog>
-#include <QFileDialog>
+#endif
+#include <QPrinter>
+#if QT_CONFIG(printpreviewdialog)
+#include <QPrintPreviewDialog>
+#endif
+#endif
+#endif
 #include <QSvgGenerator>
 #include <QStandardPaths>
 #include <QMessageBox>
-#endif
-#endif
-
 #include <QResizeEvent>
 #include <QGraphicsScene>
 #include <QMenuBar>
 #include <QDebug>
 #include <qmath.h>
+#include <QFileInfo>
+#include <QDir>
+#include <QFileDialog>
 
 #include <QGraphicsRectItem>
 #include "mainmenu.h"
@@ -84,6 +90,8 @@ DiagramBase::DiagramBase(QWidget *parent):
         connect(_menuBar->getMainMenu(), &MainMenu::ExportAsSVG, this, &DiagramBase::ExportSvg);
 
         connect(_menuBar->getMainMenu(), &MainMenu::ExportAsPNG, this, &DiagramBase::ExportPNG);
+
+        connect(_menuBar->getMainMenu(), &MainMenu::doPrint, this, &DiagramBase::PrintPreview);
 
         connect(_menuBar, &MenuBar::addText, this, &DiagramBase::InsertDiagramText);
     }
@@ -163,19 +171,28 @@ void  DiagramBase::wheelEvent(QWheelEvent *event)
 
 void  DiagramBase::ExportPdf()
 {
-#if QT_CONFIG(printdialog)
+#ifndef QT_NO_PRINTER
+//! [0]
+    QFileDialog  fileDialog(this, tr("Export PDF"));
+    fileDialog.setAcceptMode(QFileDialog::AcceptSave);
+    fileDialog.setMimeTypeFilters(QStringList("application/pdf"));
+    fileDialog.setDefaultSuffix("pdf");
+
+    if (fileDialog.exec() != QDialog::Accepted)
+    {
+        return;
+    }
+
+    QString   fileName = fileDialog.selectedFiles().first();
     QPrinter  printer(QPrinter::HighResolution);
     printer.setOrientation(QPrinter::Landscape);
 
-    QPrintDialog  dialog(&printer, this);
+    printer.setOutputFormat(QPrinter::PdfFormat);
+    printer.setOutputFileName(fileName);
+    QPainter  painter(&printer);
 
-    if (dialog.exec() == QDialog::Accepted)
-    {
-        QPainter  painter(&printer);
-
-        scene->render(&painter);
-    }
-
+    scene->render(&painter);
+//! [0]
 #endif
 }
 
@@ -259,6 +276,30 @@ void  DiagramBase::ExportPNG()
                                   tr("Could not write file '%1'.").arg(QDir::toNativeSeparators(fileName)));
         }
     }
+}
+
+void  DiagramBase::PrintPreview()
+{
+#if QT_CONFIG(printpreviewdialog)
+    QPrinter  printer(QPrinter::HighResolution);
+    printer.setOrientation(QPrinter::Landscape);
+
+    QPrintPreviewDialog  preview(&printer, ui->graphicsView);
+    connect(&preview, &QPrintPreviewDialog::paintRequested, this, &DiagramBase::print);
+    preview.exec();
+#endif
+}
+
+void  DiagramBase::print(QPrinter *printer)
+{
+#ifdef QT_NO_PRINTER
+    Q_UNUSED(printer);
+#else
+    QPainter  painter(printer);
+
+    scene->render(&painter);
+
+#endif
 }
 
 void  DiagramBase::updateZoomLabel()
