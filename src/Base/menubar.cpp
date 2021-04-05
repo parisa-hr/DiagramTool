@@ -97,3 +97,8 @@ void  MenuBar::on_tb_addText_clicked()
 {
     emit  addText();
 }
+
+void  MenuBar::on_tb_print_clicked()
+{
+    emit  doPrint();
+}

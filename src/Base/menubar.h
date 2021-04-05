@@ -31,6 +31,8 @@ signals:
 
     void      addText();
 
+    void      doPrint();
+
 private slots:
     void      on_toolButton_clicked();
 
@@ -43,6 +45,8 @@ private slots:
     void      on_tb_changeColor_clicked();
 
     void      on_tb_addText_clicked();
+
+    void      on_tb_print_clicked();
 
 private:
     Ui::MenuBar *ui;

@@ -67,5 +67,6 @@
         <file>icons/Tools/textbold.png</file>
         <file>icons/Tools/textitalic.png</file>
         <file>icons/Tools/textunder.png</file>
+        <file>icons/Tools/document-print.svg</file>
     </qresource>
 </RCC>

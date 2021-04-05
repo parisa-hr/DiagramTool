@@ -94,6 +94,7 @@ DiagramBase::DiagramBase(QWidget *parent):
         connect(_menuBar->getMainMenu(), &MainMenu::doPrint, this, &DiagramBase::PrintPreview);
 
         connect(_menuBar, &MenuBar::addText, this, &DiagramBase::InsertDiagramText);
+        connect(_menuBar, &MenuBar::doPrint, this, &DiagramBase::PrintPreview);
     }
 }
 
@@ -267,7 +268,6 @@ void  DiagramBase::ExportPNG()
             const QString  message = tr("Exported %1, %2x%3, %4 bytes")
                                      .arg(QDir::toNativeSeparators(fileName)).arg(imageSize.width()).arg(imageSize.height())
                                      .arg(QFileInfo(fileName).size());
-// statusBar()->showMessage(message);
             break;
         }
         else
@@ -281,6 +281,8 @@ void  DiagramBase::ExportPNG()
 void  DiagramBase::PrintPreview()
 {
 #if QT_CONFIG(printpreviewdialog)
+    scene->update();
+
     QPrinter  printer(QPrinter::HighResolution);
     printer.setOrientation(QPrinter::Landscape);
 
@@ -296,7 +298,6 @@ void  DiagramBase::print(QPrinter *printer)
     Q_UNUSED(printer);
 #else
     QPainter  painter(printer);
-
     scene->render(&painter);
 
 #endif
