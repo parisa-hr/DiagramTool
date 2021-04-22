@@ -68,5 +68,6 @@
         <file>icons/Tools/textitalic.png</file>
         <file>icons/Tools/textunder.png</file>
         <file>icons/Tools/document-print.svg</file>
+        <file>icons/base/galaxy_starfield.png</file>
     </qresource>
 </RCC>
