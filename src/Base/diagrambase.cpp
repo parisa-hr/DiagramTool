@@ -178,6 +178,18 @@ DiagramBase::DiagramBase(QWidget *parent):
                 }
             }
         });
+
+        connect(_menuBar, &MenuBar::changeFontSize, this, [this](QString size)
+        {
+            if (_textItem)
+            {
+              if (_textItem->isSelected())
+              {
+                font.setPointSize(size.toInt());
+                _textItem->setFont(font);
+                }
+            }
+        });
     }
 }
 
