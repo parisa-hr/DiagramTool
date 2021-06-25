@@ -95,6 +95,7 @@ DiagramBase::DiagramBase(QWidget *parent):
 
         connect(_menuBar, &MenuBar::addText, this, &DiagramBase::InsertDiagramText);
         connect(_menuBar, &MenuBar::doPrint, this, &DiagramBase::PrintPreview);
+
     }
 }
 
@@ -173,7 +174,7 @@ void  DiagramBase::wheelEvent(QWheelEvent *event)
 void  DiagramBase::ExportPdf()
 {
 #ifndef QT_NO_PRINTER
-//! [0]
+    //! [0]
     QFileDialog  fileDialog(this, tr("Export PDF"));
     fileDialog.setAcceptMode(QFileDialog::AcceptSave);
     fileDialog.setMimeTypeFilters(QStringList("application/pdf"));
@@ -193,7 +194,7 @@ void  DiagramBase::ExportPdf()
     QPainter  painter(&printer);
 
     scene->render(&painter);
-//! [0]
+    //! [0]
 #endif
 }
 
@@ -209,15 +210,15 @@ void  DiagramBase::ExportSvg()
 
     path = newPath;
 
-//! [configure SVG generator]
+    //! [configure SVG generator]
     QSvgGenerator  generator;
     generator.setFileName(path);
     generator.setSize(QSize(200, 200));
     generator.setViewBox(QRect(0, 0, 200, 200));
     generator.setDescription(tr("An SVG drawing created by the SVG Generator "
                                 "Example provided with Qt."));
-//! [configure SVG generator]
-//! [begin painting]
+    //! [configure SVG generator]
+    //! [begin painting]
     QPainter  painter;
     painter.begin(&generator);
     scene->render(&painter);
@@ -266,8 +267,8 @@ void  DiagramBase::ExportPNG()
         if (image.save(fileName))
         {
             const QString  message = tr("Exported %1, %2x%3, %4 bytes")
-                                     .arg(QDir::toNativeSeparators(fileName)).arg(imageSize.width()).arg(imageSize.height())
-                                     .arg(QFileInfo(fileName).size());
+                    .arg(QDir::toNativeSeparators(fileName)).arg(imageSize.width()).arg(imageSize.height())
+                    .arg(QFileInfo(fileName).size());
             break;
         }
         else
@@ -316,6 +317,9 @@ void  DiagramBase::InsertDiagramText()
 
     _textItem->setTextInteractionFlags(Qt::TextEditorInteraction);
     _textItem->setZValue(1000.0);
+
+
+    scene->addItem(_textItem);
 }
 
 void  DiagramBase::zoomBy(qreal factor)

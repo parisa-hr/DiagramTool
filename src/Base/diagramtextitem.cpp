@@ -1,10 +1,11 @@
 #include "diagramtextitem.h"
 
 DiagramTextItem::DiagramTextItem(QGraphicsItem *parent):
-    QGraphicsTextItem(parent)
+    QGraphicsTextItem("New Text",parent)
 {
     setFlag(QGraphicsItem::ItemIsMovable);
     setFlag(QGraphicsItem::ItemIsSelectable);
+
 }
 
 QVariant  DiagramTextItem::itemChange(GraphicsItemChange change,
