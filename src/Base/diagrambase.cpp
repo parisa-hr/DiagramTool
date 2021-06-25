@@ -26,6 +26,8 @@
 #include <QFileDialog>
 
 #include <QGraphicsRectItem>
+#include <QColorDialog>
+
 #include "mainmenu.h"
 #include "diagramview.h"
 #include "exportdialog.h"
@@ -46,16 +48,15 @@ DiagramBase::DiagramBase(QWidget *parent):
 
     updateZoomLabel();
 
-    /// all connections
     {
-        connect(this, &DiagramBase::zoomChanged, this, &DiagramBase::updateZoomLabel);
-
-
         _menuBar = new MenuBar(this);
         font     = _menuBar->getFont();
 
 
         _pal = new QPalette();
+        /// all connections
+
+        connect(this, &DiagramBase::zoomChanged, this, &DiagramBase::updateZoomLabel);
 
         connect(_menuBar->getMainMenu(), &MainMenu::showGrideView, this, [this]()
         {
@@ -70,7 +71,6 @@ DiagramBase::DiagramBase(QWidget *parent):
             setPalette(*_pal);
             this->update();
         });
-
 
         connect(_menuBar, &MenuBar::SetCursorPan, this, [this]()
         {
@@ -96,6 +96,7 @@ DiagramBase::DiagramBase(QWidget *parent):
         connect(_menuBar->getMainMenu(), &MainMenu::doPrint, this, &DiagramBase::PrintPreview);
 
         connect(_menuBar, &MenuBar::addText, this, &DiagramBase::InsertDiagramText);
+
         connect(_menuBar, &MenuBar::doPrint, this, &DiagramBase::PrintPreview);
 
         connect(_menuBar, &MenuBar::boldText, this, [this]()
@@ -187,6 +188,18 @@ DiagramBase::DiagramBase(QWidget *parent):
               {
                 font.setPointSize(size.toInt());
                 _textItem->setFont(font);
+                }
+            }
+        });
+
+        connect(_menuBar, &MenuBar::changedColor, this, [this]()
+        {
+            if (_textItem)
+            {
+              if (_textItem->isSelected())
+              {
+                QColor color = QColorDialog::getColor(Qt::black, this);
+                _textItem->setDefaultTextColor(color);
                 }
             }
         });

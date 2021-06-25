@@ -45,6 +45,8 @@ signals:
 
     void      changeFontSize(QString size);
 
+    void      changedColor();
+
 private slots:
     void      on_toolButton_clicked();
 

@@ -97,6 +97,7 @@ void  MenuBar::on_tb_Select_clicked()
 
 void  MenuBar::on_tb_changeColor_clicked()
 {
+    emit  changedColor();
 }
 
 void  MenuBar::on_tb_addText_clicked()
