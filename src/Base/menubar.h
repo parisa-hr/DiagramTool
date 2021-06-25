@@ -22,6 +22,8 @@ public:
 
     void      addToolButton(QAction *action);
 
+    QFont     getFont();
+
 signals:
     void      CloseWindow();
 
@@ -31,7 +33,11 @@ signals:
 
     void      addText();
 
+    void      boldText();
+
     void      doPrint();
+
+    void      changeFont(QFont f);
 
 private slots:
     void      on_toolButton_clicked();
@@ -47,6 +53,10 @@ private slots:
     void      on_tb_addText_clicked();
 
     void      on_tb_print_clicked();
+
+    void      on_tb_bold_clicked();
+
+    void      on_fontComboBox_currentFontChanged(const QFont &f);
 
 private:
     Ui::MenuBar *ui;

@@ -78,6 +78,7 @@ private:
     DiagramTextItem *_textItem;
     QString          path;
     QString          m_currentPath;
+    QFont            font;
 };
 
 #endif // DIAGRAMBASE_H

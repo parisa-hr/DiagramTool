@@ -4,6 +4,7 @@
 #include <QAction>
 #include <QToolButton>
 #include <qfontdatabase.h>
+#include <QDebug>
 
 MenuBar::MenuBar(QWidget *parent):
     QWidget(parent),
@@ -69,6 +70,11 @@ void  MenuBar::addToolButton(QAction *action)
     ui->DiagramMenu->addWidget(toolButton);
 }
 
+QFont  MenuBar::getFont()
+{
+    return ui->fontComboBox->currentFont();
+}
+
 void  MenuBar::on_tb_Pan_clicked(bool checked)
 {
     if (checked)
@@ -101,4 +107,15 @@ void  MenuBar::on_tb_addText_clicked()
 void  MenuBar::on_tb_print_clicked()
 {
     emit  doPrint();
+}
+
+void  MenuBar::on_tb_bold_clicked()
+{
+    emit  boldText();
+}
+
+void  MenuBar::on_fontComboBox_currentFontChanged(const QFont &f)
+{
+    qDebug() << "Parisa Font avaz kard";
+    emit  changeFont(f);
 }

@@ -53,6 +53,7 @@ DiagramBase::DiagramBase(QWidget *parent):
 
         _menuBar = new MenuBar(this);
 
+
         _pal = new QPalette();
 
         connect(_menuBar->getMainMenu(), &MainMenu::showGrideView, this, [this]()
@@ -96,6 +97,48 @@ DiagramBase::DiagramBase(QWidget *parent):
         connect(_menuBar, &MenuBar::addText, this, &DiagramBase::InsertDiagramText);
         connect(_menuBar, &MenuBar::doPrint, this, &DiagramBase::PrintPreview);
 
+        connect(_menuBar, &MenuBar::boldText, this, [this]()
+        {
+            if (_textItem)
+            {
+              if (_textItem->isSelected())
+              {
+                if (font.bold() == true)
+                {
+                  font = _menuBar->getFont();
+                  font.setBold(false);
+                  _textItem->setFont(font);
+                    }
+                else
+                {
+                  font = _menuBar->getFont();
+
+                  font.setBold(true);
+                  _textItem->setFont(font);
+                    }
+                }
+            }
+        });
+
+        connect(_menuBar, &MenuBar::changeFont, this, [this](QFont f)
+        {
+            if (_textItem)
+            {
+              if (_textItem->isSelected())
+              {
+                if (font.bold() == true)
+                {
+                  f.setBold(true);
+                    }
+                else
+                {
+                  f.setBold(false);
+                    }
+
+                _textItem->setFont(f);
+                }
+            }
+        });
     }
 }
 
@@ -267,8 +310,8 @@ void  DiagramBase::ExportPNG()
         if (image.save(fileName))
         {
             const QString  message = tr("Exported %1, %2x%3, %4 bytes")
-                    .arg(QDir::toNativeSeparators(fileName)).arg(imageSize.width()).arg(imageSize.height())
-                    .arg(QFileInfo(fileName).size());
+                                     .arg(QDir::toNativeSeparators(fileName)).arg(imageSize.width()).arg(imageSize.height())
+                                     .arg(QFileInfo(fileName).size());
             break;
         }
         else
@@ -317,7 +360,6 @@ void  DiagramBase::InsertDiagramText()
 
     _textItem->setTextInteractionFlags(Qt::TextEditorInteraction);
     _textItem->setZValue(1000.0);
-
 
     scene->addItem(_textItem);
 }
