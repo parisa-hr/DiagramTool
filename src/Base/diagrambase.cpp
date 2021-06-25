@@ -52,6 +52,7 @@ DiagramBase::DiagramBase(QWidget *parent):
 
 
         _menuBar = new MenuBar(this);
+        font     = _menuBar->getFont();
 
 
         _pal = new QPalette();
@@ -105,14 +106,11 @@ DiagramBase::DiagramBase(QWidget *parent):
               {
                 if (font.bold() == true)
                 {
-                  font = _menuBar->getFont();
                   font.setBold(false);
                   _textItem->setFont(font);
                     }
                 else
                 {
-                  font = _menuBar->getFont();
-
                   font.setBold(true);
                   _textItem->setFont(font);
                     }
@@ -136,6 +134,47 @@ DiagramBase::DiagramBase(QWidget *parent):
                     }
 
                 _textItem->setFont(f);
+                font = f;
+                }
+            }
+        });
+
+        connect(_menuBar, &MenuBar::italicText, this, [this]()
+        {
+            if (_textItem)
+            {
+              if (_textItem->isSelected())
+              {
+                if (font.italic() == true)
+                {
+                  font.setItalic(false);
+                  _textItem->setFont(font);
+                    }
+                else
+                {
+                  font.setItalic(true);
+                  _textItem->setFont(font);
+                    }
+                }
+            }
+        });
+
+        connect(_menuBar, &MenuBar::addUnderLine, this, [this]()
+        {
+            if (_textItem)
+            {
+              if (_textItem->isSelected())
+              {
+                if (font.underline() == true)
+                {
+                  font.setUnderline(false);
+                  _textItem->setFont(font);
+                    }
+                else
+                {
+                  font.setUnderline(true);
+                  _textItem->setFont(font);
+                    }
                 }
             }
         });

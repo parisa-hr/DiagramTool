@@ -39,6 +39,12 @@ signals:
 
     void      changeFont(QFont f);
 
+    void      italicText();
+
+    void      addUnderLine();
+
+    void      changeFontSize(QString size);
+
 private slots:
     void      on_toolButton_clicked();
 
@@ -57,6 +63,12 @@ private slots:
     void      on_tb_bold_clicked();
 
     void      on_fontComboBox_currentFontChanged(const QFont &f);
+
+    void      on_tb_Italic_clicked();
+
+    void      on_tb_under_clicked();
+
+    void      on_comboSize_currentTextChanged(const QString &arg1);
 
 private:
     Ui::MenuBar *ui;

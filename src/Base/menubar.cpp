@@ -119,3 +119,18 @@ void  MenuBar::on_fontComboBox_currentFontChanged(const QFont &f)
     qDebug() << "Parisa Font avaz kard";
     emit  changeFont(f);
 }
+
+void  MenuBar::on_tb_Italic_clicked()
+{
+    emit  italicText();
+}
+
+void  MenuBar::on_tb_under_clicked()
+{
+    emit  addUnderLine();
+}
+
+void  MenuBar::on_comboSize_currentTextChanged(const QString &arg1)
+{
+    emit  changeFontSize(arg1);
+}
