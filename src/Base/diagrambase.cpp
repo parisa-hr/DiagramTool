@@ -101,118 +101,136 @@ DiagramBase::DiagramBase(QWidget *parent):
 
         connect(_menuBar, &MenuBar::boldText, this, [this]()
         {
-            DiagramTextItem *item = qgraphicsitem_cast<DiagramTextItem *>(scene->selectedItems().first());
-
-            if (item)
+            if (!scene->selectedItems().isEmpty())
             {
-              if (font.bold() == true)
+              DiagramTextItem *item = qgraphicsitem_cast<DiagramTextItem *>(scene->selectedItems().first());
+
+              if (item)
               {
-                font.setBold(false);
-                item->setFont(font);
-                }
-              else
-              {
-                font.setBold(true);
-                item->setFont(font);
+                if (font.bold() == true)
+                {
+                  font.setBold(false);
+                  item->setFont(font);
+                    }
+                else
+                {
+                  font.setBold(true);
+                  item->setFont(font);
+                    }
                 }
             }
         });
 
         connect(_menuBar, &MenuBar::changeFont, this, [this](QFont f)
         {
-            DiagramTextItem *item = qgraphicsitem_cast<DiagramTextItem *>(scene->selectedItems().first());
-
-            if (item)
+            if (!scene->selectedItems().isEmpty())
             {
-              if (font.bold() == true)
-              {
-                f.setBold(true);
-                }
-              else
-              {
-                f.setBold(false);
-                }
+              DiagramTextItem *item = qgraphicsitem_cast<DiagramTextItem *>(scene->selectedItems().first());
 
-              if (font.italic() == true)
+              if (item)
               {
-                f.setItalic(true);
-                }
-              else
-              {
-                f.setItalic(false);
-                }
+                if (font.bold() == true)
+                {
+                  f.setBold(true);
+                    }
+                else
+                {
+                  f.setBold(false);
+                    }
 
-              if (font.underline() == true)
-              {
-                f.setUnderline(true);
-                }
-              else
-              {
-                f.setUnderline(false);
-                }
+                if (font.italic() == true)
+                {
+                  f.setItalic(true);
+                    }
+                else
+                {
+                  f.setItalic(false);
+                    }
 
-              item->setFont(f);
-              font = f;
+                if (font.underline() == true)
+                {
+                  f.setUnderline(true);
+                    }
+                else
+                {
+                  f.setUnderline(false);
+                    }
+
+                item->setFont(f);
+                font = f;
+                }
             }
         });
 
         connect(_menuBar, &MenuBar::italicText, this, [this]()
         {
-            DiagramTextItem *item = qgraphicsitem_cast<DiagramTextItem *>(scene->selectedItems().first());
-
-            if (item)
+            if (!scene->selectedItems().isEmpty())
             {
-              if (font.italic() == true)
+              DiagramTextItem *item = qgraphicsitem_cast<DiagramTextItem *>(scene->selectedItems().first());
+
+              if (item)
               {
-                font.setItalic(false);
-                item->setFont(font);
-                }
-              else
-              {
-                font.setItalic(true);
-                item->setFont(font);
+                if (font.italic() == true)
+                {
+                  font.setItalic(false);
+                  item->setFont(font);
+                    }
+                else
+                {
+                  font.setItalic(true);
+                  item->setFont(font);
+                    }
                 }
             }
         });
 
         connect(_menuBar, &MenuBar::addUnderLine, this, [this]()
         {
-            DiagramTextItem *item = qgraphicsitem_cast<DiagramTextItem *>(scene->selectedItems().first());
-
-            if (item)
+            if (!scene->selectedItems().isEmpty())
             {
-              if (font.underline() == true)
+              DiagramTextItem *item = qgraphicsitem_cast<DiagramTextItem *>(scene->selectedItems().first());
+
+              if (item)
               {
-                font.setUnderline(false);
-                item->setFont(font);
-                }
-              else
-              {
-                font.setUnderline(true);
-                item->setFont(font);
+                if (font.underline() == true)
+                {
+                  font.setUnderline(false);
+                  item->setFont(font);
+                    }
+                else
+                {
+                  font.setUnderline(true);
+                  item->setFont(font);
+                    }
                 }
             }
         });
 
         connect(_menuBar, &MenuBar::changeFontSize, this, [this](QString size)
         {
-            DiagramTextItem *item = qgraphicsitem_cast<DiagramTextItem *>(scene->selectedItems().first());
-
-            if (item)
+            if (!scene->selectedItems().isEmpty())
             {
-              font.setPointSize(size.toInt());
-              item->setFont(font);
+              DiagramTextItem *item = qgraphicsitem_cast<DiagramTextItem *>(scene->selectedItems().first());
+
+              if (item)
+              {
+                font.setPointSize(size.toInt());
+                item->setFont(font);
+                }
             }
         });
 
         connect(_menuBar, &MenuBar::changedColor, this, [this]()
         {
-            DiagramTextItem *item = qgraphicsitem_cast<DiagramTextItem *>(scene->selectedItems().first());
-
-            if (item)
+            if (!scene->selectedItems().isEmpty())
             {
-              QColor color = QColorDialog::getColor(Qt::black, this);
-              item->setDefaultTextColor(color);
+              DiagramTextItem *item = qgraphicsitem_cast<DiagramTextItem *>(scene->selectedItems().first());
+
+              if (item)
+              {
+                QColor color = QColorDialog::getColor(Qt::black, this);
+                item->setDefaultTextColor(color);
+                }
             }
         });
     }
