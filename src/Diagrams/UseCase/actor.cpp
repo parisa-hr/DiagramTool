@@ -35,7 +35,10 @@ void  Actor::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
 
     auto  headRect = QRect(_rect.width() / 4.0, _rect.height() / 6.0, _rect.width() / 2.0, _rect.width() / 2.0);
 
+    painter->save();
+    painter->setBrush(Qt::yellow);
     painter->drawEllipse(headRect);
+    painter->restore();
 
     painter->drawLine(headRect.width(), headRect.height() + headRect.y(), headRect.width(),
                       (headRect.height() + headRect.y() + (_rect.height() / 4.0)));
