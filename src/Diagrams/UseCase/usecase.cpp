@@ -29,6 +29,8 @@ UseCase::UseCase()
                                                  "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">Usecase</font></p></body></html>",
                                                  nullptr));
 
+    connect(act2, &QAction::triggered, this, &UseCase::addUsecase);
+
     menuBar()->addToolButton(act2);
 
     QAction *act3 = new QAction("Arrow");
@@ -69,12 +71,19 @@ UseCase::UseCase()
                                                  "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">System Boundry</font></p></body></html>",
                                                  nullptr));
 
+    connect(act7, &QAction::triggered, this, &UseCase::addSystemBoundry);
+
+
     menuBar()->addToolButton(act7);
 }
 
 void  UseCase::addActor()
 {
     Actor *_actor = new Actor(this);
+
+    _actor->setFlag(QGraphicsItem::ItemIsMovable);
+    _actor->setFlag(QGraphicsItem::ItemIsSelectable);
+    _actor->setFlag(QGraphicsItem::ItemIsFocusable);
 
     getScene()->addItem(_actor);
 
@@ -88,6 +97,65 @@ void  UseCase::addActor()
         _actor->setPos(pos + rect.topLeft());
         QRectF old = _actor->boundingRect();
         _actor->setRect(QRectF(old.topLeft(), rect.size()));
+        getScene()->update(getScene()->sceneRect());
+    });
+}
+
+void  UseCase::addUsecase()
+{
+    QGraphicsEllipseItem *useCase = new QGraphicsEllipseItem(0, 0, 100, 50);
+
+    useCase->setFlag(QGraphicsItem::ItemIsMovable);
+    useCase->setFlag(QGraphicsItem::ItemIsSelectable);
+    useCase->setFlag(QGraphicsItem::ItemIsFocusable);
+
+    auto  pen = QPen(Qt::black, 2);
+    pen.setCosmetic(true);
+
+    useCase->setPen(pen);
+    useCase->setBrush(QColor("#fff2cc"));
+
+    getScene()->addItem(useCase);
+    GraphicsItemResizer *resizer = new GraphicsItemResizer(useCase);
+    resizer->setBrush(QColor(64, 64, 64));
+    resizer->setMinSize(QSizeF(30, 30));
+    resizer->setTargetSize(useCase->boundingRect().size());
+    connect(resizer, &GraphicsItemResizer::targetRectChanged, [useCase, this](const QRectF &rect)
+    {
+        QPointF pos = useCase->pos();
+        useCase->setPos(pos + rect.topLeft());
+        QRectF old = useCase->rect();
+        useCase->setRect(QRectF(old.topLeft(), rect.size()));
+        getScene()->update(getScene()->sceneRect());
+    });
+}
+
+void  UseCase::addSystemBoundry()
+{
+    QGraphicsRectItem *item        = new QGraphicsRectItem(QRectF(0, 0, 500, 400));
+    QGraphicsTextItem *_systemText = new QGraphicsTextItem("System", item);
+
+    _systemText->setTextInteractionFlags(Qt::TextEditorInteraction);
+
+    item->setFlag(QGraphicsItem::ItemIsMovable);
+    item->setFlag(QGraphicsItem::ItemIsSelectable);
+    item->setFlag(QGraphicsItem::ItemIsFocusable);
+
+    item->setPen(QColor(102, 102, 102));
+    item->setBrush(QColor(158, 204, 255));
+
+    getScene()->addItem(item);
+
+    GraphicsItemResizer *resizer = new GraphicsItemResizer(item);
+    resizer->setBrush(QColor(64, 64, 64));
+    resizer->setMinSize(QSizeF(30, 30));
+    resizer->setTargetSize(item->boundingRect().size());
+    connect(resizer, &GraphicsItemResizer::targetRectChanged, [item, this](const QRectF &rect)
+    {
+        QPointF pos = item->pos();
+        item->setPos(pos + rect.topLeft());
+        QRectF old = item->rect();
+        item->setRect(QRectF(old.topLeft(), rect.size()));
         getScene()->update(getScene()->sceneRect());
     });
 }

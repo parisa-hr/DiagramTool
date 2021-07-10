@@ -4,8 +4,6 @@
 
 Actor::Actor(QObject *parent)
 {
-    setFlag(QGraphicsItem::ItemIsMovable);
-    setFlag(QGraphicsItem::ItemIsSelectable);
     setAcceptHoverEvents(true);
 }
 

@@ -13,6 +13,10 @@ public:
 
     void  addActor();
 
+    void  addUsecase();
+
+    void  addSystemBoundry();
+
 signals:
 public slots:
 };

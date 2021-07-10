@@ -44,6 +44,7 @@ DiagramBase::DiagramBase(QWidget *parent):
         scene = new QGraphicsScene(this);
         ui->graphicsView->setScene(scene);
         ui->graphicsView->setAlignment(Qt::AlignHCenter);
+        ui->graphicsView->setRenderHints(QPainter::Antialiasing);
     }
 
     updateZoomLabel();
