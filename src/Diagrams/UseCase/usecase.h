@@ -6,10 +6,12 @@
 
 class UseCase: public DiagramBase
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  explicit UseCase();
+    explicit UseCase();
+
+    void  addActor();
 
 signals:
 public slots:

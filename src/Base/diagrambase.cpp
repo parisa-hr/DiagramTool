@@ -54,6 +54,7 @@ DiagramBase::DiagramBase(QWidget *parent):
 
 
         _pal = new QPalette();
+
         /// all connections
 
         connect(this, &DiagramBase::zoomChanged, this, &DiagramBase::updateZoomLabel);
@@ -156,6 +157,8 @@ DiagramBase::DiagramBase(QWidget *parent):
                   f.setUnderline(false);
                     }
 
+                f.setPixelSize(font.pointSize());
+
                 item->setFont(f);
                 font = f;
                 }
@@ -208,13 +211,14 @@ DiagramBase::DiagramBase(QWidget *parent):
 
         connect(_menuBar, &MenuBar::changeFontSize, this, [this](QString size)
         {
+            font.setPointSize(size.toInt());
+
             if (!scene->selectedItems().isEmpty())
             {
               DiagramTextItem *item = qgraphicsitem_cast<DiagramTextItem *>(scene->selectedItems().first());
 
               if (item)
               {
-                font.setPointSize(size.toInt());
                 item->setFont(font);
                 }
             }
@@ -454,6 +458,7 @@ void  DiagramBase::InsertDiagramText()
 
     _textItem->setTextInteractionFlags(Qt::TextEditorInteraction);
     _textItem->setZValue(1000.0);
+    _textItem->setFont(font);
 
     scene->addItem(_textItem);
 }

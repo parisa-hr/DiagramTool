@@ -26,6 +26,7 @@ HEADERS += \
     src/Base/resizer/graphicsitemresizer.h \
     src/Base/resizer/handlerstrategies.h \
     src/Base/resizer/resizehandleitem.h \
+    src/Diagrams/UseCase/actor.h \
     src/Diagrams/UseCase/usecase.h \
     src/Diagrams/Activity/activity.h \
     src/Diagrams/Component/component.h \
@@ -44,6 +45,7 @@ SOURCES += \
     src/Base/resizer/graphicsitemresizer.cpp \
     src/Base/resizer/handlerstrategies.cpp \
     src/Base/resizer/resizehandleitem.cpp \
+    src/Diagrams/UseCase/actor.cpp \
     src/Diagrams/UseCase/usecase.cpp \
     src/Diagrams/Activity/activity.cpp \
     src/Diagrams/Component/component.cpp \
