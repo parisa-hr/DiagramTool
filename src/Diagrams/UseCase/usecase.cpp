@@ -103,7 +103,12 @@ void  UseCase::addActor()
 
 void  UseCase::addUsecase()
 {
-    QGraphicsEllipseItem *useCase = new QGraphicsEllipseItem(0, 0, 100, 50);
+    QGraphicsEllipseItem *useCase      = new QGraphicsEllipseItem(0, 0, 100, 50);
+    QGraphicsTextItem    *_usecaseText = new QGraphicsTextItem("UseCase", useCase);
+
+    _usecaseText->setPos(useCase->rect().width() / 5.0, useCase->rect().height() / 4.0);
+
+    _usecaseText->setTextInteractionFlags(Qt::TextEditorInteraction);
 
     useCase->setFlag(QGraphicsItem::ItemIsMovable);
     useCase->setFlag(QGraphicsItem::ItemIsSelectable);
@@ -120,12 +125,14 @@ void  UseCase::addUsecase()
     resizer->setBrush(QColor(64, 64, 64));
     resizer->setMinSize(QSizeF(30, 30));
     resizer->setTargetSize(useCase->boundingRect().size());
-    connect(resizer, &GraphicsItemResizer::targetRectChanged, [useCase, this](const QRectF &rect)
+    connect(resizer, &GraphicsItemResizer::targetRectChanged, [useCase, _usecaseText, this](const QRectF &rect)
     {
         QPointF pos = useCase->pos();
         useCase->setPos(pos + rect.topLeft());
         QRectF old = useCase->rect();
         useCase->setRect(QRectF(old.topLeft(), rect.size()));
+        _usecaseText->setPos(rect.width() / 3.0, rect.height() / 4.0);
+
         getScene()->update(getScene()->sceneRect());
     });
 }
@@ -136,7 +143,8 @@ void  UseCase::addSystemBoundry()
     QGraphicsTextItem *_systemText = new QGraphicsTextItem("System", item);
 
     _systemText->setTextInteractionFlags(Qt::TextEditorInteraction);
-
+    _systemText->setFlag(QGraphicsItem::ItemIsMovable);
+    _systemText->setFlag(QGraphicsItem::ItemIsSelectable);
     item->setFlag(QGraphicsItem::ItemIsMovable);
     item->setFlag(QGraphicsItem::ItemIsSelectable);
     item->setFlag(QGraphicsItem::ItemIsFocusable);
@@ -150,12 +158,13 @@ void  UseCase::addSystemBoundry()
     resizer->setBrush(QColor(64, 64, 64));
     resizer->setMinSize(QSizeF(30, 30));
     resizer->setTargetSize(item->boundingRect().size());
-    connect(resizer, &GraphicsItemResizer::targetRectChanged, [item, this](const QRectF &rect)
+    connect(resizer, &GraphicsItemResizer::targetRectChanged, [item, _systemText, this](const QRectF &rect)
     {
         QPointF pos = item->pos();
         item->setPos(pos + rect.topLeft());
         QRectF old = item->rect();
         item->setRect(QRectF(old.topLeft(), rect.size()));
+        _systemText->setScale(2);
         getScene()->update(getScene()->sceneRect());
     });
 }

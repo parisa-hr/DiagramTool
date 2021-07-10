@@ -26,6 +26,14 @@ HEADERS += \
     src/Base/resizer/graphicsitemresizer.h \
     src/Base/resizer/handlerstrategies.h \
     src/Base/resizer/resizehandleitem.h \
+    src/Diagrams/Activity/finalnode.h \
+    src/Diagrams/Activity/swimlane.h \
+    src/Diagrams/Class/boundaryitem.h \
+    src/Diagrams/Class/classitem.h \
+    src/Diagrams/Class/controlitem.h \
+    src/Diagrams/Class/entityitem.h \
+    src/Diagrams/Class/note.h \
+    src/Diagrams/Class/package.h \
     src/Diagrams/UseCase/actor.h \
     src/Diagrams/UseCase/usecase.h \
     src/Diagrams/Activity/activity.h \
@@ -45,6 +53,14 @@ SOURCES += \
     src/Base/resizer/graphicsitemresizer.cpp \
     src/Base/resizer/handlerstrategies.cpp \
     src/Base/resizer/resizehandleitem.cpp \
+    src/Diagrams/Activity/finalnode.cpp \
+    src/Diagrams/Activity/swimlane.cpp \
+    src/Diagrams/Class/boundaryitem.cpp \
+    src/Diagrams/Class/classitem.cpp \
+    src/Diagrams/Class/controlitem.cpp \
+    src/Diagrams/Class/entityitem.cpp \
+    src/Diagrams/Class/note.cpp \
+    src/Diagrams/Class/package.cpp \
     src/Diagrams/UseCase/actor.cpp \
     src/Diagrams/UseCase/usecase.cpp \
     src/Diagrams/Activity/activity.cpp \
