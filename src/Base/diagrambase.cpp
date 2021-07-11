@@ -37,6 +37,85 @@ DiagramBase::DiagramBase(QWidget *parent):
     ui(new Ui::DiagramBase)
 {
     ui->setupUi(this);
+
+    {
+        myContextMenu = QSharedPointer<QMenu>::create(this);
+// myContextMenu;
+
+
+        QAction *bringToFront = new QAction("BringToFront");
+        bringToFront->setIcon(QIcon(":/icons/Tools/mouseMenu/mActionMoveItemsToTop.svg"));
+
+        connect(bringToFront, &QAction::triggered, this, [this]()
+        {
+            if (!scene->selectedItems().isEmpty())
+            {
+              const QList<QGraphicsItem *> overlapItems = scene->selectedItems().first()->collidingItems();
+              qreal zValue                              = 101;
+
+              for (const QGraphicsItem *item : overlapItems)
+              {
+                if ((item->zValue() >= zValue))
+                {
+                  zValue = item->zValue() + 0.001;
+                    }
+                }
+
+              if (zValue > 102.0)
+              {
+                zValue = 102.0;
+                }
+
+              scene->selectedItems().first()->setZValue(zValue);
+            }
+        });
+
+        QAction *sendToBack = new QAction("SendToBack");
+        sendToBack->setIcon(QIcon(":/icons/Tools/mouseMenu/mActionMoveItemsToBottom.svg"));
+        connect(sendToBack, &QAction::triggered, this, [this]()
+        {
+            if (!scene->selectedItems().isEmpty())
+            {
+              const QList<QGraphicsItem *> overlapItems = scene->selectedItems().first()->collidingItems();
+              qreal zValue                              = 101;
+
+              for (const QGraphicsItem *item : overlapItems)
+              {
+                if ((item->zValue() <= zValue))
+                {
+                  zValue = item->zValue() - 0.001;
+                    }
+                }
+
+              if (zValue < 100.1)
+              {
+                zValue = 100.1;
+                }
+
+              scene->selectedItems().first()->setZValue(zValue);
+            }
+        });
+
+        QAction *deleteItem = new QAction("Delete");
+        deleteItem->setIcon(QIcon(":/icons/Tools/mouseMenu/mTaskCancel.svg"));
+        connect(deleteItem, &QAction::triggered, this, [this]()
+        {
+            if (!scene->selectedItems().isEmpty())
+            {
+              scene->removeItem(scene->selectedItems().first());
+            }
+        });
+
+
+        myContextMenu->addAction(bringToFront);
+
+        myContextMenu->addAction(sendToBack);
+        myContextMenu->addSeparator();
+
+        myContextMenu->addAction(deleteItem);
+    }
+
+
     setAutoFillBackground(true);
     setBackgroundRole(QPalette::Base);
 
@@ -300,17 +379,27 @@ void  DiagramBase::keyPressEvent(QKeyEvent *event)
     }
 }
 
-void  DiagramBase::mousePressEvent(QMouseEvent *)
+void  DiagramBase::mousePressEvent(QMouseEvent *event)
 {
+    if (event->button() == Qt::RightButton)
+    { }
 }
 
-void  DiagramBase::mouseMoveEvent(QMouseEvent *)
+void  DiagramBase::mouseMoveEvent(QMouseEvent *event)
 {
 }
 
 void  DiagramBase::wheelEvent(QWheelEvent *event)
 {
     zoomBy(qPow(1.2, event->angleDelta().y() / 240.0));
+}
+
+void  DiagramBase::contextMenuEvent(QContextMenuEvent *event)
+{
+// scene->clearSelection();
+// scene->selectedItems().first()->setSelected(true);
+
+    myContextMenu->exec(event->pos());
 }
 
 void  DiagramBase::ExportPdf()
@@ -458,7 +547,7 @@ void  DiagramBase::InsertDiagramText()
     _textItem = new DiagramTextItem();
 
     _textItem->setTextInteractionFlags(Qt::TextEditorInteraction);
-    _textItem->setZValue(1000.0);
+    _textItem->setZValue(101);
     _textItem->setFont(font);
 
     scene->addItem(_textItem);

@@ -69,5 +69,9 @@
         <file>icons/Tools/textunder.png</file>
         <file>icons/Tools/document-print.svg</file>
         <file>icons/base/galaxy_starfield.png</file>
+        <file>icons/Tools/mouseMenu/mTaskCancel.svg</file>
+        <file>icons/Tools/mouseMenu/mActionMoveItemsToTop.svg</file>
+        <file>icons/Tools/mouseMenu/mActionMoveItemsToBottom.svg</file>
+        <file>icons/Tools/mouseMenu/editcut.png</file>
     </qresource>
 </RCC>

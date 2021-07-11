@@ -125,6 +125,9 @@ border-radius: 5px;
         <property name="checkable">
          <bool>true</bool>
         </property>
+        <property name="checked">
+         <bool>false</bool>
+        </property>
         <property name="autoRaise">
          <bool>true</bool>
         </property>

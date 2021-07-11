@@ -149,6 +149,9 @@ void  UseCase::addSystemBoundry()
     item->setFlag(QGraphicsItem::ItemIsSelectable);
     item->setFlag(QGraphicsItem::ItemIsFocusable);
 
+    item->setZValue(101);
+    _systemText->setZValue(101);
+
     item->setPen(QColor(102, 102, 102));
     item->setBrush(QColor(158, 204, 255));
 

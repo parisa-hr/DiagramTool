@@ -91,6 +91,7 @@ void  Activity::addActivityItem()
     item->setFlag(QGraphicsItem::ItemIsMovable);
     item->setFlag(QGraphicsItem::ItemIsSelectable);
     item->setFlag(QGraphicsItem::ItemIsFocusable);
+    item->setZValue(101);
 
     item->setPen(QColor(102, 102, 102));
     item->setBrush(QColor(158, 204, 255));
@@ -118,6 +119,7 @@ void  Activity::addStartNode()
     start->setFlag(QGraphicsItem::ItemIsMovable);
     start->setFlag(QGraphicsItem::ItemIsSelectable);
     start->setFlag(QGraphicsItem::ItemIsFocusable);
+    start->setZValue(101);
 
     start->setPen(QColor(102, 102, 102));
     start->setBrush(QColor(158, 204, 255));

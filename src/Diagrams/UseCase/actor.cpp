@@ -5,6 +5,7 @@
 Actor::Actor(QObject *parent)
 {
     setAcceptHoverEvents(true);
+    setZValue(101);
 }
 
 QRectF  Actor::boundingRect() const
