@@ -137,6 +137,26 @@ ClassDiagram::ClassDiagram()
 
 void  ClassDiagram::addClass()
 {
+    classItem *_class = new classItem(this);
+
+    _class->setFlag(QGraphicsItem::ItemIsMovable);
+    _class->setFlag(QGraphicsItem::ItemIsSelectable);
+    _class->setFlag(QGraphicsItem::ItemIsFocusable);
+
+    getScene()->addItem(_class);
+
+    GraphicsItemResizer *resizer = new GraphicsItemResizer(_class);
+    resizer->setBrush(QColor(64, 64, 64));
+    resizer->setMinSize(QSizeF(30, 30));
+    resizer->setTargetSize(_class->boundingRect().size());
+    connect(resizer, &GraphicsItemResizer::targetRectChanged, [_class, this](const QRectF &rect)
+    {
+        QPointF pos = _class->pos();
+        _class->setPos(pos + rect.topLeft());
+        QRectF old = _class->boundingRect();
+        _class->setRect(QRectF(old.topLeft(), rect.size()));
+        getScene()->update(getScene()->sceneRect());
+    });
 }
 
 void  ClassDiagram::addBoundry()

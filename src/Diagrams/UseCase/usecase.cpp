@@ -114,6 +114,9 @@ void  UseCase::addUsecase()
     useCase->setFlag(QGraphicsItem::ItemIsSelectable);
     useCase->setFlag(QGraphicsItem::ItemIsFocusable);
 
+    useCase->setZValue(101);
+    _usecaseText->setZValue(101);
+
     auto  pen = QPen(Qt::black, 2);
     pen.setCosmetic(true);
 
@@ -149,7 +152,7 @@ void  UseCase::addSystemBoundry()
     item->setFlag(QGraphicsItem::ItemIsSelectable);
     item->setFlag(QGraphicsItem::ItemIsFocusable);
 
-    item->setZValue(101);
+    item->setZValue(100.9);
     _systemText->setZValue(101);
 
     item->setPen(QColor(102, 102, 102));
