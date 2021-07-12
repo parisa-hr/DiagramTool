@@ -2,15 +2,23 @@
 #define CLASSITEM_H
 
 #include <QObject>
+#include <QGraphicsItem>
 
-class classItem : public QObject
+class classItem: public QGraphicsItem
 {
-    Q_OBJECT
 public:
     explicit classItem(QObject *parent = nullptr);
 
-signals:
+    QRectF        boundingRect() const override;
 
+    QPainterPath  shape() const override;
+
+    void          paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
+
+    void          setRect(const QRectF &rect);
+
+private:
+    QRectF  _rect = QRectF(0, 0, 200, 100);
 };
 
 #endif // CLASSITEM_H
