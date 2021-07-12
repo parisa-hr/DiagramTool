@@ -1,12 +1,13 @@
 #ifndef NOTE_H
 #define NOTE_H
 
+#include <QObject>
 #include <QGraphicsItem>
 
 class Note: public QGraphicsItem
 {
 public:
-    Note();
+    Note(QObject *parent = nullptr);
 
     QRectF        boundingRect() const override;
 
@@ -17,7 +18,7 @@ public:
     void          setRect(const QRectF &rect);
 
 private:
-    QRectF  _rect = QRectF(0, 0, 200, 100);
+    QRectF  _rect = QRectF(0, 0, 200, 150);
 };
 
 #endif // NOTE_H

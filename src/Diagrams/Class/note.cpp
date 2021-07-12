@@ -3,7 +3,7 @@
 #include <QPainter>
 #include <QPen>
 
-Note::Note()
+Note::Note(QObject *parent)
 {
     setAcceptHoverEvents(true);
     setZValue(101);
@@ -32,6 +32,23 @@ void  Note::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
     painter->setBrush(Qt::NoBrush);
     painter->setRenderHint(QPainter::Antialiasing);
     painter->setPen(pen);
+
+    static const QPointF  points[5] = {
+        QPointF(0.0,                                                    0.0),
+        QPointF((_rect.width() - _rect.width() / 5.0),                  0.0),
+        QPointF(_rect.width(),                         _rect.height() / 5.0),
+        QPointF(_rect.width(),                         _rect.height()),
+        QPointF(0.0,                                   _rect.height())
+    };
+
+    painter->drawConvexPolygon(points, 5);
+
+    static const QPointF  _points[3] = {
+        QPointF((_rect.width() - _rect.width() / 5.0),                  0.0),
+        QPointF(_rect.width(),                         _rect.height() / 5.0),
+        QPointF((_rect.width() - _rect.width() / 5.0), _rect.height() / 5.0)
+    };
+    painter->drawConvexPolygon(_points, 3);
 }
 
 void  Note::setRect(const QRectF &rect)
