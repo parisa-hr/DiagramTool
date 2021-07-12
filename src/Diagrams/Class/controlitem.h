@@ -2,15 +2,24 @@
 #define CONTROLITEM_H
 
 #include <QObject>
+#include <QGraphicsItem>
 
-class ControlItem : public QObject
+
+class ControlItem: public QGraphicsItem
 {
-    Q_OBJECT
 public:
     explicit ControlItem(QObject *parent = nullptr);
 
-signals:
+    QRectF        boundingRect() const override;
 
+    QPainterPath  shape() const override;
+
+    void          paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
+
+    void          setRect(const QRectF &rect);
+
+private:
+    QRectF  _rect = QRectF(0, 0, 200, 100);
 };
 
 #endif // CONTROLITEM_H
