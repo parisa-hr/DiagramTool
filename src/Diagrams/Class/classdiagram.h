@@ -6,10 +6,22 @@
 
 class ClassDiagram: public DiagramBase
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  explicit ClassDiagram();
+    explicit ClassDiagram();
+
+    void  addClass();
+
+    void  addBoundry();
+
+    void  addEntity();
+
+    void  addController();
+
+    void  addNote();
+
+    void  addPackage();
 
 signals:
 public slots:
