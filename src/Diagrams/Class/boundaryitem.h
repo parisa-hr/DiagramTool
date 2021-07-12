@@ -6,8 +6,6 @@
 
 class BoundaryItem: public QGraphicsItem
 {
-    Q_OBJECT
-
 public:
     explicit BoundaryItem(QObject *parent = nullptr);
 

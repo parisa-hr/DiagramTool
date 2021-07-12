@@ -1,6 +1,15 @@
 #include "classdiagram.h"
 
 #include <qcoreapplication.h>
+#include <QGraphicsScene>
+
+#include "../../Base/resizer/graphicsitemresizer.h"
+
+#include "boundaryitem.h"
+#include "classdiagram.h"
+#include "classitem.h"
+#include "note.h"
+#include "package.h"
 
 ClassDiagram::ClassDiagram()
 {
@@ -131,6 +140,26 @@ void  ClassDiagram::addClass()
 
 void  ClassDiagram::addBoundry()
 {
+    BoundaryItem *_boundry = new BoundaryItem(this);
+
+    _boundry->setFlag(QGraphicsItem::ItemIsMovable);
+    _boundry->setFlag(QGraphicsItem::ItemIsSelectable);
+    _boundry->setFlag(QGraphicsItem::ItemIsFocusable);
+
+    getScene()->addItem(_boundry);
+
+    GraphicsItemResizer *resizer = new GraphicsItemResizer(_boundry);
+    resizer->setBrush(QColor(64, 64, 64));
+    resizer->setMinSize(QSizeF(30, 30));
+    resizer->setTargetSize(_boundry->boundingRect().size());
+    connect(resizer, &GraphicsItemResizer::targetRectChanged, [_boundry, this](const QRectF &rect)
+    {
+        QPointF pos = _boundry->pos();
+        _boundry->setPos(pos + rect.topLeft());
+        QRectF old = _boundry->boundingRect();
+        _boundry->setRect(QRectF(old.topLeft(), rect.size()));
+        getScene()->update(getScene()->sceneRect());
+    });
 }
 
 void  ClassDiagram::addEntity()

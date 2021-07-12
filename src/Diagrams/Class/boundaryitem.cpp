@@ -33,7 +33,9 @@ void  BoundaryItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opt
     painter->setRenderHint(QPainter::Antialiasing);
     painter->setPen(pen);
 
-    painter->drawRect(_rect);
+    painter->drawLine(0, _rect.height() / 5.0, 0, _rect.height() - (_rect.height() / 5.0));
+    painter->drawLine(0, _rect.height() / 2.0, _rect.width() / 2.0, _rect.height() / 2.0);
+    painter->drawEllipse(_rect.width() / 2.0, 0.0, _rect.height(), _rect.height());
 }
 
 void  BoundaryItem::setRect(const QRectF &rect)
