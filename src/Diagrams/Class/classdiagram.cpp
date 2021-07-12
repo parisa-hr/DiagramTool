@@ -237,4 +237,24 @@ void  ClassDiagram::addNote()
 
 void  ClassDiagram::addPackage()
 {
+    Package *_package = new Package();
+
+    _package->setFlag(QGraphicsItem::ItemIsMovable);
+    _package->setFlag(QGraphicsItem::ItemIsSelectable);
+    _package->setFlag(QGraphicsItem::ItemIsFocusable);
+
+    getScene()->addItem(_package);
+
+    GraphicsItemResizer *resizer = new GraphicsItemResizer(_package);
+    resizer->setBrush(QColor(64, 64, 64));
+    resizer->setMinSize(QSizeF(30, 30));
+    resizer->setTargetSize(_package->boundingRect().size());
+    connect(resizer, &GraphicsItemResizer::targetRectChanged, [_package, this](const QRectF &rect)
+    {
+        QPointF pos = _package->pos();
+        _package->setPos(pos + rect.topLeft());
+        QRectF old = _package->boundingRect();
+        _package->setRect(QRectF(old.topLeft(), rect.size()));
+        getScene()->update(getScene()->sceneRect());
+    });
 }

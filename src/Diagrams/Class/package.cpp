@@ -33,7 +33,13 @@ void  Package::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
     painter->setRenderHint(QPainter::Antialiasing);
     painter->setPen(pen);
 
-    painter->drawRect(_rect);
+// painter->drawRect(_rect);
+
+    QRectF  r1 = QRectF(0.0, 0.0, _rect.width() / 10, _rect.width() / 10);
+    painter->drawRect(r1);
+
+    QRectF  r2 = QRectF(0.0, _rect.width() / 10, _rect.width(), _rect.height() - _rect.width() / 10);
+    painter->drawRect(r2);
 }
 
 void  Package::setRect(const QRectF &rect)
