@@ -19,7 +19,7 @@ public:
     void          setRect(const QRectF &rect);
 
 private:
-    QRectF  _rect = QRectF(0, 0, 200, 100);
+    QRectF  _rect = QRectF(0, 0, 100, 100);
 };
 
 #endif // CONTROLITEM_H

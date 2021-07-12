@@ -11,6 +11,7 @@
 #include "note.h"
 #include "package.h"
 #include "entityitem.h"
+#include "controlitem.h"
 
 ClassDiagram::ClassDiagram()
 {
@@ -209,6 +210,26 @@ void  ClassDiagram::addEntity()
 
 void  ClassDiagram::addController()
 {
+    ControlItem *_controll = new ControlItem(this);
+
+    _controll->setFlag(QGraphicsItem::ItemIsMovable);
+    _controll->setFlag(QGraphicsItem::ItemIsSelectable);
+    _controll->setFlag(QGraphicsItem::ItemIsFocusable);
+
+    getScene()->addItem(_controll);
+
+    GraphicsItemResizer *resizer = new GraphicsItemResizer(_controll);
+    resizer->setBrush(QColor(64, 64, 64));
+    resizer->setMinSize(QSizeF(30, 30));
+    resizer->setTargetSize(_controll->boundingRect().size());
+    connect(resizer, &GraphicsItemResizer::targetRectChanged, [_controll, this](const QRectF &rect)
+    {
+        QPointF pos = _controll->pos();
+        _controll->setPos(pos + rect.topLeft());
+        QRectF old = _controll->boundingRect();
+        _controll->setRect(QRectF(old.topLeft(), rect.size()));
+        getScene()->update(getScene()->sceneRect());
+    });
 }
 
 void  ClassDiagram::addNote()
