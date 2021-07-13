@@ -26,6 +26,7 @@ HEADERS += \
     src/Base/resizer/graphicsitemresizer.h \
     src/Base/resizer/handlerstrategies.h \
     src/Base/resizer/resizehandleitem.h \
+    src/Diagrams/Activity/decisionnode.h \
     src/Diagrams/Activity/finalnode.h \
     src/Diagrams/Activity/swimlane.h \
     src/Diagrams/Class/boundaryitem.h \
@@ -53,6 +54,7 @@ SOURCES += \
     src/Base/resizer/graphicsitemresizer.cpp \
     src/Base/resizer/handlerstrategies.cpp \
     src/Base/resizer/resizehandleitem.cpp \
+    src/Diagrams/Activity/decisionnode.cpp \
     src/Diagrams/Activity/finalnode.cpp \
     src/Diagrams/Activity/swimlane.cpp \
     src/Diagrams/Class/boundaryitem.cpp \
