@@ -3,6 +3,8 @@
 #include <QCoreApplication>
 #include <QGraphicsScene>
 
+#include "decisionnode.h"
+
 #include "../../Base/resizer/graphicsitemresizer.h"
 
 Activity::Activity()
@@ -47,6 +49,9 @@ Activity::Activity()
                                                  nullptr));
 
     menuBar()->addToolButton(act4);
+
+    connect(act4, &QAction::triggered, this, &Activity::addDecisionNode);
+
 
     QAction *act5 = new QAction("Fork&Join");
     act5->setIcon(QIcon(":/icons/Tools/Activity/fork-join.svg"));
@@ -141,4 +146,28 @@ void  Activity::addStartNode()
 
 void  Activity::addFinalNode()
 {
+}
+
+void  Activity::addDecisionNode()
+{
+    DecisionNode *_decisionNode = new DecisionNode(this);
+
+    _decisionNode->setFlag(QGraphicsItem::ItemIsMovable);
+    _decisionNode->setFlag(QGraphicsItem::ItemIsSelectable);
+    _decisionNode->setFlag(QGraphicsItem::ItemIsFocusable);
+
+    getScene()->addItem(_decisionNode);
+
+    GraphicsItemResizer *resizer = new GraphicsItemResizer(_decisionNode);
+    resizer->setBrush(QColor(64, 64, 64));
+    resizer->setMinSize(QSizeF(30, 30));
+    resizer->setTargetSize(_decisionNode->boundingRect().size());
+    connect(resizer, &GraphicsItemResizer::targetRectChanged, [_decisionNode, this](const QRectF &rect)
+    {
+        QPointF pos = _decisionNode->pos();
+        _decisionNode->setPos(pos + rect.topLeft());
+        QRectF old = _decisionNode->boundingRect();
+        _decisionNode->setRect(QRectF(old.topLeft(), rect.size()));
+        getScene()->update(getScene()->sceneRect());
+    });
 }

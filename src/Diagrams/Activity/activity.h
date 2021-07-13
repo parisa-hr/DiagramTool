@@ -7,15 +7,18 @@
 
 class Activity: public DiagramBase
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  explicit Activity();
+    explicit Activity();
 
-   void addActivityItem();
-   void addStartNode();
-   void addFinalNode();
+    void  addActivityItem();
 
+    void  addStartNode();
+
+    void  addFinalNode();
+
+    void  addDecisionNode();
 
 signals:
 public slots:
