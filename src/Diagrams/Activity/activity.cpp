@@ -4,6 +4,7 @@
 #include <QGraphicsScene>
 
 #include "decisionnode.h"
+#include "finalnode.h"
 
 #include "../../Base/resizer/graphicsitemresizer.h"
 
@@ -30,11 +31,14 @@ Activity::Activity()
 
     menuBar()->addToolButton(act2);
 
+    connect(act2, &QAction::triggered, this, &Activity::addFinalNode);
+
     QAction *act3 = new QAction("Activity");
     act3->setIcon(QIcon(":/icons/Tools/Activity/Activity.svg"));
     act3->setToolTip(QCoreApplication::translate("MenuBar",
                                                  "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">Activity</font></p></body></html>",
                                                  nullptr));
+
 
     menuBar()->addToolButton(act3);
 
@@ -146,6 +150,26 @@ void  Activity::addStartNode()
 
 void  Activity::addFinalNode()
 {
+    FinalNode *_finalNode = new FinalNode(this);
+
+    _finalNode->setFlag(QGraphicsItem::ItemIsMovable);
+    _finalNode->setFlag(QGraphicsItem::ItemIsSelectable);
+    _finalNode->setFlag(QGraphicsItem::ItemIsFocusable);
+
+    getScene()->addItem(_finalNode);
+
+    GraphicsItemResizer *resizer = new GraphicsItemResizer(_finalNode);
+    resizer->setBrush(QColor(64, 64, 64));
+    resizer->setMinSize(QSizeF(30, 30));
+    resizer->setTargetSize(_finalNode->boundingRect().size());
+    connect(resizer, &GraphicsItemResizer::targetRectChanged, [_finalNode, this](const QRectF &rect)
+    {
+        QPointF pos = _finalNode->pos();
+        _finalNode->setPos(pos + rect.topLeft());
+        QRectF old = _finalNode->boundingRect();
+        _finalNode->setRect(QRectF(old.topLeft(), rect.size()));
+        getScene()->update(getScene()->sceneRect());
+    });
 }
 
 void  Activity::addDecisionNode()
