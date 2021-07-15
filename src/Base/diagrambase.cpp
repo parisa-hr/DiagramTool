@@ -103,6 +103,7 @@ DiagramBase::DiagramBase(QWidget *parent):
             if (!scene->selectedItems().isEmpty())
             {
               scene->removeItem(scene->selectedItems().first());
+              scene->update();
             }
         });
 
