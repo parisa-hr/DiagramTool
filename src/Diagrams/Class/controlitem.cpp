@@ -35,7 +35,7 @@ void  ControlItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
     auto  r = QRectF(_rect.width() / 10.0, _rect.height() / 10.0, _rect.width() - (_rect.width() / 10.0) * 2, _rect.height() - (_rect.height() / 10.0) * 2.0);
     painter->drawEllipse(r);
 
-    static const QPointF  _points[3] = {
+    QPointF  _points[3] = {
         QPointF((_rect.width() / 2.0 + _rect.width() / 10.0),                  0.0),
         QPointF(_rect.width() / 2.0,                          _rect.width() / 10.0),
         QPointF((_rect.width() / 2.0 + _rect.width() / 10.0), (_rect.width() / 10.0 + _rect.width() / 10.0))
