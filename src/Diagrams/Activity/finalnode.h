@@ -18,7 +18,7 @@ public:
     void          setRect(const QRectF &rect);
 
 private:
-    QRectF  _rect = QRectF(0, 0, 100, 100);
+    QRectF  _rect = QRectF(0, 0, 50, 50);
 };
 
 #endif // FINALNODE_H

@@ -32,8 +32,6 @@ void  FinalNode::paint(QPainter *painter, const QStyleOptionGraphicsItem *option
     painter->setRenderHint(QPainter::Antialiasing);
     painter->setPen(pen);
 
-// painter->drawRect(_rect);
-
     painter->drawEllipse(_rect);
     painter->save();
     painter->setBrush(Qt::white);
