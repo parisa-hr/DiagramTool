@@ -1,12 +1,13 @@
 #include "arrow.h"
-// #include "diagramitem.h"
-
 #include <QPainter>
 #include <QPen>
 #include <QtMath>
+#include <QGraphicsItem>
+#include <QLineF>
+#include <QPolygonF>
 
 //! [0]
-Arrow::Arrow(DiagramItem *startItem, DiagramItem *endItem, QGraphicsItem *parent):
+Arrow::Arrow(QGraphicsItem *startItem, QGraphicsItem *endItem, QGraphicsItem *parent):
     QGraphicsLineItem(parent), myStartItem(startItem), myEndItem(endItem)
 {
     setFlag(QGraphicsItem::ItemIsSelectable, true);
@@ -43,9 +44,9 @@ QPainterPath  Arrow::shape() const
 //! [3]
 void  Arrow::updatePosition()
 {
-// QLineF  line(mapFromItem(myStartItem, 0, 0), mapFromItem(myEndItem, 0, 0));
+    QLineF  line(mapFromItem(myStartItem, 0, 0), mapFromItem(myEndItem, 0, 0));
 
-// setLine(line);
+    setLine(line);
 }
 
 //! [3]
@@ -54,10 +55,10 @@ void  Arrow::updatePosition()
 void  Arrow::paint(QPainter *painter, const QStyleOptionGraphicsItem *,
                    QWidget *)
 {
-// if (myStartItem->collidesWithItem(myEndItem))
-// {
-// return;
-// }
+    if (myStartItem->collidesWithItem(myEndItem))
+    {
+        return;
+    }
 
     QPen  myPen = pen();
 
@@ -67,26 +68,26 @@ void  Arrow::paint(QPainter *painter, const QStyleOptionGraphicsItem *,
     painter->setBrush(myColor);
 //! [4] //! [5]
 
-// QLineF     centerLine(myStartItem->pos(), myEndItem->pos());
-// QPolygonF  endPolygon = myEndItem->polygon();
-// QPointF    p1         = endPolygon.first() + myEndItem->pos();
-    QPointF  intersectPoint;
+    QLineF     centerLine(myStartItem->pos(), myEndItem->pos());
+    QPolygonF  endPolygon /* = myEndItem->polygon()*/;
+    QPointF    p1 = endPolygon.first() + myEndItem->pos();
+    QPointF    intersectPoint;
 
-// for (int i = 1; i < endPolygon.count(); ++i)
-// {
-// QPointF                   p2               = endPolygon.at(i) + myEndItem->pos();
-// QLineF                    polyLine         = QLineF(p1, p2);
-// QLineF::IntersectionType  intersectionType = polyLine.intersects(centerLine, &intersectPoint);
+    for (int i = 1; i < endPolygon.count(); ++i)
+    {
+        QPointF                   p2               = endPolygon.at(i) + myEndItem->pos();
+        QLineF                    polyLine         = QLineF(p1, p2);
+        QLineF::IntersectionType  intersectionType = polyLine.intersects(centerLine, &intersectPoint);
 
-// if (intersectionType == QLineF::BoundedIntersection)
-// {
-// break;
-// }
+        if (intersectionType == QLineF::BoundedIntersection)
+        {
+            break;
+        }
 
-// p1 = p2;
-// }
+        p1 = p2;
+    }
 
-// setLine(QLineF(intersectPoint, myStartItem->pos()));
+    setLine(QLineF(intersectPoint, myStartItem->pos()));
 //! [5] //! [6]
     double   angle   = std::atan2(-line().dy(), line().dx());
     QPointF  arrowP1 = line().p1() + QPointF(sin(angle + M_PI / 3) * arrowSize,

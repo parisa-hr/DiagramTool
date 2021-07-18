@@ -3,18 +3,13 @@
 
 #include <QGraphicsLineItem>
 
-class DiagramItem;
+class QGraphicsItem;
 
 //! [0]
 class Arrow: public QGraphicsLineItem
 {
 public:
-    enum
-    {
-        Type = UserType + 4
-    };
-
-    Arrow(DiagramItem *startItem, DiagramItem *endItem,
+    Arrow(QGraphicsItem *startItem, QGraphicsItem *endItem,
           QGraphicsItem *parent = nullptr);
 
     int  type() const override
@@ -31,12 +26,12 @@ public:
         myColor = color;
     }
 
-    DiagramItem* startItem() const
+    QGraphicsItem* startItem() const
     {
         return myStartItem;
     }
 
-    DiagramItem* endItem() const
+    QGraphicsItem* endItem() const
     {
         return myEndItem;
     }
@@ -48,10 +43,10 @@ protected:
                 QWidget *widget = nullptr) override;
 
 private:
-    DiagramItem *myStartItem;
-    DiagramItem *myEndItem;
-    QPolygonF    arrowHead;
-    QColor       myColor = Qt::black;
+    QGraphicsItem *myStartItem;
+    QGraphicsItem *myEndItem;
+    QPolygonF      arrowHead;
+    QColor         myColor = Qt::black;
 };
 
 //! [0]
