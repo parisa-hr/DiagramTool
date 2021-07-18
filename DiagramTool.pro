@@ -33,7 +33,6 @@ HEADERS += \
     src/Diagrams/Class/classitem.h \
     src/Diagrams/Class/controlitem.h \
     src/Diagrams/Class/entityitem.h \
-    src/Diagrams/Class/note.h \
     src/Diagrams/Class/package.h \
     src/Diagrams/UseCase/actor.h \
     src/Diagrams/UseCase/usecase.h \
@@ -41,7 +40,9 @@ HEADERS += \
     src/Diagrams/Component/component.h \
     src/Diagrams/Sequense/sequence.h \
     src/Diagrams/Class/classdiagram.h \
-    src/Diagrams/Deployment/deployment.h \
+    src/Diagrams/Deployment/deployment.h \ \
+    src/commonItems/arrow.h \
+    src/commonItems/note.h
 
 SOURCES += \
         main.cpp \
@@ -61,7 +62,6 @@ SOURCES += \
     src/Diagrams/Class/classitem.cpp \
     src/Diagrams/Class/controlitem.cpp \
     src/Diagrams/Class/entityitem.cpp \
-    src/Diagrams/Class/note.cpp \
     src/Diagrams/Class/package.cpp \
     src/Diagrams/UseCase/actor.cpp \
     src/Diagrams/UseCase/usecase.cpp \
@@ -70,6 +70,8 @@ SOURCES += \
     src/Diagrams/Sequense/sequence.cpp \
     src/Diagrams/Class/classdiagram.cpp \
     src/Diagrams/Deployment/deployment.cpp \
+    src/commonItems/arrow.cpp \
+    src/commonItems/note.cpp
 
 
 FORMS += \

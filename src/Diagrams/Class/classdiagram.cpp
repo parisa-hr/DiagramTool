@@ -8,7 +8,7 @@
 #include "boundaryitem.h"
 #include "classdiagram.h"
 #include "classitem.h"
-#include "note.h"
+#include "../../commonItems/note.h"
 #include "package.h"
 #include "entityitem.h"
 #include "controlitem.h"
