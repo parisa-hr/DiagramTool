@@ -135,6 +135,7 @@ void  UseCase::addUsecase()
         QRectF old = useCase->rect();
         useCase->setRect(QRectF(old.topLeft(), rect.size()));
         _usecaseText->setPos(rect.width() / 3.0, rect.height() / 4.0);
+        _usecaseText->setScale(rect.width() / rect.height());
 
         getScene()->update(getScene()->sceneRect());
     });
