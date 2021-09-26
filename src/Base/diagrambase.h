@@ -23,7 +23,7 @@ class DiagramBase: public QWidget
     Q_OBJECT
 
 public:
-    explicit DiagramBase(QWidget *parent = nullptr);
+    DiagramBase(QWidget *parent = nullptr);
 
     ~DiagramBase();
 
