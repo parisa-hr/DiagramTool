@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>qml/main.qml</file>
         <file>qml/LauncherPage.qml</file>
         <file>icons/index.theme</file>
         <file>icons/DiagramIcons/UseCase.svg</file>
@@ -11,7 +10,6 @@
         <file>icons/DiagramIcons/Component.svg</file>
         <file>icons/DiagramIcons/Deployment.svg</file>
         <file>icons/diagramTool.svg</file>
-        <file>qml/HomeButton.qml</file>
         <file>icons/Tools/Home.svg</file>
         <file>icons/base/background.png</file>
         <file>icons/base/gridPage.png</file>
@@ -73,5 +71,6 @@
         <file>icons/Tools/mouseMenu/mActionMoveItemsToTop.svg</file>
         <file>icons/Tools/mouseMenu/mActionMoveItemsToBottom.svg</file>
         <file>icons/Tools/mouseMenu/editcut.png</file>
+        <file>qml/HomeButton.qml</file>
     </qresource>
 </RCC>
