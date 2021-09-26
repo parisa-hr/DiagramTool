@@ -9,7 +9,7 @@ class ClassDiagram: public DiagramBase
     Q_OBJECT
 
 public:
-    explicit ClassDiagram();
+    ClassDiagram();
 
     void  addClass();
 

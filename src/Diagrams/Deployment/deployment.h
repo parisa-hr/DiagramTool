@@ -6,10 +6,10 @@
 
 class Deployment: public DiagramBase
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  explicit Deployment();
+    Deployment();
 
 signals:
 public slots:

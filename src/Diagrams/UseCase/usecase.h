@@ -10,7 +10,7 @@ class UseCase: public DiagramBase
     Q_OBJECT
 
 public:
-    explicit UseCase();
+    UseCase();
 
     ~UseCase();
 

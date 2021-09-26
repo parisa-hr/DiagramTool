@@ -7,10 +7,10 @@
 
 class Component: public DiagramBase
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  explicit Component();
+    Component();
 
 signals:
 public slots:

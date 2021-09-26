@@ -7,10 +7,10 @@
 
 class Sequence: public DiagramBase
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  explicit Sequence();
+    Sequence();
 
 signals:
 public slots:

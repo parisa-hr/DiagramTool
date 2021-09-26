@@ -10,7 +10,7 @@ class Activity: public DiagramBase
     Q_OBJECT
 
 public:
-    explicit Activity();
+    Activity();
 
     void  addActivityItem();
 
