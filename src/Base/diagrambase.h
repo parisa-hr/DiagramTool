@@ -5,6 +5,7 @@
 #include <QMenu>
 #include <QPrinter>
 #include <QContextMenuEvent>
+#include "diagramcommand.h"
 
 #include "menubar.h"
 
@@ -19,71 +20,74 @@ class DiagramBase;
 
 class DiagramBase: public QWidget
 {
-        Q_OBJECT
+    Q_OBJECT
 
 public:
-        explicit DiagramBase(QWidget *parent = nullptr);
+    explicit DiagramBase(QWidget *parent = nullptr);
 
-        ~DiagramBase();
+    ~DiagramBase();
 
-        void            scaleView(qreal scaleFactor);
+    void            scaleView(qreal scaleFactor);
 
-        void            zoomIn();
+    void            zoomIn();
 
-        void            zoomOut();
+    void            zoomOut();
 
-        void            zoomReset();
+    void            zoomReset();
 
-        MenuBar       * menuBar() const;
+    MenuBar       * menuBar() const;
 
-        QGraphicsScene* getScene();
+    QGraphicsScene* getScene();
 
-        qreal           zoomFactor() const;
+    qreal           zoomFactor() const;
 
 protected:
-        void            resizeEvent(QResizeEvent *event) override;
+    void            resizeEvent(QResizeEvent *event) override;
 
-        void            keyPressEvent(QKeyEvent *event) override;
+    void            keyPressEvent(QKeyEvent *event) override;
 
-        void            mousePressEvent(QMouseEvent *event) override;
+    void            mousePressEvent(QMouseEvent *event) override;
 
-        void            mouseMoveEvent(QMouseEvent *) override;
+    void            mouseMoveEvent(QMouseEvent *) override;
 
-        void            wheelEvent(QWheelEvent *) override;
+    void            wheelEvent(QWheelEvent *) override;
 
-        void            contextMenuEvent(QContextMenuEvent *event);
+    void            contextMenuEvent(QContextMenuEvent *event);
 
 private:
-        void            zoomBy(qreal factor);
+    void            zoomBy(qreal factor);
 
 private slots:
-        void            ExportPdf();
+    void            ExportPdf();
 
-        void            ExportSvg();
+    void            ExportSvg();
 
-        void            ExportPNG();
+    void            ExportPNG();
 
-        void            PrintPreview();
+    void            PrintPreview();
 
-        void            print(QPrinter *printer);
+    void            print(QPrinter *printer);
 
-        void            updateZoomLabel();
+    void            updateZoomLabel();
 
-        void            InsertDiagramText();
+    void            InsertDiagramText();
 
 signals:
-        void            zoomChanged();
+    void            zoomChanged();
 
 private:
-        Ui::DiagramBase       *ui;
-        QGraphicsScene        *scene;
-        MenuBar               *_menuBar;
-        QPalette              *_pal;
-        DiagramTextItem       *_textItem;
-        QString                path;
-        QString                m_currentPath;
-        QFont                  font;
-        QSharedPointer<QMenu>  myContextMenu;
+    Ui::DiagramBase       *ui;
+    QGraphicsScene        *scene;
+    MenuBar               *_menuBar;
+    QPalette              *_pal;
+    DiagramTextItem       *_textItem;
+    QString                path;
+    QString                m_currentPath;
+    QFont                  font;
+    QSharedPointer<QMenu>  myContextMenu;
+    QAction               *undoAction;
+    QAction               *redoAction;
+    ShapeCommand          *cmd;
 };
 
 #endif // DIAGRAMBASE_H

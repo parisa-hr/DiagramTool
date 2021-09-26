@@ -47,6 +47,10 @@ signals:
 
     void      changedColor();
 
+    void      doUndo();
+
+    void      doRedo();
+
 private slots:
     void      on_toolButton_clicked();
 
@@ -71,6 +75,10 @@ private slots:
     void      on_tb_under_clicked();
 
     void      on_comboSize_currentTextChanged(const QString &arg1);
+
+    void      on_tb_undo_clicked();
+
+    void      on_tb_redo_clicked();
 
 private:
     Ui::MenuBar *ui;

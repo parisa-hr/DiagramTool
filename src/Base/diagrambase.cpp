@@ -27,298 +27,63 @@
 
 #include <QGraphicsRectItem>
 #include <QColorDialog>
+#include <QPushButton>
 
 #include "mainmenu.h"
 #include "diagramview.h"
 #include "exportdialog.h"
 #include "diagramtextitem.h"
+#include "objectkeeper.h"
 
 DiagramBase::DiagramBase(QWidget *parent):
     ui(new Ui::DiagramBase)
 {
     ui->setupUi(this);
-
-    {
-        myContextMenu = QSharedPointer<QMenu>::create(this);
-// myContextMenu;
-
-
-        QAction *bringToFront = new QAction("BringToFront");
-        bringToFront->setIcon(QIcon(":/icons/Tools/mouseMenu/mActionMoveItemsToTop.svg"));
-
-        connect(bringToFront, &QAction::triggered, this, [this]()
-        {
-            if (!scene->selectedItems().isEmpty())
-            {
-              const QList<QGraphicsItem *> overlapItems = scene->selectedItems().first()->collidingItems();
-              qreal zValue                              = 101;
-
-              for (const QGraphicsItem *item : overlapItems)
-              {
-                if ((item->zValue() >= zValue))
-                {
-                  zValue = item->zValue() + 0.001;
-                    }
-                }
-
-              if (zValue > 102.0)
-              {
-                zValue = 102.0;
-                }
-
-              scene->selectedItems().first()->setZValue(zValue);
-            }
-        });
-
-        QAction *sendToBack = new QAction("SendToBack");
-        sendToBack->setIcon(QIcon(":/icons/Tools/mouseMenu/mActionMoveItemsToBottom.svg"));
-        connect(sendToBack, &QAction::triggered, this, [this]()
-        {
-            if (!scene->selectedItems().isEmpty())
-            {
-              const QList<QGraphicsItem *> overlapItems = scene->selectedItems().first()->collidingItems();
-              qreal zValue                              = 101;
-
-              for (const QGraphicsItem *item : overlapItems)
-              {
-                if ((item->zValue() <= zValue))
-                {
-                  zValue = item->zValue() - 0.001;
-                    }
-                }
-
-              if (zValue < 100.1)
-              {
-                zValue = 100.1;
-                }
-
-              scene->selectedItems().first()->setZValue(zValue);
-            }
-        });
-
-        QAction *deleteItem = new QAction("Delete");
-        deleteItem->setIcon(QIcon(":/icons/Tools/mouseMenu/mTaskCancel.svg"));
-        connect(deleteItem, &QAction::triggered, this, [this]()
-        {
-            if (!scene->selectedItems().isEmpty())
-            {
-              scene->removeItem(scene->selectedItems().first());
-              scene->update();
-            }
-        });
-
-
-        myContextMenu->addAction(bringToFront);
-
-        myContextMenu->addAction(sendToBack);
-        myContextMenu->addSeparator();
-
-        myContextMenu->addAction(deleteItem);
-    }
-
-
     setAutoFillBackground(true);
     setBackgroundRole(QPalette::Base);
+    _menuBar = new MenuBar(this);
 
+
+    scene = new QGraphicsScene(this);
+    ui->graphicsView->setScene(scene);
+    ui->graphicsView->setAlignment(Qt::AlignHCenter);
+    ui->graphicsView->setRenderHints(QPainter::Antialiasing);
+
+    new ObjectKeeper(ui->graphicsView);
+
+
+    undoAction = ObjectKeeper::instance()->getUndoStack()->createUndoAction(ui->graphicsView, tr("&Undo"));
+    undoAction->setShortcuts(QKeySequence::Undo);
+    addAction(undoAction);
+
+    redoAction = ObjectKeeper::instance()->getUndoStack()->createRedoAction(ui->graphicsView, tr("&Redo"));
+    redoAction->setShortcuts(QKeySequence::Redo);
+    addAction(redoAction);
+
+
+    QPushButton *button = new QPushButton("Addam Kon", ui->graphicsView);
+    button->setGeometry(100, 100, 100, 50);
+
+    connect(button, &QPushButton::clicked, this, [this]()
     {
-        scene = new QGraphicsScene(this);
-        ui->graphicsView->setScene(scene);
-        ui->graphicsView->setAlignment(Qt::AlignHCenter);
-        ui->graphicsView->setRenderHints(QPainter::Antialiasing);
-    }
+        cmd = new ShapeCommand();
 
-    updateZoomLabel();
+        QGraphicsRectItem *item = new QGraphicsRectItem(QRectF(0, 0, 150, 100));
 
-    {
-        _menuBar = new MenuBar(this);
-        font     = _menuBar->getFont();
+        item->setPos(10, 10);
+        item->setFlag(QGraphicsItem::ItemIsMovable);
+        item->setFlag(QGraphicsItem::ItemIsSelectable);
+        item->setFlag(QGraphicsItem::ItemIsFocusable);
+        item->setZValue(101);
 
+        item->setPen(QColor(102, 102, 102));
+        item->setBrush(QColor(158, 204, 255));
 
-        _pal = new QPalette();
+        cmd->setItem(item);
 
-        /// all connections
-
-        connect(this, &DiagramBase::zoomChanged, this, &DiagramBase::updateZoomLabel);
-
-        connect(_menuBar->getMainMenu(), &MainMenu::showGrideView, this, [this]()
-        {
-            _pal->setBrush(QPalette::Base, QPixmap(":/icons/base/background.png"));
-            _pal->setColor(QPalette::HighlightedText, Qt::blue);
-            setPalette(*_pal);
-        });
-        connect(_menuBar->getMainMenu(), &MainMenu::HideGrideView, this, [this]()
-        {
-            _pal = new QPalette();
-            _pal->setBrush(QPalette::Base, Qt::white);
-            setPalette(*_pal);
-            this->update();
-        });
-
-        connect(_menuBar, &MenuBar::SetCursorPan, this, [this]()
-        {
-            setCursor(Qt::OpenHandCursor);
-            ui->graphicsView->setDragMode(QGraphicsView::ScrollHandDrag);
-            ui->graphicsView->setInteractive(false);
-        });
-        connect(_menuBar, &MenuBar::SetCursorSelect, this, [this]()
-        {
-            setCursor(Qt::ArrowCursor);
-            ui->graphicsView->setDragMode(QGraphicsView::RubberBandDrag);
-            ui->graphicsView->setInteractive(true);
-        });
-
-        connect(_menuBar, &MenuBar::CloseWindow, this, &DiagramBase::close);
-
-        connect(_menuBar->getMainMenu(), &MainMenu::ExportAsPDF, this, &DiagramBase::ExportPdf);
-
-        connect(_menuBar->getMainMenu(), &MainMenu::ExportAsSVG, this, &DiagramBase::ExportSvg);
-
-        connect(_menuBar->getMainMenu(), &MainMenu::ExportAsPNG, this, &DiagramBase::ExportPNG);
-
-        connect(_menuBar->getMainMenu(), &MainMenu::doPrint, this, &DiagramBase::PrintPreview);
-
-        connect(_menuBar, &MenuBar::addText, this, &DiagramBase::InsertDiagramText);
-
-        connect(_menuBar, &MenuBar::doPrint, this, &DiagramBase::PrintPreview);
-
-        connect(_menuBar, &MenuBar::boldText, this, [this]()
-        {
-            if (!scene->selectedItems().isEmpty())
-            {
-              DiagramTextItem *item = qgraphicsitem_cast<DiagramTextItem *>(scene->selectedItems().first());
-
-              if (item)
-              {
-                if (font.bold() == true)
-                {
-                  font.setBold(false);
-                  item->setFont(font);
-                    }
-                else
-                {
-                  font.setBold(true);
-                  item->setFont(font);
-                    }
-                }
-            }
-        });
-
-        connect(_menuBar, &MenuBar::changeFont, this, [this](QFont f)
-        {
-            if (!scene->selectedItems().isEmpty())
-            {
-              DiagramTextItem *item = qgraphicsitem_cast<DiagramTextItem *>(scene->selectedItems().first());
-
-              if (item)
-              {
-                if (font.bold() == true)
-                {
-                  f.setBold(true);
-                    }
-                else
-                {
-                  f.setBold(false);
-                    }
-
-                if (font.italic() == true)
-                {
-                  f.setItalic(true);
-                    }
-                else
-                {
-                  f.setItalic(false);
-                    }
-
-                if (font.underline() == true)
-                {
-                  f.setUnderline(true);
-                    }
-                else
-                {
-                  f.setUnderline(false);
-                    }
-
-                f.setPixelSize(font.pointSize());
-
-                item->setFont(f);
-                font = f;
-                }
-            }
-        });
-
-        connect(_menuBar, &MenuBar::italicText, this, [this]()
-        {
-            if (!scene->selectedItems().isEmpty())
-            {
-              DiagramTextItem *item = qgraphicsitem_cast<DiagramTextItem *>(scene->selectedItems().first());
-
-              if (item)
-              {
-                if (font.italic() == true)
-                {
-                  font.setItalic(false);
-                  item->setFont(font);
-                    }
-                else
-                {
-                  font.setItalic(true);
-                  item->setFont(font);
-                    }
-                }
-            }
-        });
-
-        connect(_menuBar, &MenuBar::addUnderLine, this, [this]()
-        {
-            if (!scene->selectedItems().isEmpty())
-            {
-              DiagramTextItem *item = qgraphicsitem_cast<DiagramTextItem *>(scene->selectedItems().first());
-
-              if (item)
-              {
-                if (font.underline() == true)
-                {
-                  font.setUnderline(false);
-                  item->setFont(font);
-                    }
-                else
-                {
-                  font.setUnderline(true);
-                  item->setFont(font);
-                    }
-                }
-            }
-        });
-
-        connect(_menuBar, &MenuBar::changeFontSize, this, [this](QString size)
-        {
-            font.setPointSize(size.toInt());
-
-            if (!scene->selectedItems().isEmpty())
-            {
-              DiagramTextItem *item = qgraphicsitem_cast<DiagramTextItem *>(scene->selectedItems().first());
-
-              if (item)
-              {
-                item->setFont(font);
-                }
-            }
-        });
-
-        connect(_menuBar, &MenuBar::changedColor, this, [this]()
-        {
-            if (!scene->selectedItems().isEmpty())
-            {
-              DiagramTextItem *item = qgraphicsitem_cast<DiagramTextItem *>(scene->selectedItems().first());
-
-              if (item)
-              {
-                QColor color = QColorDialog::getColor(Qt::black, this);
-                item->setDefaultTextColor(color);
-                }
-            }
-        });
-    }
+        ObjectKeeper::instance()->createCommand(cmd);
+        scene->addItem(item);
+    });
 }
 
 DiagramBase::~DiagramBase()
@@ -382,8 +147,8 @@ void  DiagramBase::keyPressEvent(QKeyEvent *event)
 
 void  DiagramBase::mousePressEvent(QMouseEvent *event)
 {
-    if (event->button() == Qt::RightButton)
-    { }
+// if (event->button() == Qt::RightButton)
+// { }
 }
 
 void  DiagramBase::mouseMoveEvent(QMouseEvent *event)
@@ -397,8 +162,8 @@ void  DiagramBase::wheelEvent(QWheelEvent *event)
 
 void  DiagramBase::contextMenuEvent(QContextMenuEvent *event)
 {
-// scene->clearSelection();
-// scene->selectedItems().first()->setSelected(true);
+    scene->clearSelection();
+    scene->selectedItems().first()->setSelected(true);
 
     myContextMenu->exec(event->pos());
 }

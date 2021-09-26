@@ -135,3 +135,13 @@ void  MenuBar::on_comboSize_currentTextChanged(const QString &arg1)
 {
     emit  changeFontSize(arg1);
 }
+
+void  MenuBar::on_tb_undo_clicked()
+{
+    emit  doUndo();
+}
+
+void  MenuBar::on_tb_redo_clicked()
+{
+    emit  doRedo();
+}

@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include "../../Base/diagrambase.h"
+#include "../../Base/diagramcommand.h"
 
 class UseCase: public DiagramBase
 {
@@ -11,14 +12,19 @@ class UseCase: public DiagramBase
 public:
     explicit UseCase();
 
+    ~UseCase();
+
     void  addActor();
 
     void  addUsecase();
 
     void  addSystemBoundry();
 
-signals:
 public slots:
+    void  showw();
+
+private:
+    ShapeCommand *cmd;
 };
 
 #endif // USECASE_H
