@@ -344,6 +344,11 @@ DiagramBase::DiagramBase(QWidget *parent):
                 }
             }
         });
+
+
+        connect(_menuBar, &MenuBar::doUndo, ObjectKeeper::instance()->getUndoStack(), &QUndoStack::undo);
+
+        connect(_menuBar, &MenuBar::doRedo, ObjectKeeper::instance()->getUndoStack(), &QUndoStack::redo);
     }
 }
 
