@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include "../../Base/diagrambase.h"
+#include "../../Base/diagramcommand.h"
 
 class ClassDiagram: public DiagramBase
 {
@@ -23,8 +24,8 @@ public:
 
     void  addPackage();
 
-signals:
-public slots:
+private:
+    ShapeCommand *cmd;
 };
 
 #endif // CLASSDIAGRAM_H

@@ -84,7 +84,7 @@ UseCase::UseCase()
 
 UseCase::~UseCase()
 {
-// delete cmd;
+    delete cmd;
 }
 
 void  UseCase::addActor()
@@ -101,18 +101,18 @@ void  UseCase::addActor()
     ObjectKeeper::instance()->createCommand(cmd);
     getScene()->addItem(_actor);
 
-// GraphicsItemResizer *resizer = new GraphicsItemResizer(_actor);
-// resizer->setBrush(QColor(64, 64, 64));
-// resizer->setMinSize(QSizeF(30, 30));
-// resizer->setTargetSize(_actor->boundingRect().size());
-// connect(resizer, &GraphicsItemResizer::targetRectChanged, [_actor, this](const QRectF &rect)
-// {
-// QPointF pos = _actor->pos();
-// _actor->setPos(pos + rect.topLeft());
-// QRectF old = _actor->boundingRect();
-// _actor->setRect(QRectF(old.topLeft(), rect.size()));
-// getScene()->update(getScene()->sceneRect());
-// });
+    GraphicsItemResizer *resizer = new GraphicsItemResizer(_actor);
+    resizer->setBrush(QColor(64, 64, 64));
+    resizer->setMinSize(QSizeF(30, 30));
+    resizer->setTargetSize(_actor->boundingRect().size());
+    connect(resizer, &GraphicsItemResizer::targetRectChanged, [_actor, this](const QRectF &rect)
+    {
+        QPointF pos = _actor->pos();
+        _actor->setPos(pos + rect.topLeft());
+        QRectF old = _actor->boundingRect();
+        _actor->setRect(QRectF(old.topLeft(), rect.size()));
+        getScene()->update(getScene()->sceneRect());
+    });
 }
 
 void  UseCase::addUsecase()
@@ -136,6 +136,9 @@ void  UseCase::addUsecase()
 
     useCase->setPen(pen);
     useCase->setBrush(QColor("#fff2cc"));
+
+    cmd->setItem(useCase);
+    ObjectKeeper::instance()->createCommand(cmd);
 
     getScene()->addItem(useCase);
     GraphicsItemResizer *resizer = new GraphicsItemResizer(useCase);
@@ -173,6 +176,9 @@ void  UseCase::addSystemBoundry()
     item->setPen(QColor(102, 102, 102));
     item->setBrush(QColor(158, 204, 255));
 
+    cmd->setItem(item);
+    ObjectKeeper::instance()->createCommand(cmd);
+
     getScene()->addItem(item);
 
     GraphicsItemResizer *resizer = new GraphicsItemResizer(item);
@@ -188,9 +194,4 @@ void  UseCase::addSystemBoundry()
         _systemText->setScale(2);
         getScene()->update(getScene()->sceneRect());
     });
-}
-
-void  UseCase::showw()
-{
-    showFullScreen();
 }

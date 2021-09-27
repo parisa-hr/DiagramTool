@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include "../../Base/diagrambase.h"
+#include "../../Base/diagramcommand.h"
 
 
 class Activity: public DiagramBase
@@ -12,6 +13,8 @@ class Activity: public DiagramBase
 public:
     Activity();
 
+    ~Activity();
+
     void  addActivityItem();
 
     void  addStartNode();
@@ -20,8 +23,8 @@ public:
 
     void  addDecisionNode();
 
-signals:
-public slots:
+private:
+    ShapeCommand *cmd;
 };
 
 #endif // ACTIVITY_H

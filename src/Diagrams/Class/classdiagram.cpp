@@ -13,6 +13,8 @@
 #include "entityitem.h"
 #include "controlitem.h"
 
+#include <src/Base/objectkeeper.h>
+
 ClassDiagram::ClassDiagram()
 {
     setWindowTitle("Class Diagram");
@@ -134,6 +136,8 @@ ClassDiagram::ClassDiagram()
                                                  nullptr));
 
     menuBar()->addToolButton(act8);
+
+    cmd = new ShapeCommand();
 }
 
 void  ClassDiagram::addClass()
@@ -143,6 +147,9 @@ void  ClassDiagram::addClass()
     _class->setFlag(QGraphicsItem::ItemIsMovable);
     _class->setFlag(QGraphicsItem::ItemIsSelectable);
     _class->setFlag(QGraphicsItem::ItemIsFocusable);
+
+    cmd->setItem(_class);
+    ObjectKeeper::instance()->createCommand(cmd);
 
     getScene()->addItem(_class);
 
@@ -168,6 +175,9 @@ void  ClassDiagram::addBoundry()
     _boundry->setFlag(QGraphicsItem::ItemIsSelectable);
     _boundry->setFlag(QGraphicsItem::ItemIsFocusable);
 
+    cmd->setItem(_boundry);
+    ObjectKeeper::instance()->createCommand(cmd);
+
     getScene()->addItem(_boundry);
 
     GraphicsItemResizer *resizer = new GraphicsItemResizer(_boundry);
@@ -191,6 +201,9 @@ void  ClassDiagram::addEntity()
     _entity->setFlag(QGraphicsItem::ItemIsMovable);
     _entity->setFlag(QGraphicsItem::ItemIsSelectable);
     _entity->setFlag(QGraphicsItem::ItemIsFocusable);
+
+    cmd->setItem(_entity);
+    ObjectKeeper::instance()->createCommand(cmd);
 
     getScene()->addItem(_entity);
 
@@ -216,6 +229,9 @@ void  ClassDiagram::addController()
     _controll->setFlag(QGraphicsItem::ItemIsSelectable);
     _controll->setFlag(QGraphicsItem::ItemIsFocusable);
 
+    cmd->setItem(_controll);
+    ObjectKeeper::instance()->createCommand(cmd);
+
     getScene()->addItem(_controll);
 
     GraphicsItemResizer *resizer = new GraphicsItemResizer(_controll);
@@ -240,6 +256,9 @@ void  ClassDiagram::addNote()
     _note->setFlag(QGraphicsItem::ItemIsSelectable);
     _note->setFlag(QGraphicsItem::ItemIsFocusable);
 
+    cmd->setItem(_note);
+    ObjectKeeper::instance()->createCommand(cmd);
+
     getScene()->addItem(_note);
 
     GraphicsItemResizer *resizer = new GraphicsItemResizer(_note);
@@ -263,6 +282,9 @@ void  ClassDiagram::addPackage()
     _package->setFlag(QGraphicsItem::ItemIsMovable);
     _package->setFlag(QGraphicsItem::ItemIsSelectable);
     _package->setFlag(QGraphicsItem::ItemIsFocusable);
+
+    cmd->setItem(_package);
+    ObjectKeeper::instance()->createCommand(cmd);
 
     getScene()->addItem(_package);
 

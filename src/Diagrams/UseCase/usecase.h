@@ -20,9 +20,6 @@ public:
 
     void  addSystemBoundry();
 
-public slots:
-    void  showw();
-
 private:
     ShapeCommand *cmd;
 };

@@ -8,6 +8,8 @@
 
 #include "../../Base/resizer/graphicsitemresizer.h"
 
+#include <src/Base/objectkeeper.h>
+
 Activity::Activity()
 {
     setWindowTitle("Activity Diagram");
@@ -90,6 +92,13 @@ Activity::Activity()
                                                  nullptr));
 
     menuBar()->addToolButton(act8);
+
+    cmd = new ShapeCommand();
+}
+
+Activity::~Activity()
+{
+    delete cmd;
 }
 
 void  Activity::addActivityItem()
@@ -104,6 +113,11 @@ void  Activity::addActivityItem()
 
     item->setPen(QColor(102, 102, 102));
     item->setBrush(QColor(158, 204, 255));
+
+    cmd->setItem(item);
+
+    ObjectKeeper::instance()->createCommand(cmd);
+
     getScene()->addItem(item);
 
     GraphicsItemResizer *resizer = new GraphicsItemResizer(item);
@@ -132,6 +146,11 @@ void  Activity::addStartNode()
 
     start->setPen(QColor(102, 102, 102));
     start->setBrush(QColor(158, 204, 255));
+
+    cmd->setItem(start);
+
+    ObjectKeeper::instance()->createCommand(cmd);
+
     getScene()->addItem(start);
 
     GraphicsItemResizer *resizer = new GraphicsItemResizer(start);
@@ -156,6 +175,10 @@ void  Activity::addFinalNode()
     _finalNode->setFlag(QGraphicsItem::ItemIsSelectable);
     _finalNode->setFlag(QGraphicsItem::ItemIsFocusable);
 
+    cmd->setItem(_finalNode);
+
+    ObjectKeeper::instance()->createCommand(cmd);
+
     getScene()->addItem(_finalNode);
 
     GraphicsItemResizer *resizer = new GraphicsItemResizer(_finalNode);
@@ -179,6 +202,10 @@ void  Activity::addDecisionNode()
     _decisionNode->setFlag(QGraphicsItem::ItemIsMovable);
     _decisionNode->setFlag(QGraphicsItem::ItemIsSelectable);
     _decisionNode->setFlag(QGraphicsItem::ItemIsFocusable);
+
+    cmd->setItem(_decisionNode);
+
+    ObjectKeeper::instance()->createCommand(cmd);
 
     getScene()->addItem(_decisionNode);
 
