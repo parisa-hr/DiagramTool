@@ -21,34 +21,28 @@ int  main(int argc, char *argv[])
     QIcon::setThemeName(QStringLiteral("DiagramTool"));
     //! [icons]
 
-    QQuickView    view(QUrl(QLatin1String("qrc:/qml/LauncherPage.qml")));
-    QObject      *item           = view.rootObject();
-    UseCase      *m_useCase      = new UseCase;
-    ClassDiagram *m_ClassDiagram = new ClassDiagram;
-    Sequence     *m_Sequence     = new Sequence;
-    Component    *m_Component    = new Component;
-    Activity     *m_activity     = new Activity;
-    Deployment   *m_Deployment   = new Deployment;
+    QQmlApplicationEngine  engine;
+    UseCase                m_useCase;
+    Activity               m_activity;
+    ClassDiagram           m_ClassDiagram;
+    Component              m_Component;
+    Deployment             m_Deployment;
+    Sequence               m_Sequence;
+    auto                   root_context = engine.rootContext();
 
-    QObject::connect(item, SIGNAL(showUseCase()),
-                     m_useCase, SLOT(showFullScreen()));
+    root_context->setContextProperty("UseCase", &m_useCase);
+    root_context->setContextProperty("Activity", &m_activity);
+    root_context->setContextProperty("ClassDiagram", &m_ClassDiagram);
+    root_context->setContextProperty("ComponentDiagram", &m_Component);
+    root_context->setContextProperty("Deployment", &m_Deployment);
+    root_context->setContextProperty("Sequence", &m_Sequence);
 
-    QObject::connect(item, SIGNAL(showClass()),
-                     m_ClassDiagram, SLOT(showFullScreen()));
+    engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
 
-    QObject::connect(item, SIGNAL(showSequence()),
-                     m_Sequence, SLOT(showFullScreen()));
-
-    QObject::connect(item, SIGNAL(showComponent()),
-                     m_Component, SLOT(showFullScreen()));
-
-    QObject::connect(item, SIGNAL(showActivity()),
-                     m_activity, SLOT(showFullScreen()));
-
-    QObject::connect(item, SIGNAL(showDeployment()),
-                     m_Deployment, SLOT(showFullScreen()));
-
-    view.showFullScreen();
+    if (engine.rootObjects().isEmpty())
+    {
+        return -1;
+    }
 
     app.setWindowIcon(QIcon(":/icons/diagramTool.svg"));
 

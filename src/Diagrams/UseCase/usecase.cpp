@@ -11,6 +11,7 @@
 UseCase::UseCase()
 {
     setWindowTitle("UseCase Diagram");
+    setFocus();
 
 
     QAction *act1 = new QAction("Actor");

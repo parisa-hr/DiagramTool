@@ -1,7 +1,7 @@
 import QtQuick 2.12
-import QtQuick.Controls 2.4 as QQC2
+import QtQuick.Controls 2.12
 
-QQC2.AbstractButton {
+AbstractButton {
     id: button
 
     property int edge: Qt.TopEdge
