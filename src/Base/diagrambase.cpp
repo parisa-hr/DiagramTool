@@ -27,7 +27,6 @@
 
 #include <QGraphicsRectItem>
 #include <QColorDialog>
-#include <qpushbutton.h>
 
 #include "mainmenu.h"
 #include "diagramview.h"
@@ -152,29 +151,6 @@ DiagramBase::DiagramBase(QWidget *parent):
         redoAction = ObjectKeeper::instance()->getUndoStack()->createRedoAction(ui->graphicsView, tr("&Redo"));
         redoAction->setShortcuts(QKeySequence::Redo);
         addAction(redoAction);
-
-
-        QPushButton *button = new QPushButton("Test Add For Undo/Redo", ui->graphicsView);
-        button->setGeometry(100, 100, 200, 50);
-
-        connect(button, &QPushButton::clicked, this, [this]()
-        {
-            QGraphicsRectItem *item = new QGraphicsRectItem(QRectF(0, 0, 150, 100));
-
-            item->setPos(10, 10);
-            item->setFlag(QGraphicsItem::ItemIsMovable);
-            item->setFlag(QGraphicsItem::ItemIsSelectable);
-            item->setFlag(QGraphicsItem::ItemIsFocusable);
-            item->setZValue(101);
-
-            item->setPen(QColor(102, 102, 102));
-            item->setBrush(QColor(158, 204, 255));
-
-            cmd->setItem(item);
-
-            ObjectKeeper::instance()->createCommand(cmd);
-            scene->addItem(item);
-        });
     }
 
     updateZoomLabel();
