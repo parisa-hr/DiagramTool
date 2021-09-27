@@ -11,7 +11,7 @@ class ObjectKeeper: public QObject
     Q_OBJECT
 
 public:
-    explicit ObjectKeeper(QGraphicsView *canvas, QObject *parent = nullptr);
+    explicit ObjectKeeper(QGraphicsView *canvas = nullptr, QObject *parent = nullptr);
 
     ~ObjectKeeper();
 

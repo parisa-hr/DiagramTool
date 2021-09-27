@@ -6,6 +6,7 @@
 #include <QPrinter>
 #include <QContextMenuEvent>
 #include "diagramcommand.h"
+#include "diagramscene.h"
 
 #include "menubar.h"
 
@@ -77,7 +78,7 @@ signals:
 
 private:
     Ui::DiagramBase       *ui;
-    QGraphicsScene        *scene;
+    DiagramScene          *scene;
     MenuBar               *_menuBar;
     QPalette              *_pal;
     DiagramTextItem       *_textItem;

@@ -123,12 +123,24 @@ DiagramBase::DiagramBase(QWidget *parent):
     setBackgroundRole(QPalette::Base);
 
     {
-        scene = new QGraphicsScene(this);
+//
+        if (DiagramScene::instance() == nullptr)
+        {
+            scene = new DiagramScene(this);
+        }
+        else
+        {
+            scene = DiagramScene::instance();
+        }
+
         ui->graphicsView->setScene(scene);
         ui->graphicsView->setAlignment(Qt::AlignHCenter);
         ui->graphicsView->setRenderHints(QPainter::Antialiasing);
 
-        new ObjectKeeper(ui->graphicsView);
+        if (ObjectKeeper::instance() == nullptr)
+        {
+            new ObjectKeeper(ui->graphicsView);
+        }
 
         cmd = new ShapeCommand();
 
