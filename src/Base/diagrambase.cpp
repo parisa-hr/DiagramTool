@@ -337,12 +337,15 @@ DiagramBase::DiagramBase(QWidget *parent):
         {
             if (!scene->selectedItems().isEmpty())
             {
-              DiagramTextItem *item = qgraphicsitem_cast<DiagramTextItem *>(scene->selectedItems().first());
+// DiagramTextItem *item = qgraphicsitem_cast<DiagramTextItem *>(scene->selectedItems().first());
+              BaseItem *item = qgraphicsitem_cast<BaseItem *>(scene->selectedItems().first());
 
               if (item)
               {
                 QColor color = QColorDialog::getColor(Qt::black, this);
-                item->setDefaultTextColor(color);
+                item->setBrush(color);
+// QColor color = QColorDialog::getColor(Qt::black, this);
+// item->setDefaultTextColor(color);
                 }
             }
         });

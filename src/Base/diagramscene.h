@@ -23,8 +23,7 @@ public:
 private:
     static DiagramScene                 *sInstance;
     QSharedPointer<GraphicsItemResizer>  resizer;
-// QSharedPointer<BaseItem>             item;
-    BaseItem *item = nullptr;
+    BaseItem                            *item = nullptr;
 };
 
 #endif // DIAGRAMSCENE_H

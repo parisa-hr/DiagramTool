@@ -7,6 +7,7 @@
 #include <QContextMenuEvent>
 #include "diagramcommand.h"
 #include "diagramscene.h"
+#include "baseitem.h"
 
 #include "menubar.h"
 
