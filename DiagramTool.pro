@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 HEADERS += \
+    src/Base/baseitem.h \
     src/Base/diagrambase.h \
     src/Base/diagramcommand.h \
     src/Base/diagramscene.h \
@@ -49,6 +50,7 @@ HEADERS += \
 
 SOURCES += \
         main.cpp \
+    src/Base/baseitem.cpp \
     src/Base/diagrambase.cpp \
     src/Base/diagramcommand.cpp \
     src/Base/diagramscene.cpp \
