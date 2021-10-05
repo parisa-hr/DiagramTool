@@ -6,18 +6,19 @@ Actor::Actor(QObject *parent)
 {
     setAcceptHoverEvents(true);
     setZValue(101);
+    setRect(QRect(0, 0, 100, 200));
 }
 
 QRectF  Actor::boundingRect() const
 {
-    return _rect;
+    return rect();
 }
 
 QPainterPath  Actor::shape() const
 {
     QPainterPath  path;
 
-    path.addRect(_rect);
+    path.addRect(rect());
 
     return path;
 }
@@ -32,7 +33,7 @@ void  Actor::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
     painter->setRenderHint(QPainter::Antialiasing);
     painter->setPen(pen);
 
-    auto  headRect = QRect(_rect.width() / 4.0, _rect.height() / 6.0, _rect.width() / 2.0, _rect.width() / 2.0);
+    auto  headRect = QRect(rect().width() / 4.0, rect().height() / 6.0, rect().width() / 2.0, rect().width() / 2.0);
 
     painter->save();
     painter->setBrush(Qt::yellow);
@@ -40,18 +41,13 @@ void  Actor::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
     painter->restore();
 
     painter->drawLine(headRect.width(), headRect.height() + headRect.y(), headRect.width(),
-                      (headRect.height() + headRect.y() + (_rect.height() / 4.0)));
+                      (headRect.height() + headRect.y() + (rect().height() / 4.0)));
 
-    painter->drawLine(headRect.width() / 3.0, headRect.height() + headRect.y() * 2, _rect.width() - (headRect.width() / 3.0),
+    painter->drawLine(headRect.width() / 3.0, headRect.height() + headRect.y() * 2, rect().width() - (headRect.width() / 3.0),
                       headRect.height() + headRect.y() * 2);
 
-    painter->drawLine(headRect.width(), (headRect.height() + headRect.y() + (_rect.height() / 4.0)), headRect.width() / 3.0,
-                      (_rect.height() - headRect.height() / 5.0));
-    painter->drawLine(headRect.width(), (headRect.height() + headRect.y() + (_rect.height() / 4.0)), _rect.width() - (headRect.width() / 3.0),
-                      (_rect.height() - headRect.height() / 5.0));
-}
-
-void  Actor::setRect(const QRectF &rect)
-{
-    _rect = rect;
+    painter->drawLine(headRect.width(), (headRect.height() + headRect.y() + (rect().height() / 4.0)), headRect.width() / 3.0,
+                      (rect().height() - headRect.height() / 5.0));
+    painter->drawLine(headRect.width(), (headRect.height() + headRect.y() + (rect().height() / 4.0)), rect().width() - (headRect.width() / 3.0),
+                      (rect().height() - headRect.height() / 5.0));
 }

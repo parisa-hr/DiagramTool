@@ -101,18 +101,18 @@ void  UseCase::addActor()
     ObjectKeeper::instance()->createCommand(cmd);
     getScene()->addItem(_actor);
 
-    GraphicsItemResizer *resizer = new GraphicsItemResizer(_actor);
-    resizer->setBrush(QColor(64, 64, 64));
-    resizer->setMinSize(QSizeF(30, 30));
-    resizer->setTargetSize(_actor->boundingRect().size());
-    connect(resizer, &GraphicsItemResizer::targetRectChanged, [_actor, this](const QRectF &rect)
-    {
-        QPointF pos = _actor->pos();
-        _actor->setPos(pos + rect.topLeft());
-        QRectF old = _actor->boundingRect();
-        _actor->setRect(QRectF(old.topLeft(), rect.size()));
-        getScene()->update(getScene()->sceneRect());
-    });
+// GraphicsItemResizer *resizer = new GraphicsItemResizer(_actor);
+// resizer->setBrush(QColor(64, 64, 64));
+// resizer->setMinSize(QSizeF(30, 30));
+// resizer->setTargetSize(_actor->boundingRect().size());
+// connect(resizer, &GraphicsItemResizer::targetRectChanged, [_actor, this](const QRectF &rect)
+// {
+// QPointF pos = _actor->pos();
+// _actor->setPos(pos + rect.topLeft());
+// QRectF old = _actor->boundingRect();
+// _actor->setRect(QRectF(old.topLeft(), rect.size()));
+// getScene()->update(getScene()->sceneRect());
+// });
 }
 
 void  UseCase::addUsecase()

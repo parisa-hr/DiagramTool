@@ -34,6 +34,8 @@
 #include "diagramtextitem.h"
 #include "objectkeeper.h"
 
+#include <src/Base/resizer/graphicsitemresizer.h>
+
 DiagramBase::DiagramBase(QWidget *parent):
     ui(new Ui::DiagramBase)
 {

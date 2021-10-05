@@ -2,9 +2,10 @@
 #define ACTOR_H
 
 #include <QObject>
-#include <QGraphicsItem>
 
-class Actor: public QGraphicsItem
+#include "src/Base/baseitem.h"
+
+class Actor: public BaseItem
 {
 public:
     explicit Actor(QObject *parent = nullptr);
@@ -14,11 +15,6 @@ public:
     QPainterPath  shape() const override;
 
     void          paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
-
-    void          setRect(const QRectF &rect);
-
-private:
-    QRectF  _rect = QRectF(0, 0, 100, 200);
 };
 
 #endif // ACTOR_H
