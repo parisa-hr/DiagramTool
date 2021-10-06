@@ -45,6 +45,7 @@ HEADERS += \
     src/Diagrams/Sequense/sequence.h \
     src/Diagrams/Class/classdiagram.h \
     src/Diagrams/Deployment/deployment.h \ \
+    src/Diagrams/UseCase/usecaseobj.h \
     src/commonItems/arrow.h \
     src/commonItems/note.h
 
@@ -78,6 +79,7 @@ SOURCES += \
     src/Diagrams/Sequense/sequence.cpp \
     src/Diagrams/Class/classdiagram.cpp \
     src/Diagrams/Deployment/deployment.cpp \
+    src/Diagrams/UseCase/usecaseobj.cpp \
     src/commonItems/arrow.cpp \
     src/commonItems/note.cpp
 
