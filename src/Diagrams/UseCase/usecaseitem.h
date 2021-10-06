@@ -3,14 +3,14 @@
 
 #include <QObject>
 
-class UseCaseOBJ : public QObject
+class UseCaseItem: public QObject
 {
     Q_OBJECT
+
 public:
-    explicit UseCaseOBJ(QObject *parent = nullptr);
+    explicit UseCaseItem(QObject *parent = nullptr);
 
 signals:
-
 };
 
 #endif // USECASEOBJ_H
