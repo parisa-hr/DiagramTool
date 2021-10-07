@@ -7,6 +7,7 @@
 #include "actor.h"
 #include "../../Base/resizer/graphicsitemresizer.h"
 #include "../../Base/objectkeeper.h"
+#include <src/commonItems/systemboundry.h>
 
 UseCase::UseCase()
 {
@@ -100,19 +101,6 @@ void  UseCase::addActor()
 
     ObjectKeeper::instance()->createCommand(cmd);
     getScene()->addItem(_actor);
-
-// GraphicsItemResizer *resizer = new GraphicsItemResizer(_actor);
-// resizer->setBrush(QColor(64, 64, 64));
-// resizer->setMinSize(QSizeF(30, 30));
-// resizer->setTargetSize(_actor->boundingRect().size());
-// connect(resizer, &GraphicsItemResizer::targetRectChanged, [_actor, this](const QRectF &rect)
-// {
-// QPointF pos = _actor->pos();
-// _actor->setPos(pos + rect.topLeft());
-// QRectF old = _actor->boundingRect();
-// _actor->setRect(QRectF(old.topLeft(), rect.size()));
-// getScene()->update(getScene()->sceneRect());
-// });
 }
 
 void  UseCase::addUsecase()
@@ -160,38 +148,13 @@ void  UseCase::addUsecase()
 
 void  UseCase::addSystemBoundry()
 {
-    QGraphicsRectItem *item        = new QGraphicsRectItem(QRectF(0, 0, 500, 400));
-    QGraphicsTextItem *_systemText = new QGraphicsTextItem("System", item);
+    SystemBoundry *_systemBoundry = new SystemBoundry(this);
 
-    _systemText->setTextInteractionFlags(Qt::TextEditorInteraction);
-    _systemText->setFlag(QGraphicsItem::ItemIsMovable);
-    _systemText->setFlag(QGraphicsItem::ItemIsSelectable);
-    item->setFlag(QGraphicsItem::ItemIsMovable);
-    item->setFlag(QGraphicsItem::ItemIsSelectable);
-    item->setFlag(QGraphicsItem::ItemIsFocusable);
-
-    item->setZValue(100.9);
-    _systemText->setZValue(101);
-
-    item->setPen(QColor(102, 102, 102));
-    item->setBrush(QColor(158, 204, 255));
-
-    cmd->setItem(item);
+    _systemBoundry->setFlag(QGraphicsItem::ItemIsMovable);
+    _systemBoundry->setFlag(QGraphicsItem::ItemIsSelectable);
+    _systemBoundry->setFlag(QGraphicsItem::ItemIsFocusable);
+    cmd->setItem(_systemBoundry);
     ObjectKeeper::instance()->createCommand(cmd);
 
-    getScene()->addItem(item);
-
-    GraphicsItemResizer *resizer = new GraphicsItemResizer(item);
-    resizer->setBrush(QColor(64, 64, 64));
-    resizer->setMinSize(QSizeF(30, 30));
-    resizer->setTargetSize(item->boundingRect().size());
-    connect(resizer, &GraphicsItemResizer::targetRectChanged, [item, _systemText, this](const QRectF &rect)
-    {
-        QPointF pos = item->pos();
-        item->setPos(pos + rect.topLeft());
-        QRectF old = item->rect();
-        item->setRect(QRectF(old.topLeft(), rect.size()));
-        _systemText->setScale(2);
-        getScene()->update(getScene()->sceneRect());
-    });
+    getScene()->addItem(_systemBoundry);
 }
