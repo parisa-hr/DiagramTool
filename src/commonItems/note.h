@@ -2,9 +2,9 @@
 #define NOTE_H
 
 #include <QObject>
-#include <QGraphicsItem>
+#include "src/Base/baseitem.h"
 
-class Note: public QGraphicsItem
+class Note: public BaseItem
 {
 public:
     Note(QObject *parent = nullptr);
@@ -14,11 +14,6 @@ public:
     QPainterPath  shape() const override;
 
     void          paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
-
-    void          setRect(const QRectF &rect);
-
-private:
-    QRectF  _rect = QRectF(0, 0, 200, 150);
 };
 
 #endif // NOTE_H

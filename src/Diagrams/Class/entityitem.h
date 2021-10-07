@@ -2,10 +2,10 @@
 #define ENTITYITEM_H
 
 #include <QObject>
-#include <QGraphicsItem>
+#include "src/Base/baseitem.h"
 
 
-class EntityItem: public QGraphicsItem
+class EntityItem: public BaseItem
 {
 public:
     explicit EntityItem(QObject *parent = nullptr);
@@ -15,11 +15,6 @@ public:
     QPainterPath  shape() const override;
 
     void          paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
-
-    void          setRect(const QRectF &rect);
-
-private:
-    QRectF  _rect = QRectF(0, 0, 100, 100);
 };
 
 #endif // ENTITYITEM_H

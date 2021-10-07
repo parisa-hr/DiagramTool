@@ -11,14 +11,14 @@ EntityItem::EntityItem(QObject *parent)
 
 QRectF  EntityItem::boundingRect() const
 {
-    return _rect;
+    return rect();
 }
 
 QPainterPath  EntityItem::shape() const
 {
     QPainterPath  path;
 
-    path.addRect(_rect);
+    path.addRect(rect());
 
     return path;
 }
@@ -29,15 +29,10 @@ void  EntityItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
 
     auto  pen = QPen(Qt::black, 2);
     pen.setCosmetic(true);
-    painter->setBrush(Qt::NoBrush);
+    painter->setBrush(brush());
     painter->setRenderHint(QPainter::Antialiasing);
     painter->setPen(pen);
 
-    painter->drawLine(0, _rect.height(), _rect.width(), _rect.height());
-    painter->drawEllipse(0.0, 0.0, _rect.width(), _rect.height());
-}
-
-void  EntityItem::setRect(const QRectF &rect)
-{
-    _rect = rect;
+    painter->drawLine(0, rect().height(), rect().width(), rect().height());
+    painter->drawEllipse(0.0, 0.0, rect().width(), rect().height());
 }

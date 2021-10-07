@@ -11,14 +11,14 @@ Note::Note(QObject *parent)
 
 QRectF  Note::boundingRect() const
 {
-    return _rect;
+    return rect();
 }
 
 QPainterPath  Note::shape() const
 {
     QPainterPath  path;
 
-    path.addRect(_rect);
+    path.addRect(rect());
 
     return path;
 }
@@ -29,29 +29,24 @@ void  Note::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
 
     auto  pen = QPen(Qt::black, 2);
     pen.setCosmetic(true);
-    painter->setBrush(Qt::NoBrush);
+    painter->setBrush(brush());
     painter->setRenderHint(QPainter::Antialiasing);
     painter->setPen(pen);
 
     QPointF  points[5] = {
-        QPointF(0.0,                                                        0.0),
-        QPointF((_rect.width() - (_rect.width() / 5.0)),                    0.0),
-        QPointF(_rect.width(),                           (_rect.height() / 5.0)),
-        QPointF(_rect.width(),                           _rect.height()),
-        QPointF(0.0,                                     _rect.height())
+        QPointF(0.0,                                                           0.0),
+        QPointF((rect().width() - (rect().width() / 5.0)),                     0.0),
+        QPointF(rect().width(),                            (rect().height() / 5.0)),
+        QPointF(rect().width(),                            rect().height()),
+        QPointF(0.0,                                       rect().height())
     };
 
     painter->drawConvexPolygon(points, 5);
 
     QPointF  _points[3] = {
-        QPointF((_rect.width() - _rect.width() / 5.0),                  0.0),
-        QPointF(_rect.width(),                         _rect.height() / 5.0),
-        QPointF((_rect.width() - _rect.width() / 5.0), _rect.height() / 5.0)
+        QPointF((rect().width() - rect().width() / 5.0),                   0.0),
+        QPointF(rect().width(),                          rect().height() / 5.0),
+        QPointF((rect().width() - rect().width() / 5.0), rect().height() / 5.0)
     };
     painter->drawConvexPolygon(_points, 3);
-}
-
-void  Note::setRect(const QRectF &rect)
-{
-    _rect = rect;
 }

@@ -152,19 +152,6 @@ void  ClassDiagram::addClass()
     ObjectKeeper::instance()->createCommand(cmd);
 
     getScene()->addItem(_class);
-
-    GraphicsItemResizer *resizer = new GraphicsItemResizer(_class);
-    resizer->setBrush(QColor(64, 64, 64));
-    resizer->setMinSize(QSizeF(30, 30));
-    resizer->setTargetSize(_class->boundingRect().size());
-    connect(resizer, &GraphicsItemResizer::targetRectChanged, [_class, this](const QRectF &rect)
-    {
-        QPointF pos = _class->pos();
-        _class->setPos(pos + rect.topLeft());
-        QRectF old = _class->boundingRect();
-        _class->setRect(QRectF(old.topLeft(), rect.size()));
-        getScene()->update(getScene()->sceneRect());
-    });
 }
 
 void  ClassDiagram::addBoundry()
@@ -179,19 +166,6 @@ void  ClassDiagram::addBoundry()
     ObjectKeeper::instance()->createCommand(cmd);
 
     getScene()->addItem(_boundry);
-
-    GraphicsItemResizer *resizer = new GraphicsItemResizer(_boundry);
-    resizer->setBrush(QColor(64, 64, 64));
-    resizer->setMinSize(QSizeF(30, 30));
-    resizer->setTargetSize(_boundry->boundingRect().size());
-    connect(resizer, &GraphicsItemResizer::targetRectChanged, [_boundry, this](const QRectF &rect)
-    {
-        QPointF pos = _boundry->pos();
-        _boundry->setPos(pos + rect.topLeft());
-        QRectF old = _boundry->boundingRect();
-        _boundry->setRect(QRectF(old.topLeft(), rect.size()));
-        getScene()->update(getScene()->sceneRect());
-    });
 }
 
 void  ClassDiagram::addEntity()
@@ -206,19 +180,6 @@ void  ClassDiagram::addEntity()
     ObjectKeeper::instance()->createCommand(cmd);
 
     getScene()->addItem(_entity);
-
-    GraphicsItemResizer *resizer = new GraphicsItemResizer(_entity);
-    resizer->setBrush(QColor(64, 64, 64));
-    resizer->setMinSize(QSizeF(30, 30));
-    resizer->setTargetSize(_entity->boundingRect().size());
-    connect(resizer, &GraphicsItemResizer::targetRectChanged, [_entity, this](const QRectF &rect)
-    {
-        QPointF pos = _entity->pos();
-        _entity->setPos(pos + rect.topLeft());
-        QRectF old = _entity->boundingRect();
-        _entity->setRect(QRectF(old.topLeft(), rect.size()));
-        getScene()->update(getScene()->sceneRect());
-    });
 }
 
 void  ClassDiagram::addController()
@@ -233,19 +194,6 @@ void  ClassDiagram::addController()
     ObjectKeeper::instance()->createCommand(cmd);
 
     getScene()->addItem(_controll);
-
-    GraphicsItemResizer *resizer = new GraphicsItemResizer(_controll);
-    resizer->setBrush(QColor(64, 64, 64));
-    resizer->setMinSize(QSizeF(30, 30));
-    resizer->setTargetSize(_controll->boundingRect().size());
-    connect(resizer, &GraphicsItemResizer::targetRectChanged, [_controll, this](const QRectF &rect)
-    {
-        QPointF pos = _controll->pos();
-        _controll->setPos(pos + rect.topLeft());
-        QRectF old = _controll->boundingRect();
-        _controll->setRect(QRectF(old.topLeft(), rect.size()));
-        getScene()->update(getScene()->sceneRect());
-    });
 }
 
 void  ClassDiagram::addNote()
@@ -260,19 +208,6 @@ void  ClassDiagram::addNote()
     ObjectKeeper::instance()->createCommand(cmd);
 
     getScene()->addItem(_note);
-
-    GraphicsItemResizer *resizer = new GraphicsItemResizer(_note);
-    resizer->setBrush(QColor(64, 64, 64));
-    resizer->setMinSize(QSizeF(30, 30));
-    resizer->setTargetSize(_note->boundingRect().size());
-    connect(resizer, &GraphicsItemResizer::targetRectChanged, [_note, this](const QRectF &rect)
-    {
-        QPointF pos = _note->pos();
-        _note->setPos(pos + rect.topLeft());
-        QRectF old = _note->boundingRect();
-        _note->setRect(QRectF(old.topLeft(), rect.size()));
-        getScene()->update(getScene()->sceneRect());
-    });
 }
 
 void  ClassDiagram::addPackage()
@@ -287,17 +222,4 @@ void  ClassDiagram::addPackage()
     ObjectKeeper::instance()->createCommand(cmd);
 
     getScene()->addItem(_package);
-
-    GraphicsItemResizer *resizer = new GraphicsItemResizer(_package);
-    resizer->setBrush(QColor(64, 64, 64));
-    resizer->setMinSize(QSizeF(30, 30));
-    resizer->setTargetSize(_package->boundingRect().size());
-    connect(resizer, &GraphicsItemResizer::targetRectChanged, [_package, this](const QRectF &rect)
-    {
-        QPointF pos = _package->pos();
-        _package->setPos(pos + rect.topLeft());
-        QRectF old = _package->boundingRect();
-        _package->setRect(QRectF(old.topLeft(), rect.size()));
-        getScene()->update(getScene()->sceneRect());
-    });
 }

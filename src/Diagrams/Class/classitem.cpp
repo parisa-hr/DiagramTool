@@ -6,18 +6,19 @@ classItem::classItem(QObject *parent)
 {
     setAcceptHoverEvents(true);
     setZValue(101);
+    setRect(QRect(0, 0, 200, 100));
 }
 
 QRectF  classItem::boundingRect() const
 {
-    return _rect;
+    return rect();
 }
 
 QPainterPath  classItem::shape() const
 {
     QPainterPath  path;
 
-    path.addRect(_rect);
+    path.addRect(rect());
 
     return path;
 }
@@ -28,17 +29,12 @@ void  classItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option
 
     auto  pen = QPen(Qt::black, 2);
     pen.setCosmetic(true);
-    painter->setBrush(Qt::NoBrush);
+    painter->setBrush(brush());
     painter->setRenderHint(QPainter::Antialiasing);
     painter->setPen(pen);
 
-    painter->drawRect(_rect);
-    painter->drawLine(0, _rect.height() / 3, _rect.width(), _rect.height() / 3);
+    painter->drawRect(rect());
+    painter->drawLine(0, rect().height() / 3, rect().width(), rect().height() / 3);
     // TODO:parisa function ham khat dare?
 // painter->drawLine();
-}
-
-void  classItem::setRect(const QRectF &rect)
-{
-    _rect = rect;
 }

@@ -2,8 +2,9 @@
 #define PACKAGE_H
 
 #include <QGraphicsItem>
+#include "src/Base/baseitem.h"
 
-class Package: public QGraphicsItem
+class Package: public BaseItem
 {
 public:
     Package();
@@ -13,11 +14,6 @@ public:
     QPainterPath  shape() const override;
 
     void          paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
-
-    void          setRect(const QRectF &rect);
-
-private:
-    QRectF  _rect = QRectF(0, 0, 200, 100);
 };
 
 #endif // PACKAGE_H

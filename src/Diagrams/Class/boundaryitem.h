@@ -2,9 +2,9 @@
 #define BOUNDARYITEM_H
 
 #include <QObject>
-#include <QGraphicsItem>
+#include "src/Base/baseitem.h"
 
-class BoundaryItem: public QGraphicsItem
+class BoundaryItem: public BaseItem
 {
 public:
     explicit BoundaryItem(QObject *parent = nullptr);
@@ -14,11 +14,6 @@ public:
     QPainterPath  shape() const override;
 
     void          paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
-
-    void          setRect(const QRectF &rect);
-
-private:
-    QRectF  _rect = QRectF(0, 0, 200, 100);
 };
 
 #endif // BOUNDARYITEM_H

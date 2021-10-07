@@ -2,10 +2,10 @@
 #define CONTROLITEM_H
 
 #include <QObject>
-#include <QGraphicsItem>
+#include "src/Base/baseitem.h"
 
 
-class ControlItem: public QGraphicsItem
+class ControlItem: public BaseItem
 {
 public:
     explicit ControlItem(QObject *parent = nullptr);
@@ -15,11 +15,6 @@ public:
     QPainterPath  shape() const override;
 
     void          paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
-
-    void          setRect(const QRectF &rect);
-
-private:
-    QRectF  _rect = QRectF(0, 0, 100, 100);
 };
 
 #endif // CONTROLITEM_H
