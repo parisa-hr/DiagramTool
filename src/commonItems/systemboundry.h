@@ -2,15 +2,23 @@
 #define SYSTEMBOUNDRY_H
 
 #include <QObject>
+#include "src/Base/baseitem.h"
 
-class SystemBoundry : public QObject
+
+class SystemBoundry: public BaseItem
 {
-    Q_OBJECT
 public:
     explicit SystemBoundry(QObject *parent = nullptr);
 
 signals:
+    // QGraphicsItem interface
 
+public:
+    QRectF        boundingRect() const;
+
+    QPainterPath  shape() const override;
+
+    void          paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 };
 
 #endif // SYSTEMBOUNDRY_H
