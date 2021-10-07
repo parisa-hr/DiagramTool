@@ -1,6 +1,5 @@
 #include "systemboundry.h"
 
-#include <QGraphicsItem>
 #include <QColor>
 #include <QPen>
 #include <QPainter>

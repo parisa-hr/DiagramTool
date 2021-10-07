@@ -10,9 +10,6 @@ class SystemBoundry: public BaseItem
 public:
     explicit SystemBoundry(QObject *parent = nullptr);
 
-signals:
-    // QGraphicsItem interface
-
 public:
     QRectF        boundingRect() const;
 
