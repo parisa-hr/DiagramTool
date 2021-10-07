@@ -1,14 +1,13 @@
-#ifndef DECISIONNODE_H
-#define DECISIONNODE_H
+#ifndef STARTNODE_H
+#define STARTNODE_H
 
 #include <QObject>
 #include "src/Base/baseitem.h"
 
-
-class DecisionNode: public BaseItem
+class StartNode: public BaseItem
 {
 public:
-    explicit DecisionNode(QObject *parent = nullptr);
+    explicit StartNode(QObject *parent = nullptr);
 
     QRectF        boundingRect() const override;
 
@@ -17,4 +16,5 @@ public:
     void          paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
 };
 
-#endif // DECISIONNODE_H
+
+#endif // STARTNODE_H

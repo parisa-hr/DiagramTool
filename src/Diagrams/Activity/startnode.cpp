@@ -1,20 +1,20 @@
-#include "activityitem.h"
+#include "startnode.h"
 
-#include <qpainter.h>
+#include <QPainter>
 
-ActivityItem::ActivityItem(QObject *parent)
+StartNode::StartNode(QObject *parent)
 {
     setAcceptHoverEvents(true);
     setZValue(101);
-    setRect(QRect(0, 0, 200, 100));
+    setRect(QRect(0, 0, 100, 100));
 }
 
-QRectF  ActivityItem::boundingRect() const
+QRectF  StartNode::boundingRect() const
 {
     return rect();
 }
 
-QPainterPath  ActivityItem::shape() const
+QPainterPath  StartNode::shape() const
 {
     QPainterPath  path;
 
@@ -23,7 +23,7 @@ QPainterPath  ActivityItem::shape() const
     return path;
 }
 
-void  ActivityItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+void  StartNode::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     Q_UNUSED(widget);
     painter->setRenderHint(QPainter::Antialiasing);
@@ -33,5 +33,5 @@ void  ActivityItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opt
 
     painter->setBrush(brush());
 
-    painter->drawRect(rect());
+    painter->drawEllipse(rect());
 }

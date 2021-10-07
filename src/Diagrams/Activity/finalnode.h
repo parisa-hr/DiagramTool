@@ -2,9 +2,9 @@
 #define FINALNODE_H
 
 #include <QObject>
-#include <QGraphicsItem>
+#include "src/Base/baseitem.h"
 
-class FinalNode: public QGraphicsItem
+class FinalNode: public BaseItem
 {
 public:
     explicit FinalNode(QObject *parent = nullptr);
@@ -14,11 +14,6 @@ public:
     QPainterPath  shape() const override;
 
     void          paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
-
-    void          setRect(const QRectF &rect);
-
-private:
-    QRectF  _rect = QRectF(0, 0, 50, 50);
 };
 
 #endif // FINALNODE_H

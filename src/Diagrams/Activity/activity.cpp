@@ -3,8 +3,10 @@
 #include <QCoreApplication>
 #include <QGraphicsScene>
 
+#include "activityitem.h"
 #include "decisionnode.h"
 #include "finalnode.h"
+#include "startnode.h"
 
 #include "../../Base/resizer/graphicsitemresizer.h"
 
@@ -103,68 +105,30 @@ Activity::~Activity()
 
 void  Activity::addActivityItem()
 {
-    QGraphicsRectItem *item = new QGraphicsRectItem(QRectF(0, 0, 150, 100));
+    ActivityItem *_activityItem = new ActivityItem(this);
 
-    item->setPos(10, 10);
-    item->setFlag(QGraphicsItem::ItemIsMovable);
-    item->setFlag(QGraphicsItem::ItemIsSelectable);
-    item->setFlag(QGraphicsItem::ItemIsFocusable);
-    item->setZValue(101);
-
-    item->setPen(QColor(102, 102, 102));
-    item->setBrush(QColor(158, 204, 255));
-
-    cmd->setItem(item);
+    _activityItem->setFlag(QGraphicsItem::ItemIsMovable);
+    _activityItem->setFlag(QGraphicsItem::ItemIsSelectable);
+    _activityItem->setFlag(QGraphicsItem::ItemIsFocusable);
+    cmd->setItem(_activityItem);
 
     ObjectKeeper::instance()->createCommand(cmd);
-
-    getScene()->addItem(item);
-
-    GraphicsItemResizer *resizer = new GraphicsItemResizer(item);
-    resizer->setBrush(QColor(64, 64, 64));
-    resizer->setMinSize(QSizeF(30, 30));
-    resizer->setTargetSize(item->boundingRect().size());
-    connect(resizer, &GraphicsItemResizer::targetRectChanged, [item, this](const QRectF &rect)
-    {
-        QPointF pos = item->pos();
-        item->setPos(pos + rect.topLeft());
-        QRectF old = item->rect();
-        item->setRect(QRectF(old.topLeft(), rect.size()));
-        getScene()->update(getScene()->sceneRect());
-    });
+    getScene()->addItem(_activityItem);
 }
 
 void  Activity::addStartNode()
 {
-    QGraphicsEllipseItem *start = new QGraphicsEllipseItem(0, 0, 32, 32);
+    StartNode *_start = new StartNode(this);
 
-    start->setPos(10, 10);
-    start->setFlag(QGraphicsItem::ItemIsMovable);
-    start->setFlag(QGraphicsItem::ItemIsSelectable);
-    start->setFlag(QGraphicsItem::ItemIsFocusable);
-    start->setZValue(101);
+    _start->setFlag(QGraphicsItem::ItemIsMovable);
+    _start->setFlag(QGraphicsItem::ItemIsSelectable);
+    _start->setFlag(QGraphicsItem::ItemIsFocusable);
 
-    start->setPen(QColor(102, 102, 102));
-    start->setBrush(QColor(158, 204, 255));
-
-    cmd->setItem(start);
+    cmd->setItem(_start);
 
     ObjectKeeper::instance()->createCommand(cmd);
 
-    getScene()->addItem(start);
-
-    GraphicsItemResizer *resizer = new GraphicsItemResizer(start);
-    resizer->setBrush(QColor(64, 64, 64));
-    resizer->setMinSize(QSizeF(30, 30));
-    resizer->setTargetSize(start->boundingRect().size());
-    connect(resizer, &GraphicsItemResizer::targetRectChanged, [start, this](const QRectF &rect)
-    {
-        QPointF pos = start->pos();
-        start->setPos(pos + rect.topLeft());
-        QRectF old = start->rect();
-        start->setRect(QRectF(old.topLeft(), rect.size()));
-        getScene()->update(getScene()->sceneRect());
-    });
+    getScene()->addItem(_start);
 }
 
 void  Activity::addFinalNode()
@@ -180,19 +144,6 @@ void  Activity::addFinalNode()
     ObjectKeeper::instance()->createCommand(cmd);
 
     getScene()->addItem(_finalNode);
-
-    GraphicsItemResizer *resizer = new GraphicsItemResizer(_finalNode);
-    resizer->setBrush(QColor(64, 64, 64));
-    resizer->setMinSize(QSizeF(30, 30));
-    resizer->setTargetSize(_finalNode->boundingRect().size());
-    connect(resizer, &GraphicsItemResizer::targetRectChanged, [_finalNode, this](const QRectF &rect)
-    {
-        QPointF pos = _finalNode->pos();
-        _finalNode->setPos(pos + rect.topLeft());
-        QRectF old = _finalNode->boundingRect();
-        _finalNode->setRect(QRectF(old.topLeft(), rect.size()));
-        getScene()->update(getScene()->sceneRect());
-    });
 }
 
 void  Activity::addDecisionNode()
@@ -208,17 +159,4 @@ void  Activity::addDecisionNode()
     ObjectKeeper::instance()->createCommand(cmd);
 
     getScene()->addItem(_decisionNode);
-
-    GraphicsItemResizer *resizer = new GraphicsItemResizer(_decisionNode);
-    resizer->setBrush(QColor(64, 64, 64));
-    resizer->setMinSize(QSizeF(30, 30));
-    resizer->setTargetSize(_decisionNode->boundingRect().size());
-    connect(resizer, &GraphicsItemResizer::targetRectChanged, [_decisionNode, this](const QRectF &rect)
-    {
-        QPointF pos = _decisionNode->pos();
-        _decisionNode->setPos(pos + rect.topLeft());
-        QRectF old = _decisionNode->boundingRect();
-        _decisionNode->setRect(QRectF(old.topLeft(), rect.size()));
-        getScene()->update(getScene()->sceneRect());
-    });
 }

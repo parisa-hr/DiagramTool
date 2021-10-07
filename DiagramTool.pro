@@ -35,6 +35,7 @@ HEADERS += \
     src/Diagrams/Activity/finalnode.h \
     src/Diagrams/Activity/fork_join.h \
     src/Diagrams/Activity/initialnode.h \
+    src/Diagrams/Activity/startnode.h \
     src/Diagrams/Activity/swimlane.h \
     src/Diagrams/Class/boundaryitem.h \
     src/Diagrams/Class/classitem.h \
@@ -74,6 +75,7 @@ SOURCES += \
     src/Diagrams/Activity/finalnode.cpp \
     src/Diagrams/Activity/fork_join.cpp \
     src/Diagrams/Activity/initialnode.cpp \
+    src/Diagrams/Activity/startnode.cpp \
     src/Diagrams/Activity/swimlane.cpp \
     src/Diagrams/Class/boundaryitem.cpp \
     src/Diagrams/Class/classitem.cpp \

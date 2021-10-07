@@ -10,14 +10,14 @@ FinalNode::FinalNode(QObject *parent)
 
 QRectF  FinalNode::boundingRect() const
 {
-    return _rect;
+    return rect();
 }
 
 QPainterPath  FinalNode::shape() const
 {
     QPainterPath  path;
 
-    path.addRect(_rect);
+    path.addRect(rect());
 
     return path;
 }
@@ -32,17 +32,13 @@ void  FinalNode::paint(QPainter *painter, const QStyleOptionGraphicsItem *option
     painter->setRenderHint(QPainter::Antialiasing);
     painter->setPen(pen);
 
-    painter->drawEllipse(_rect);
+    painter->drawEllipse(rect());
     painter->save();
     painter->setBrush(Qt::white);
-    painter->drawEllipse(_rect.width() / 10.0, _rect.height() / 10.0, _rect.width() - (_rect.width() / 10.0) * 2, _rect.height() - (_rect.height() / 10.0) * 2);
+    painter->drawEllipse(rect().width() / 10.0, rect().height() / 10.0, rect().width() - (rect().width() / 10.0) * 2,
+                         rect().height() - (rect().height() / 10.0) * 2);
     painter->restore();
 
-    painter->drawEllipse((_rect.width() / 10.0) * 2, (_rect.height() / 10.0) * 2, _rect.width() - (_rect.width() / 10.0) * 4,
-                         _rect.height() - (_rect.height() / 10.0) * 4);
-}
-
-void  FinalNode::setRect(const QRectF &rect)
-{
-    _rect = rect;
+    painter->drawEllipse((rect().width() / 10.0) * 2, (rect().height() / 10.0) * 2, rect().width() - (rect().width() / 10.0) * 4,
+                         rect().height() - (rect().height() / 10.0) * 4);
 }
