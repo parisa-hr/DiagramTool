@@ -191,7 +191,6 @@ DiagramBase::DiagramBase(QWidget *parent):
         connect(_menuBar, &MenuBar::SetCursorSelect, this, [this]()
         {
             setCursor(Qt::ArrowCursor);
-            ui->graphicsView->setDragMode(QGraphicsView::RubberBandDrag);
             ui->graphicsView->setInteractive(true);
         });
 
