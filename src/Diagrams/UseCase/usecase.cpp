@@ -5,6 +5,7 @@
 #include <QDebug>
 #include <QIcon>
 #include "actor.h"
+#include "usecaseitem.h"
 #include "../../Base/resizer/graphicsitemresizer.h"
 #include "../../Base/objectkeeper.h"
 #include <src/commonItems/systemboundry.h>
@@ -105,45 +106,15 @@ void  UseCase::addActor()
 
 void  UseCase::addUsecase()
 {
-    QGraphicsEllipseItem *useCase      = new QGraphicsEllipseItem(0, 0, 100, 50);
-    QGraphicsTextItem    *_usecaseText = new QGraphicsTextItem("UseCase", useCase);
+    UseCaseItem *_useCase = new UseCaseItem(this);
 
-    _usecaseText->setPos(useCase->rect().width() / 5.0, useCase->rect().height() / 4.0);
-
-    _usecaseText->setTextInteractionFlags(Qt::TextEditorInteraction);
-
-    useCase->setFlag(QGraphicsItem::ItemIsMovable);
-    useCase->setFlag(QGraphicsItem::ItemIsSelectable);
-    useCase->setFlag(QGraphicsItem::ItemIsFocusable);
-
-    useCase->setZValue(101);
-    _usecaseText->setZValue(101);
-
-    auto  pen = QPen(Qt::black, 2);
-    pen.setCosmetic(true);
-
-    useCase->setPen(pen);
-    useCase->setBrush(QColor("#fff2cc"));
-
-    cmd->setItem(useCase);
+    _useCase->setFlag(QGraphicsItem::ItemIsMovable);
+    _useCase->setFlag(QGraphicsItem::ItemIsSelectable);
+    _useCase->setFlag(QGraphicsItem::ItemIsFocusable);
+    cmd->setItem(_useCase);
     ObjectKeeper::instance()->createCommand(cmd);
 
-    getScene()->addItem(useCase);
-    GraphicsItemResizer *resizer = new GraphicsItemResizer(useCase);
-    resizer->setBrush(QColor(64, 64, 64));
-    resizer->setMinSize(QSizeF(30, 30));
-    resizer->setTargetSize(useCase->boundingRect().size());
-    connect(resizer, &GraphicsItemResizer::targetRectChanged, [useCase, _usecaseText, this](const QRectF &rect)
-    {
-        QPointF pos = useCase->pos();
-        useCase->setPos(pos + rect.topLeft());
-        QRectF old = useCase->rect();
-        useCase->setRect(QRectF(old.topLeft(), rect.size()));
-        _usecaseText->setPos(rect.width() / 3.0, rect.height() / 4.0);
-        _usecaseText->setScale(rect.width() / rect.height());
-
-        getScene()->update(getScene()->sceneRect());
-    });
+    getScene()->addItem(_useCase);
 }
 
 void  UseCase::addSystemBoundry()
