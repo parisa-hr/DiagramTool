@@ -77,7 +77,7 @@ Component::Component()
                                                  nullptr));
 
     menuBar()->addToolButton(act6);
-    connect(act6, &QAction::triggered, this, &Component::addRequiredinterfaces);
+    connect(act6, &QAction::triggered, this, &Component::addPackage);
 
     QAction *act7 = new QAction("Note");
     act7->setIcon(QIcon(":/icons/Tools/class/Note.svg"));
@@ -88,7 +88,7 @@ Component::Component()
     menuBar()->addToolButton(act7);
 
 
-    connect(act7, &QAction::triggered, this, &Component::addRequiredinterfaces);
+    connect(act7, &QAction::triggered, this, &Component::addNote);
 
 
     cmd = new ShapeCommand();
@@ -168,9 +168,25 @@ void  Component::addInterface()
 void  Component::addProvidedinterfaces()
 {
     ProvidedInterface *_pInterface = new ProvidedInterface(this);
+
+    _pInterface->setFlag(QGraphicsItem::ItemIsMovable);
+    _pInterface->setFlag(QGraphicsItem::ItemIsSelectable);
+    _pInterface->setFlag(QGraphicsItem::ItemIsFocusable);
+    cmd->setItem(_pInterface);
+
+    ObjectKeeper::instance()->createCommand(cmd);
+    getScene()->addItem(_pInterface);
 }
 
 void  Component::addRequiredinterfaces()
 {
-// RequiredInterface *_rInterface = new RequiredInterface(this);
+    RequiredInterface *_rInterface = new RequiredInterface(this);
+
+    _rInterface->setFlag(QGraphicsItem::ItemIsMovable);
+    _rInterface->setFlag(QGraphicsItem::ItemIsSelectable);
+    _rInterface->setFlag(QGraphicsItem::ItemIsFocusable);
+    cmd->setItem(_rInterface);
+
+    ObjectKeeper::instance()->createCommand(cmd);
+    getScene()->addItem(_rInterface);
 }
