@@ -2,15 +2,18 @@
 #define COMPONENTITEM_H
 
 #include <QObject>
+#include "src/Base/baseitem.h"
 
-class ComponentItem : public QObject
+class ComponentItem: public BaseItem
 {
-    Q_OBJECT
 public:
     explicit ComponentItem(QObject *parent = nullptr);
 
-signals:
+    QRectF        boundingRect() const override;
 
+    QPainterPath  shape() const override;
+
+    void          paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
 };
 
 #endif // COMPONENTITEM_H
