@@ -6,7 +6,6 @@
 #include <QIcon>
 #include "actor.h"
 #include "usecaseitem.h"
-#include "../../Base/resizer/graphicsitemresizer.h"
 #include "../../Base/objectkeeper.h"
 #include <src/commonItems/systemboundry.h>
 
@@ -91,8 +90,6 @@ UseCase::~UseCase()
 
 void  UseCase::addActor()
 {
-    qDebug() << "I am in add Actor func";
-
     Actor *_actor = new Actor(this);
 
     _actor->setFlag(QGraphicsItem::ItemIsMovable);

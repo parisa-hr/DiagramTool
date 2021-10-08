@@ -14,6 +14,7 @@ public:
 
     ~UseCase();
 
+private slots:
     void  addActor();
 
     void  addUsecase();
