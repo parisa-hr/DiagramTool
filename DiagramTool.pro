@@ -43,6 +43,7 @@ HEADERS += \
     src/Diagrams/Class/entityitem.h \
     src/Diagrams/Class/package.h \
     src/Diagrams/Component/componentitem.h \
+    src/Diagrams/Component/port.h \
     src/Diagrams/UseCase/actor.h \
     src/Diagrams/UseCase/usecase.h \
     src/Diagrams/Activity/activity.h \
@@ -83,6 +84,7 @@ SOURCES += \
     src/Diagrams/Class/entityitem.cpp \
     src/Diagrams/Class/package.cpp \
     src/Diagrams/Component/componentitem.cpp \
+    src/Diagrams/Component/port.cpp \
     src/Diagrams/UseCase/actor.cpp \
     src/Diagrams/UseCase/usecase.cpp \
     src/Diagrams/Activity/activity.cpp \

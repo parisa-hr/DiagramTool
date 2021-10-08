@@ -21,7 +21,7 @@ private slots:
 
     void  addNote();
 
-    void  addNode();
+    void  addPort();
 
     void  addPackage();
 

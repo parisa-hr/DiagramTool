@@ -72,5 +72,6 @@
         <file>icons/Tools/mouseMenu/mActionMoveItemsToBottom.svg</file>
         <file>icons/Tools/mouseMenu/editcut.png</file>
         <file>qml/main.qml</file>
+        <file>icons/Tools/Component/Port.svg</file>
     </qresource>
 </RCC>
