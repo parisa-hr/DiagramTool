@@ -41,9 +41,11 @@ HEADERS += \
     src/Diagrams/Class/classitem.h \
     src/Diagrams/Class/controlitem.h \
     src/Diagrams/Class/entityitem.h \
-    src/Diagrams/Class/package.h \
     src/Diagrams/Component/componentitem.h \
+    src/Diagrams/Component/interface.h \
     src/Diagrams/Component/port.h \
+    src/Diagrams/Component/providedinterface.h \
+    src/Diagrams/Component/requiredinterface.h \
     src/Diagrams/UseCase/actor.h \
     src/Diagrams/UseCase/usecase.h \
     src/Diagrams/Activity/activity.h \
@@ -54,6 +56,7 @@ HEADERS += \
     src/Diagrams/UseCase/usecaseitem.h \
     src/commonItems/arrow.h \
     src/commonItems/note.h \
+    src/commonItems/package.h \
     src/commonItems/systemboundry.h
 
 SOURCES += \
@@ -82,9 +85,11 @@ SOURCES += \
     src/Diagrams/Class/classitem.cpp \
     src/Diagrams/Class/controlitem.cpp \
     src/Diagrams/Class/entityitem.cpp \
-    src/Diagrams/Class/package.cpp \
     src/Diagrams/Component/componentitem.cpp \
+    src/Diagrams/Component/interface.cpp \
     src/Diagrams/Component/port.cpp \
+    src/Diagrams/Component/providedinterface.cpp \
+    src/Diagrams/Component/requiredinterface.cpp \
     src/Diagrams/UseCase/actor.cpp \
     src/Diagrams/UseCase/usecase.cpp \
     src/Diagrams/Activity/activity.cpp \
@@ -95,6 +100,7 @@ SOURCES += \
     src/Diagrams/UseCase/usecaseitem.cpp \
     src/commonItems/arrow.cpp \
     src/commonItems/note.cpp \
+    src/commonItems/package.cpp \
     src/commonItems/systemboundry.cpp
 
 

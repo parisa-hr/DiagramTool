@@ -73,5 +73,8 @@
         <file>icons/Tools/mouseMenu/editcut.png</file>
         <file>qml/main.qml</file>
         <file>icons/Tools/Component/Port.svg</file>
+        <file>icons/Tools/Component/Interface.svg</file>
+        <file>icons/Tools/Component/Requiredinterface.svg</file>
+        <file>icons/Tools/Component/ProvidedInterface.svg</file>
     </qresource>
 </RCC>

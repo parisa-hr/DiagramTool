@@ -9,11 +9,12 @@
 #include "classdiagram.h"
 #include "classitem.h"
 #include "../../commonItems/note.h"
-#include "package.h"
 #include "entityitem.h"
 #include "controlitem.h"
 
 #include <src/Base/objectkeeper.h>
+
+#include <src/commonItems/package.h>
 
 ClassDiagram::ClassDiagram()
 {
@@ -212,7 +213,7 @@ void  ClassDiagram::addNote()
 
 void  ClassDiagram::addPackage()
 {
-    Package *_package = new Package();
+    Package *_package = new Package(this);
 
     _package->setFlag(QGraphicsItem::ItemIsMovable);
     _package->setFlag(QGraphicsItem::ItemIsSelectable);

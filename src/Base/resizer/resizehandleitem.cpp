@@ -5,12 +5,12 @@
 #include <QCursor>
 #include <QGraphicsSceneMouseEvent>
 
-QHash<int, QWeakPointer<HandlerStrategy>> GraphicsItemResizer::HandleItem::Strategies;
+QHash<int, QWeakPointer<HandlerStrategy>>  GraphicsItemResizer::HandleItem::Strategies;
 
-GraphicsItemResizer::HandleItem::HandleItem(int attachmentFlags, const QRectF &rect, GraphicsItemResizer *resizer)
-    : QGraphicsRectItem(rect, resizer)
-    , mResizer(resizer)
-    , mHandleMoveAsResize(false)
+GraphicsItemResizer::HandleItem::HandleItem(int attachmentFlags, const QRectF &rect, GraphicsItemResizer *resizer):
+    QGraphicsRectItem(rect, resizer),
+    mResizer(resizer),
+    mHandleMoveAsResize(false)
 {
     mAttachmentFlags = cleanAttachment(attachmentFlags);
 
@@ -18,28 +18,31 @@ GraphicsItemResizer::HandleItem::HandleItem(int attachmentFlags, const QRectF &r
     setAcceptedMouseButtons(Qt::LeftButton);
 
     setBrush(QBrush(Qt::black));
+
     setCursor(getCursor(mAttachmentFlags));
 
     mStrategy = getStrategy(mAttachmentFlags);
 }
 
-void GraphicsItemResizer::HandleItem::targetRectChanged(const QRectF &targetRect)
+void  GraphicsItemResizer::HandleItem::targetRectChanged(const QRectF &targetRect)
 {
-    QSizeF halfSize = rect().size() / 2.0f;
-    QPointF newPos = targetRect.center() - QPointF(halfSize.width(), halfSize.height());
+    QSizeF   halfSize = rect().size() / 2.0f;
+    QPointF  newPos   = targetRect.center() - QPointF(halfSize.width(), halfSize.height());
+
     mStrategy->alignPosition(targetRect, newPos);
     setPos(newPos);
 }
 
-GraphicsItemResizer *GraphicsItemResizer::HandleItem::resizer() const
+GraphicsItemResizer * GraphicsItemResizer::HandleItem::resizer() const
 {
     return mResizer;
 }
 
-int GraphicsItemResizer::HandleItem::cleanAttachment(int attachment)
+int  GraphicsItemResizer::HandleItem::cleanAttachment(int attachment)
 {
     Q_ASSERT(attachment != 0);
-    int valid = 0;
+    int  valid = 0;
+
     if (attachment & Left)
     {
         valid |= Left;
@@ -58,25 +61,28 @@ int GraphicsItemResizer::HandleItem::cleanAttachment(int attachment)
     {
         valid |= Bottom;
     }
+
     Q_ASSERT(valid != 0);
+
     return valid;
 }
 
-Qt::CursorShape GraphicsItemResizer::HandleItem::getCursor(int attachment)
+Qt::CursorShape  GraphicsItemResizer::HandleItem::getCursor(int attachment)
 {
-    static int HorizontalMask = Left | Right;
-    static int VerticalMask = Top | Bottom;
+    static int  HorizontalMask = Left | Right;
+    static int  VerticalMask   = Top | Bottom;
 
     if ((attachment & VerticalMask) == 0)
     {
         return Qt::SizeHorCursor;
     }
+
     if ((attachment & HorizontalMask) == 0)
     {
         return Qt::SizeVerCursor;
     }
 
-    if (attachment == (Left | Top) || attachment == (Right | Bottom))
+    if ((attachment == (Left | Top)) || (attachment == (Right | Bottom)))
     {
         return Qt::SizeFDiagCursor;
     }
@@ -84,18 +90,20 @@ Qt::CursorShape GraphicsItemResizer::HandleItem::getCursor(int attachment)
     return Qt::SizeBDiagCursor;
 }
 
-QSharedPointer<HandlerStrategy> GraphicsItemResizer::HandleItem::getStrategy(int attachment)
+QSharedPointer<HandlerStrategy>  GraphicsItemResizer::HandleItem::getStrategy(int attachment)
 {
     if (attachment == 0)
     {
         return HandlerStrategyPointer();
     }
 
-    QWeakPointer<HandlerStrategy> &weak = Strategies[attachment];
-    HandlerStrategyPointer strategy = weak.toStrongRef();
+    QWeakPointer<HandlerStrategy> &weak     = Strategies[attachment];
+    HandlerStrategyPointer         strategy = weak.toStrongRef();
+
     if (strategy.isNull())
     {
         HandlerStrategy *s = nullptr;
+
         // Horizontal
         if (attachment & Left)
         {
@@ -115,6 +123,7 @@ QSharedPointer<HandlerStrategy> GraphicsItemResizer::HandleItem::getStrategy(int
         {
             s = new BottomHandlerStrategy(s);
         }
+
         Q_ASSERT(s != nullptr);
         strategy.reset(s);
         weak = strategy;
@@ -123,33 +132,34 @@ QSharedPointer<HandlerStrategy> GraphicsItemResizer::HandleItem::getStrategy(int
     return strategy;
 }
 
-
-void GraphicsItemResizer::HandleItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
+void  GraphicsItemResizer::HandleItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     mHandleMoveAsResize = true;
     event->accept();
 }
 
-void GraphicsItemResizer::HandleItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+void  GraphicsItemResizer::HandleItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
     if (!mHandleMoveAsResize)
     {
         event->ignore();
+
         return;
     }
-    QPointF mousePos = event->pos();
-    QPointF offset = mousePos - event->lastPos();
-    QRectF targetRect(QPointF(), resizer()->targetSize());
-    QSizeF minSize = resizer()->minSize();
-    QRectF bounds = boundingRect();
-    HandlerStrategy::PointPosition p = HandlerStrategy::PointPosition(mousePos, bounds);
+
+    QPointF                         mousePos = event->pos();
+    QPointF                         offset   = mousePos - event->lastPos();
+    QRectF                          targetRect(QPointF(), resizer()->targetSize());
+    QSizeF                          minSize = resizer()->minSize();
+    QRectF                          bounds  = boundingRect();
+    HandlerStrategy::PointPosition  p       = HandlerStrategy::PointPosition(mousePos, bounds);
 
     mStrategy->solveConstraints(offset, minSize, targetRect, p);
 
     resizer()->updateTargetRect(targetRect);
 }
 
-void GraphicsItemResizer::HandleItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+void  GraphicsItemResizer::HandleItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
     event->setAccepted(mHandleMoveAsResize);
     mHandleMoveAsResize = false;

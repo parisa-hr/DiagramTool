@@ -4,7 +4,7 @@
    height="128"
    version="1.1"
    id="svg136"
-   sodipodi:docname="Port.svg"
+   sodipodi:docname="Interface.svg"
    inkscape:version="1.1 (ce6663b3b7, 2021-05-25)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -59,10 +59,10 @@ ol { margin-top: 0px; margin-bottom: 10px }
      transform="translate(0.5,-301.5)"
      id="g134">
     <rect
-       x="27.188999"
-       y="329.18906"
-       width="72.622002"
-       height="72.621864"
+       x="15.47768"
+       y="332.47769"
+       width="96.04464"
+       height="66.044624"
        pointer-events="none"
        id="rect78"
        style="fill:#ed2a13;fill-opacity:1;stroke:#ffffff;stroke-width:11;stroke-linejoin:round;stroke-miterlimit:6;stroke-dasharray:none;stroke-opacity:1" />

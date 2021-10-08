@@ -1,13 +1,13 @@
 #ifndef PACKAGE_H
 #define PACKAGE_H
 
-#include <QGraphicsItem>
+#include <QObject>
 #include "src/Base/baseitem.h"
 
 class Package: public BaseItem
 {
 public:
-    Package();
+    explicit Package(QObject *parent = nullptr);
 
     QRectF        boundingRect() const override;
 

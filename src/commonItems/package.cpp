@@ -3,10 +3,12 @@
 #include <QPainter>
 #include <QPen>
 
-Package::Package()
+Package::Package(QObject *parent)
 {
     setAcceptHoverEvents(true);
     setZValue(101);
+    setRect(QRect(0, 0, 200, 100));
+    setBrush(QColor(240, 255, 255));
 }
 
 QRectF  Package::boundingRect() const
@@ -32,8 +34,6 @@ void  Package::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
     painter->setBrush(brush());
     painter->setRenderHint(QPainter::Antialiasing);
     painter->setPen(pen);
-
-// painter->drawRect(rect());
 
     QRectF  r1 = QRectF(0.0, 0.0, rect().width() / 10, rect().width() / 10);
     painter->drawRect(r1);

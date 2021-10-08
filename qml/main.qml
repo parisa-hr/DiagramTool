@@ -14,16 +14,11 @@ ApplicationWindow {
     }
 
 
-
-
-
     LauncherPage {
         id: launcherPage
         focus: true
         anchors.fill: parent
 
     }
-
-
 
 }
