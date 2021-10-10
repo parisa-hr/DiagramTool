@@ -1,7 +1,5 @@
 ﻿#include "usecase.h"
 #include <QCoreApplication>
-#include <QGraphicsScene>
-
 #include <QDebug>
 #include <QIcon>
 #include "actor.h"
