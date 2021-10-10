@@ -4,6 +4,10 @@
 
 Node::Node(QObject *parent)
 {
+    setAcceptHoverEvents(true);
+    setZValue(101);
+    setRect(QRect(0, 0, 200, 100));
+    setBrush(QColor(240, 255, 255));
 }
 
 QRectF  Node::boundingRect() const
@@ -30,4 +34,6 @@ void  Node::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
     painter->setBrush(Qt::NoBrush);
 
     painter->setPen(pen);
+
+    painter->drawRect(rect());
 }
