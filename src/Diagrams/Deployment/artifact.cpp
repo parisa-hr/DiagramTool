@@ -32,4 +32,7 @@ void  Artifact::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
     auto  pen = QPen(Qt::black, 2);
     pen.setCosmetic(true);
     painter->setBrush(Qt::NoBrush);
+    painter->setPen(pen);
+
+    painter->drawRect(rect());
 }
