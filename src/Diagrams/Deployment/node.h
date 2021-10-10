@@ -3,14 +3,18 @@
 
 #include <QObject>
 
-class Node : public QObject
+#include <src/Base/baseitem.h>
+
+class Node: public BaseItem
 {
-    Q_OBJECT
 public:
     explicit Node(QObject *parent = nullptr);
 
-signals:
+    QRectF        boundingRect() const override;
 
+    QPainterPath  shape() const override;
+
+    void          paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
 };
 
 #endif // NODE_H

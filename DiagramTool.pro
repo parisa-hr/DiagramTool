@@ -46,6 +46,8 @@ HEADERS += \
     src/Diagrams/Component/port.h \
     src/Diagrams/Component/providedinterface.h \
     src/Diagrams/Component/requiredinterface.h \
+    src/Diagrams/Deployment/artifact.h \
+    src/Diagrams/Deployment/node.h \
     src/Diagrams/UseCase/actor.h \
     src/Diagrams/UseCase/usecase.h \
     src/Diagrams/Activity/activity.h \
@@ -90,6 +92,8 @@ SOURCES += \
     src/Diagrams/Component/port.cpp \
     src/Diagrams/Component/providedinterface.cpp \
     src/Diagrams/Component/requiredinterface.cpp \
+    src/Diagrams/Deployment/artifact.cpp \
+    src/Diagrams/Deployment/node.cpp \
     src/Diagrams/UseCase/actor.cpp \
     src/Diagrams/UseCase/usecase.cpp \
     src/Diagrams/Activity/activity.cpp \

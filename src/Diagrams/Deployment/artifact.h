@@ -2,15 +2,18 @@
 #define ARTIFACT_H
 
 #include <QObject>
+#include "src/Base/baseitem.h"
 
-class Artifact : public QObject
+class Artifact: public BaseItem
 {
-    Q_OBJECT
 public:
     explicit Artifact(QObject *parent = nullptr);
 
-signals:
+    QRectF        boundingRect() const override;
 
+    QPainterPath  shape() const override;
+
+    void          paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
 };
 
 #endif // ARTIFACT_H
