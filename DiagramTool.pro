@@ -47,6 +47,7 @@ HEADERS += \
     src/Diagrams/Component/providedinterface.h \
     src/Diagrams/Component/requiredinterface.h \
     src/Diagrams/Deployment/artifact.h \
+    src/Diagrams/Deployment/database.h \
     src/Diagrams/Deployment/node.h \
     src/Diagrams/UseCase/actor.h \
     src/Diagrams/UseCase/usecase.h \
@@ -93,6 +94,7 @@ SOURCES += \
     src/Diagrams/Component/providedinterface.cpp \
     src/Diagrams/Component/requiredinterface.cpp \
     src/Diagrams/Deployment/artifact.cpp \
+    src/Diagrams/Deployment/database.cpp \
     src/Diagrams/Deployment/node.cpp \
     src/Diagrams/UseCase/actor.cpp \
     src/Diagrams/UseCase/usecase.cpp \
