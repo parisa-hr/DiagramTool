@@ -6,7 +6,7 @@ Artifact::Artifact(QObject *parent)
 {
     setAcceptHoverEvents(true);
     setZValue(101);
-    setRect(QRect(0, 0, 200, 100));
+    setRect(QRect(0, 0, 150, 200));
     setBrush(QColor(240, 255, 255));
 }
 
@@ -28,11 +28,26 @@ void  Artifact::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
 {
     Q_UNUSED(widget);
 
-    painter->setRenderHint(QPainter::Antialiasing);
     auto  pen = QPen(Qt::black, 2);
     pen.setCosmetic(true);
-    painter->setBrush(Qt::NoBrush);
+    painter->setBrush(brush());
+    painter->setRenderHint(QPainter::Antialiasing);
     painter->setPen(pen);
 
-    painter->drawRect(rect());
+    QPointF  points[5] = {
+        QPointF(0.0,                                                           0.0),
+        QPointF((rect().width() - (rect().width() / 5.0)),                     0.0),
+        QPointF(rect().width(),                            (rect().height() / 5.0)),
+        QPointF(rect().width(),                            rect().height()),
+        QPointF(0.0,                                       rect().height())
+    };
+
+    painter->drawConvexPolygon(points, 5);
+
+    QPointF  _points[3] = {
+        QPointF((rect().width() - rect().width() / 5.0),                   0.0),
+        QPointF(rect().width(),                          rect().height() / 5.0),
+        QPointF((rect().width() - rect().width() / 5.0), rect().height() / 5.0)
+    };
+    painter->drawConvexPolygon(_points, 3);
 }
