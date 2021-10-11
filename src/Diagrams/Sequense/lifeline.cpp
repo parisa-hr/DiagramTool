@@ -41,9 +41,9 @@ void  Lifeline::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
 
     painter->setPen(pen2);
 
-// painter->drawRect()
+    painter->drawRect(0.0, 0.0, rect().width(), rect().height() / 8);
 
     painter->restore();
 
-    painter->drawLine(rect().width() / 2.0, 0.0, rect().width() / 2.0, rect().height());
+    painter->drawLine(rect().width() / 2.0, rect().height() / 8, rect().width() / 2.0, rect().height());
 }
