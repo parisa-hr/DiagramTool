@@ -7,6 +7,7 @@ Note::Note(QObject *parent)
 {
     setAcceptHoverEvents(true);
     setZValue(101);
+    setRect(QRect(0, 0, 150, 200));
 }
 
 QRectF  Note::boundingRect() const
