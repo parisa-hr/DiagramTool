@@ -62,14 +62,15 @@ Deployment::Deployment()
 
     menuBar()->addToolButton(act4);
 
-    QAction *act5 = new QAction("Instance");
-    act5->setIcon(QIcon(":/icons/Tools/Deployment/Instance.svg"));
+    QAction *act5 = new QAction("Database");
+    act5->setIcon(QIcon(":/icons/Tools/Deployment/Database.svg"));
     act5->setToolTip(QCoreApplication::translate("MenuBar",
                                                  "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">Instance</font></p></body></html>",
                                                  nullptr));
     connect(act5, &QAction::triggered, this, &Deployment::addDataBase);
 
-    menuBar()->addToolButton(act4);
+    menuBar()->addToolButton(act5);
+
 
     cmd = new ShapeCommand();
 }
