@@ -3,7 +3,7 @@
 
 #include <QObject>
 #include "../../Base/diagrambase.h"
-
+#include "../../Base/diagramcommand.h"
 
 class Sequence: public DiagramBase
 {
@@ -12,8 +12,13 @@ class Sequence: public DiagramBase
 public:
     Sequence();
 
-signals:
-public slots:
+    ~Sequence();
+
+private slots:
+    void  addLifeLine();
+
+private:
+    ShapeCommand *cmd;
 };
 
 #endif // SEQUENCE_H
