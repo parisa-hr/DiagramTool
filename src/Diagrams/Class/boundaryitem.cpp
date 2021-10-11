@@ -7,6 +7,7 @@ BoundaryItem::BoundaryItem(QObject *parent)
 {
     setAcceptHoverEvents(true);
     setZValue(101);
+    setRect(QRect(0, 0, 200, 100));
 }
 
 QRectF  BoundaryItem::boundingRect() const
@@ -35,5 +36,7 @@ void  BoundaryItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opt
 
     painter->drawLine(0, rect().height() / 5.0, 0, rect().height() - (rect().height() / 5.0));
     painter->drawLine(0, rect().height() / 2.0, rect().width() / 2.0, rect().height() / 2.0);
-    painter->drawEllipse(rect().width() / 2.0, 0.0, rect().height(), rect().height());
+
+    // ToDo:Fix this . the width should be always greater than height
+    painter->drawEllipse(rect().width() / 2.0, rect().height() / 20.0, rect().height() / 1.2, rect().height() / 1.2);
 }
