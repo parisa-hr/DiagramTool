@@ -3,14 +3,18 @@
 
 #include <QObject>
 
-class ActivationOccurrence : public QObject
+#include <src/Base/baseitem.h>
+
+class ActivationOccurrence: public BaseItem
 {
-    Q_OBJECT
 public:
     explicit ActivationOccurrence(QObject *parent = nullptr);
 
-signals:
+    QRectF        boundingRect() const override;
 
+    QPainterPath  shape() const override;
+
+    void          paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
 };
 
 #endif // ACTIVATIONOCCURRENCE_H
