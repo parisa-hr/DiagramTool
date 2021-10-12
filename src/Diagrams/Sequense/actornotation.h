@@ -3,14 +3,19 @@
 
 #include <QObject>
 
-class ActorNotation : public QObject
+#include <src/Base/baseitem.h>
+
+class ActorNotation: public BaseItem
 {
-    Q_OBJECT
 public:
     explicit ActorNotation(QObject *parent = nullptr);
 
-signals:
+    QRectF        boundingRect() const override;
 
+    QPainterPath  shape() const override;
+
+    void          paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
 };
+
 
 #endif // ACTORNOTATION_H
