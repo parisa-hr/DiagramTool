@@ -23,6 +23,8 @@ public:
 
     void  addDecisionNode();
 
+    void  addSwimLane();
+
 private:
     ShapeCommand *cmd;
 };

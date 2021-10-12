@@ -33,5 +33,5 @@ void  ActivityItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opt
 
     painter->setBrush(brush());
 
-    painter->drawRect(rect());
+    painter->drawRoundedRect(rect(), 20.0, 15.0);
 }

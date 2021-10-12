@@ -7,6 +7,7 @@
 #include "decisionnode.h"
 #include "finalnode.h"
 #include "startnode.h"
+#include "swimlane.h"
 
 #include "../../Base/resizer/graphicsitemresizer.h"
 
@@ -93,6 +94,8 @@ Activity::Activity()
                                                  "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">Swimlane</font></p></body></html>",
                                                  nullptr));
 
+    connect(act8, &QAction::triggered, this, &Activity::addSwimLane);
+
     menuBar()->addToolButton(act8);
 
     cmd = new ShapeCommand();
@@ -159,4 +162,19 @@ void  Activity::addDecisionNode()
     ObjectKeeper::instance()->createCommand(cmd);
 
     getScene()->addItem(_decisionNode);
+}
+
+void  Activity::addSwimLane()
+{
+    Swimlane *_swimLane = new Swimlane(this);
+
+    _swimLane->setFlag(QGraphicsItem::ItemIsMovable);
+    _swimLane->setFlag(QGraphicsItem::ItemIsSelectable);
+    _swimLane->setFlag(QGraphicsItem::ItemIsFocusable);
+
+    cmd->setItem(_swimLane);
+
+    ObjectKeeper::instance()->createCommand(cmd);
+
+    getScene()->addItem(_swimLane);
 }
