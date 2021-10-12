@@ -3,14 +3,21 @@
 
 #include <QObject>
 
-class ControlNotation : public QObject
+#include <src/Base/baseitem.h>
+
+class ControlNotation: public BaseItem
 {
     Q_OBJECT
+
 public:
     explicit ControlNotation(QObject *parent = nullptr);
 
-signals:
+    QRectF        boundingRect() const override;
 
+    QPainterPath  shape() const override;
+
+    void          paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
 };
+
 
 #endif // CONTROLNOTATION_H
