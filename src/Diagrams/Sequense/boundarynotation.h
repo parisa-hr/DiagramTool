@@ -3,14 +3,19 @@
 
 #include <QObject>
 
-class BoundaryNotation : public QObject
+#include <src/Base/baseitem.h>
+
+class BoundaryNotation: public BaseItem
 {
-    Q_OBJECT
 public:
     explicit BoundaryNotation(QObject *parent = nullptr);
 
-signals:
+    QRectF        boundingRect() const override;
 
+    QPainterPath  shape() const override;
+
+    void          paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
 };
+
 
 #endif // BOUNDARYNOTATION_H
