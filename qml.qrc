@@ -76,5 +76,6 @@
         <file>icons/Tools/Component/Requiredinterface.svg</file>
         <file>icons/Tools/Component/ProvidedInterface.svg</file>
         <file>icons/Tools/Deployment/Database.svg</file>
+        <file>qml/SettingDialog.qml</file>
     </qresource>
 </RCC>
