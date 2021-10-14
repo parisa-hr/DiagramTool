@@ -21,6 +21,8 @@ private slots:
 
     void  addSystemBoundry();
 
+    void  addPackage();
+
 private:
     ShapeCommand *cmd;
 };

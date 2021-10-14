@@ -5,6 +5,7 @@
 #include "actor.h"
 #include "usecaseitem.h"
 #include "../../Base/objectkeeper.h"
+#include <src/commonItems/package.h>
 #include <src/commonItems/systemboundry.h>
 
 UseCase::UseCase()
@@ -51,32 +52,30 @@ UseCase::UseCase()
 
     menuBar()->addToolButton(act4);
 
-    QAction *act5 = new QAction("Include");
-    act5->setIcon(QIcon(":/icons/Tools/usecase/include.svg"));
+
+    QAction *act5 = new QAction("System Boundry");
+    act5->setIcon(QIcon(":/icons/Tools/usecase/System Boundry.svg"));
     act5->setToolTip(QCoreApplication::translate("MenuBar",
-                                                 "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">Include</font></p></body></html>",
-                                                 nullptr));
-
-    menuBar()->addToolButton(act5);
-
-    QAction *act6 = new QAction("Extend");
-    act6->setIcon(QIcon(":/icons/Tools/usecase/Extend.svg"));
-    act6->setToolTip(QCoreApplication::translate("MenuBar",
-                                                 "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">Extend</font></p></body></html>",
-                                                 nullptr));
-
-    menuBar()->addToolButton(act6);
-
-    QAction *act7 = new QAction("System Boundry");
-    act7->setIcon(QIcon(":/icons/Tools/usecase/System Boundry.svg"));
-    act7->setToolTip(QCoreApplication::translate("MenuBar",
                                                  "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">System Boundry</font></p></body></html>",
                                                  nullptr));
 
-    connect(act7, &QAction::triggered, this, &UseCase::addSystemBoundry);
+    connect(act5, &QAction::triggered, this, &UseCase::addSystemBoundry);
 
 
-    menuBar()->addToolButton(act7);
+    menuBar()->addToolButton(act5);
+
+
+    QAction *act6 = new QAction("Package");
+    act6->setIcon(QIcon(":/icons/Tools/class/package.svg"));
+    act6->setToolTip(QCoreApplication::translate("MenuBar",
+                                                 "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">Package</font></p></body></html>",
+                                                 nullptr));
+
+    connect(act6, &QAction::triggered, this, &UseCase::addPackage);
+
+
+    menuBar()->addToolButton(act6);
+
 
     cmd = new ShapeCommand();
 }
@@ -123,4 +122,18 @@ void  UseCase::addSystemBoundry()
     ObjectKeeper::instance()->createCommand(cmd);
 
     getScene()->addItem(_systemBoundry);
+}
+
+void  UseCase::addPackage()
+{
+    Package *_package = new Package(this);
+
+    _package->setFlag(QGraphicsItem::ItemIsMovable);
+    _package->setFlag(QGraphicsItem::ItemIsSelectable);
+    _package->setFlag(QGraphicsItem::ItemIsFocusable);
+
+    cmd->setItem(_package);
+    ObjectKeeper::instance()->createCommand(cmd);
+
+    getScene()->addItem(_package);
 }
