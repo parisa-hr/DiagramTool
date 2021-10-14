@@ -7,8 +7,6 @@
 
 class ControlNotation: public BaseItem
 {
-    Q_OBJECT
-
 public:
     explicit ControlNotation(QObject *parent = nullptr);
 
