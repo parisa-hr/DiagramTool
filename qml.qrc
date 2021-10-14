@@ -47,10 +47,8 @@
         <file>icons/Tools/Activity/Decision.svg</file>
         <file>icons/Tools/Activity/Start.svg</file>
         <file>icons/Tools/Activity/final.svg</file>
-        <file>icons/Tools/class/class.svg</file>
         <file>icons/Tools/class/Note.svg</file>
         <file>icons/Tools/class/package.svg</file>
-        <file>icons/Tools/class/Boundry.svg</file>
         <file>icons/Tools/class/Controller.svg</file>
         <file>icons/Tools/class/Entity.svg</file>
         <file>icons/Tools/class/Aggregation.svg</file>
@@ -76,5 +74,7 @@
         <file>qml/SettingDialog.qml</file>
         <file>icons/Setting/33411769.jpg</file>
         <file>icons/Setting/close.svg</file>
+        <file>icons/Tools/class/Boundry.svg</file>
+        <file>icons/Tools/class/class.svg</file>
     </qresource>
 </RCC>

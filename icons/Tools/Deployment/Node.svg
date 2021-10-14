@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="128"
    height="128"
    viewBox="0 0 33.866666 33.866668"
    version="1.1"
    id="svg8"
-   inkscape:version="1.0.1 (0767f8302a, 2020-10-17)"
-   sodipodi:docname="Node.svg">
+   inkscape:version="1.1 (ce6663b3b7, 2021-05-25)"
+   sodipodi:docname="Node.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -24,18 +24,19 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.979899"
-     inkscape:cx="80.712032"
-     inkscape:cy="83.093751"
+     inkscape:cx="80.812203"
+     inkscape:cy="83.085046"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
      showgrid="false"
      units="px"
      inkscape:window-width="1366"
-     inkscape:window-height="672"
+     inkscape:window-height="670"
      inkscape:window-x="0"
      inkscape:window-y="27"
-     inkscape:window-maximized="1" />
+     inkscape:window-maximized="1"
+     inkscape:pagecheckerboard="0" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -44,7 +45,6 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -59,7 +59,7 @@
        stroke-miterlimit="10"
        pointer-events="all"
        id="path32"
-       style="stroke-width:0.363443" />
+       style="stroke-width:0.363443;fill:#fe220d;fill-opacity:1" />
     <path
        d="M 4.6622291,10.33623 H 24.784909 V 28.716311 H 4.6622291 V 10.33623 M 7.5368975,5.7412102 H 27.659577 L 24.784909,10.33623 H 4.6622291 L 7.5368975,5.7412102 m 20.1226795,0 V 24.121291 l -2.874668,4.59502 V 10.33623"
        fill="none"
