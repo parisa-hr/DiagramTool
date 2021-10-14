@@ -75,5 +75,6 @@
         <file>icons/Tools/Deployment/Database.svg</file>
         <file>qml/SettingDialog.qml</file>
         <file>icons/Setting/33411769.jpg</file>
+        <file>icons/Setting/close.svg</file>
     </qresource>
 </RCC>
