@@ -14,6 +14,12 @@ PathView {
     readonly property int size: Math.min(width - 80, height)
     readonly property int radius: size / 2 - itemSize / 3
 
+    SettingDialog
+    {
+        id:settingDialog
+        visible: false
+    }
+
 
 
     snapMode: PathView.SnapToItem
@@ -45,11 +51,11 @@ PathView {
         ListElement {
             title: qsTr("Deployment Diagram")
             icon: "Deployment"
-            page: "Alarms/AlarmsPage.qml"
         }
         ListElement {
             title: qsTr("Settings")
             icon: "setting"
+
         }
     }
 
@@ -88,6 +94,8 @@ PathView {
                     Activity.showFullScreen()
                 else if(currentIndex==5)
                     Deployment.showFullScreen()
+                else if(currentIndex==6)
+                    settingDialog.visible = true
                 else
                     circularView.currentIndex = index
 
