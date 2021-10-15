@@ -6,7 +6,7 @@ Lifeline::Lifeline(QObject *parent)
 {
     setAcceptHoverEvents(true);
     setZValue(101);
-    setRect(QRect(0, 0, 100, 300));
+    setRect(QRect(0, 0, 200, 600));
 }
 
 QRectF  Lifeline::boundingRect() const
@@ -41,9 +41,9 @@ void  Lifeline::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
 
     painter->setPen(pen2);
 
-    painter->drawRect(0.0, 0.0, rect().width(), rect().height() / 8);
+    painter->drawRect(0.0, 0.0, rect().width(), rect().height() / 10);
 
     painter->restore();
 
-    painter->drawLine(rect().width() / 2.0, rect().height() / 8, rect().width() / 2.0, rect().height());
+    painter->drawLine(rect().width() / 2.0, rect().height() / 10, rect().width() / 2.0, rect().height());
 }
