@@ -17,6 +17,10 @@ public:
 private slots:
     void  addLifeLine();
 
+    void  addActor();
+
+    void  addActivationOccurrence();
+
 private:
     ShapeCommand *cmd;
 };

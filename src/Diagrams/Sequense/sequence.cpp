@@ -1,3 +1,5 @@
+#include "activationoccurrence.h"
+#include "actornotation.h"
 #include "lifeline.h"
 #include "sequence.h"
 
@@ -17,7 +19,39 @@ Sequence::Sequence()
     menuBar()->addToolButton(act1);
 
 
-    connect(act1, &QAction::triggered, this, &Sequence::addLifeLine);
+    connect(act1, &QAction::triggered, this, &Sequence::addActor);
+
+    QAction *act2 = new QAction("LifeLine");
+// act1->setIcon(QIcon(":/icons/Tools/usecase/Actor.svg"));
+    act2->setToolTip(QCoreApplication::translate("MenuBar",
+                                                 "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">Actor</font></p></body></html>",
+                                                 nullptr));
+
+    menuBar()->addToolButton(act2);
+
+
+    connect(act2, &QAction::triggered, this, &Sequence::addLifeLine);
+
+    QAction *act3 = new QAction("Actor");
+// act1->setIcon(QIcon(":/icons/Tools/usecase/Actor.svg"));
+    act3->setToolTip(QCoreApplication::translate("MenuBar",
+                                                 "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">Actor</font></p></body></html>",
+                                                 nullptr));
+
+    menuBar()->addToolButton(act3);
+    connect(act3, &QAction::triggered, this, &Sequence::addLifeLine);
+
+
+    QAction *act4 = new QAction("Actor");
+// act1->setIcon(QIcon(":/icons/Tools/usecase/Actor.svg"));
+    act4->setToolTip(QCoreApplication::translate("MenuBar",
+                                                 "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">Actor</font></p></body></html>",
+                                                 nullptr));
+
+    menuBar()->addToolButton(act4);
+
+
+    connect(act4, &QAction::triggered, this, &Sequence::addActivationOccurrence);
 
     cmd = new ShapeCommand();
 }
@@ -38,4 +72,30 @@ void  Sequence::addLifeLine()
 
     ObjectKeeper::instance()->createCommand(cmd);
     getScene()->addItem(_lifeLine);
+}
+
+void  Sequence::addActor()
+{
+    ActorNotation *_act = new ActorNotation(this);
+
+    _act->setFlag(QGraphicsItem::ItemIsMovable);
+    _act->setFlag(QGraphicsItem::ItemIsSelectable);
+    _act->setFlag(QGraphicsItem::ItemIsFocusable);
+    cmd->setItem(_act);
+
+    ObjectKeeper::instance()->createCommand(cmd);
+    getScene()->addItem(_act);
+}
+
+void  Sequence::addActivationOccurrence()
+{
+    ActivationOccurrence *_item = new ActivationOccurrence(this);
+
+    _item->setFlag(QGraphicsItem::ItemIsMovable);
+    _item->setFlag(QGraphicsItem::ItemIsSelectable);
+    _item->setFlag(QGraphicsItem::ItemIsFocusable);
+    cmd->setItem(_item);
+
+    ObjectKeeper::instance()->createCommand(cmd);
+    getScene()->addItem(_item);
 }
