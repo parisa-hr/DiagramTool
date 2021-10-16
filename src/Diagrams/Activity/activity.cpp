@@ -2,6 +2,7 @@
 
 #include <QCoreApplication>
 #include <QGraphicsScene>
+#include <src/Base/objectkeeper.h>
 
 #include "activityitem.h"
 #include "decisionnode.h"
@@ -10,8 +11,6 @@
 #include "swimlane.h"
 
 #include "../../Base/resizer/graphicsitemresizer.h"
-
-#include <src/Base/objectkeeper.h>
 
 Activity::Activity()
 {

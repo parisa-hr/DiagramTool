@@ -6,7 +6,8 @@ StartNode::StartNode(QObject *parent)
 {
     setAcceptHoverEvents(true);
     setZValue(101);
-    setRect(QRect(0, 0, 100, 100));
+    setRect(QRect(0, 0, 50, 50));
+    setBrush(Qt::black);
 }
 
 QRectF  StartNode::boundingRect() const

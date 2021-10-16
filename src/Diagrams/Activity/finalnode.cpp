@@ -6,6 +6,7 @@ FinalNode::FinalNode(QObject *parent)
 {
     setAcceptHoverEvents(true);
     setZValue(101);
+    setRect(QRect(0, 0, 50, 50));
 }
 
 QRectF  FinalNode::boundingRect() const
