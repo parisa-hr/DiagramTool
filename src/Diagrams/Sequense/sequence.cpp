@@ -103,7 +103,7 @@ void  Sequence::addActivationOccurrence()
 
 void  Sequence::addDeleteMessage()
 {
-    DeleteMessage *_item = new DeleteMessage();
+    DeleteMessage *_item = new DeleteMessage(this);
 
     _item->setFlag(QGraphicsItem::ItemIsMovable);
     _item->setFlag(QGraphicsItem::ItemIsSelectable);

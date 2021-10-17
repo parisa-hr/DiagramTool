@@ -33,5 +33,19 @@ void  DeleteMessage::paint(QPainter *painter, const QStyleOptionGraphicsItem *op
     painter->setRenderHint(QPainter::Antialiasing);
     painter->setPen(pen);
 
-    painter->drawRect(rect());
+    auto  _rect1 = QRect(-rect().width() / 10, rect().height() / 5, rect().width() / 5, rect().height());
+
+    painter->save();
+    painter->rotate(-45);
+    painter->setBrush(Qt::black);
+    painter->drawRect(_rect1);
+    painter->restore();
+
+    auto  _rect2 = QRect(rect().width() - (2 * (rect().width() / 5)), -(2 * rect().height() / 5) - (rect().height() / 10), rect().width() / 5, rect().height());
+
+    painter->save();
+    painter->rotate(45);
+    painter->setBrush(Qt::black);
+    painter->drawRect(_rect2);
+    painter->restore();
 }
