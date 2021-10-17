@@ -51,9 +51,11 @@ HEADERS += \
     src/Diagrams/Deployment/node.h \
     src/Diagrams/Sequense/activationoccurrence.h \
     src/Diagrams/Sequense/actornotation.h \
+    src/Diagrams/Sequense/alternative.h \
     src/Diagrams/Sequense/deletemessage.h \
     src/Diagrams/Sequense/entitynotation.h \
     src/Diagrams/Sequense/lifeline.h \
+    src/Diagrams/Sequense/optionloop.h \
     src/Diagrams/UseCase/actor.h \
     src/Diagrams/UseCase/usecase.h \
     src/Diagrams/Activity/activity.h \
@@ -102,9 +104,11 @@ SOURCES += \
     src/Diagrams/Deployment/node.cpp \
     src/Diagrams/Sequense/activationoccurrence.cpp \
     src/Diagrams/Sequense/actornotation.cpp \
+    src/Diagrams/Sequense/alternative.cpp \
     src/Diagrams/Sequense/deletemessage.cpp \
     src/Diagrams/Sequense/entitynotation.cpp \
     src/Diagrams/Sequense/lifeline.cpp \
+    src/Diagrams/Sequense/optionloop.cpp \
     src/Diagrams/UseCase/actor.cpp \
     src/Diagrams/UseCase/usecase.cpp \
     src/Diagrams/Activity/activity.cpp \

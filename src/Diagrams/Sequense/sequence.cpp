@@ -1,7 +1,9 @@
 #include "activationoccurrence.h"
 #include "actornotation.h"
+#include "alternative.h"
 #include "deletemessage.h"
 #include "lifeline.h"
+#include "optionloop.h"
 #include "sequence.h"
 
 #include <QCoreApplication>
@@ -104,6 +106,32 @@ void  Sequence::addActivationOccurrence()
 void  Sequence::addDeleteMessage()
 {
     DeleteMessage *_item = new DeleteMessage(this);
+
+    _item->setFlag(QGraphicsItem::ItemIsMovable);
+    _item->setFlag(QGraphicsItem::ItemIsSelectable);
+    _item->setFlag(QGraphicsItem::ItemIsFocusable);
+    cmd->setItem(_item);
+
+    ObjectKeeper::instance()->createCommand(cmd);
+    getScene()->addItem(_item);
+}
+
+void  Sequence::addOptionLoop()
+{
+    OptionLoop *_item = new OptionLoop(this);
+
+    _item->setFlag(QGraphicsItem::ItemIsMovable);
+    _item->setFlag(QGraphicsItem::ItemIsSelectable);
+    _item->setFlag(QGraphicsItem::ItemIsFocusable);
+    cmd->setItem(_item);
+
+    ObjectKeeper::instance()->createCommand(cmd);
+    getScene()->addItem(_item);
+}
+
+void  Sequence::addAlternative()
+{
+    Alternative *_item = new Alternative(this);
 
     _item->setFlag(QGraphicsItem::ItemIsMovable);
     _item->setFlag(QGraphicsItem::ItemIsSelectable);

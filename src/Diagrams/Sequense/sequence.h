@@ -23,6 +23,10 @@ private slots:
 
     void  addDeleteMessage();
 
+    void  addOptionLoop();
+
+    void  addAlternative();
+
 private:
     ShapeCommand *cmd;
 };
