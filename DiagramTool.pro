@@ -61,7 +61,6 @@ HEADERS += \
     src/Diagrams/Class/classdiagram.h \
     src/Diagrams/Deployment/deployment.h \ \
     src/Diagrams/UseCase/usecaseitem.h \
-    src/commonItems/arrow.h \
     src/commonItems/note.h \
     src/commonItems/package.h \
     src/commonItems/systemboundry.h
@@ -112,7 +111,6 @@ SOURCES += \
     src/Diagrams/Class/classdiagram.cpp \
     src/Diagrams/Deployment/deployment.cpp \
     src/Diagrams/UseCase/usecaseitem.cpp \
-    src/commonItems/arrow.cpp \
     src/commonItems/note.cpp \
     src/commonItems/package.cpp \
     src/commonItems/systemboundry.cpp
