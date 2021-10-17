@@ -1,5 +1,6 @@
 #include "activationoccurrence.h"
 #include "actornotation.h"
+#include "deletemessage.h"
 #include "lifeline.h"
 #include "sequence.h"
 
@@ -43,7 +44,7 @@ Sequence::Sequence()
 
 
     QAction *act4 = new QAction("Actor");
-// act1->setIcon(QIcon(":/icons/Tools/usecase/Actor.svg"));
+    act4->setIcon(QIcon(":/icons/Tools/Sequence/Delete.svg"));
     act4->setToolTip(QCoreApplication::translate("MenuBar",
                                                  "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">Actor</font></p></body></html>",
                                                  nullptr));
@@ -51,7 +52,7 @@ Sequence::Sequence()
     menuBar()->addToolButton(act4);
 
 
-    connect(act4, &QAction::triggered, this, &Sequence::addActivationOccurrence);
+    connect(act4, &QAction::triggered, this, &Sequence::addDeleteMessage);
 
     cmd = new ShapeCommand();
 }
@@ -90,6 +91,19 @@ void  Sequence::addActor()
 void  Sequence::addActivationOccurrence()
 {
     ActivationOccurrence *_item = new ActivationOccurrence(this);
+
+    _item->setFlag(QGraphicsItem::ItemIsMovable);
+    _item->setFlag(QGraphicsItem::ItemIsSelectable);
+    _item->setFlag(QGraphicsItem::ItemIsFocusable);
+    cmd->setItem(_item);
+
+    ObjectKeeper::instance()->createCommand(cmd);
+    getScene()->addItem(_item);
+}
+
+void  Sequence::addDeleteMessage()
+{
+    DeleteMessage *_item = new DeleteMessage();
 
     _item->setFlag(QGraphicsItem::ItemIsMovable);
     _item->setFlag(QGraphicsItem::ItemIsSelectable);

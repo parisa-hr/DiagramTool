@@ -21,6 +21,8 @@ private slots:
 
     void  addActivationOccurrence();
 
+    void  addDeleteMessage();
+
 private:
     ShapeCommand *cmd;
 };
