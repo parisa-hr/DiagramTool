@@ -21,8 +21,8 @@ Sequence::Sequence()
 
     connect(act1, &QAction::triggered, this, &Sequence::addActor);
 
-    QAction *act2 = new QAction("LifeLine");
-// act1->setIcon(QIcon(":/icons/Tools/usecase/Actor.svg"));
+    QAction *act2 = new QAction("Object");
+    act2->setIcon(QIcon(":/icons/Tools/Sequence/object.svg"));
     act2->setToolTip(QCoreApplication::translate("MenuBar",
                                                  "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">Actor</font></p></body></html>",
                                                  nullptr));
@@ -32,14 +32,14 @@ Sequence::Sequence()
 
     connect(act2, &QAction::triggered, this, &Sequence::addLifeLine);
 
-    QAction *act3 = new QAction("Actor");
-// act1->setIcon(QIcon(":/icons/Tools/usecase/Actor.svg"));
+    QAction *act3 = new QAction("ActivationOccurrence");
+    act3->setIcon(QIcon(":/icons/Tools/Sequence/Activation.svg"));
     act3->setToolTip(QCoreApplication::translate("MenuBar",
                                                  "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">Actor</font></p></body></html>",
                                                  nullptr));
 
     menuBar()->addToolButton(act3);
-    connect(act3, &QAction::triggered, this, &Sequence::addLifeLine);
+    connect(act3, &QAction::triggered, this, &Sequence::addActivationOccurrence);
 
 
     QAction *act4 = new QAction("Actor");

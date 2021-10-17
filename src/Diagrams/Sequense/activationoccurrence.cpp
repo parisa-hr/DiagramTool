@@ -34,5 +34,5 @@ void  ActivationOccurrence::paint(QPainter *painter, const QStyleOptionGraphicsI
 
     painter->setBrush(brush());
 
-    painter->drawRoundedRect(QRect(0, 0, 30, rect().height()), 20.0, 15.0);
+    painter->drawRoundedRect(rect(), 20.0, 15.0);
 }

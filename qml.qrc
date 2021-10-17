@@ -76,5 +76,7 @@
         <file>icons/Setting/close.svg</file>
         <file>icons/Tools/class/Boundry.svg</file>
         <file>icons/Tools/class/class.svg</file>
+        <file>icons/Tools/Sequence/Activation.svg</file>
+        <file>icons/Tools/Sequence/object.svg</file>
     </qresource>
 </RCC>
