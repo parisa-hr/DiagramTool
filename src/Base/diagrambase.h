@@ -89,7 +89,6 @@ private:
     QSharedPointer<QMenu>  myContextMenu;
     QAction               *undoAction;
     QAction               *redoAction;
-    ShapeCommand          *cmd;
 };
 
 #endif // DIAGRAMBASE_H

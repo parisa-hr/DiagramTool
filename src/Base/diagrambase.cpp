@@ -124,7 +124,6 @@ DiagramBase::DiagramBase(QWidget *parent):
     setBackgroundRole(QPalette::Base);
 
     {
-//
         if (DiagramScene::instance() == nullptr)
         {
             scene = new DiagramScene(this);
@@ -142,9 +141,6 @@ DiagramBase::DiagramBase(QWidget *parent):
         {
             new ObjectKeeper(ui->graphicsView);
         }
-
-        cmd = new ShapeCommand();
-
 
         undoAction = ObjectKeeper::instance()->getUndoStack()->createUndoAction(ui->graphicsView, tr("&Undo"));
         undoAction->setShortcuts(QKeySequence::Undo);
@@ -181,6 +177,15 @@ DiagramBase::DiagramBase(QWidget *parent):
             setPalette(*_pal);
             this->update();
         });
+
+        connect(_menuBar->getMainMenu(), &MainMenu::NewFile, this, [this]()
+        {
+            for (auto i : ui->graphicsView->items())
+            {
+              scene->removeItem(i);
+              scene->update();
+            }
+        }, Qt::QueuedConnection);
 
         connect(_menuBar, &MenuBar::SetCursorPan, this, [this]()
         {
@@ -358,6 +363,11 @@ DiagramBase::DiagramBase(QWidget *parent):
 
 DiagramBase::~DiagramBase()
 {
+    delete ObjectKeeper::instance();
+    ui->graphicsView->scene()->clear();
+    delete _menuBar;
+    delete _pal;
+    delete scene;
     delete ui;
 }
 
