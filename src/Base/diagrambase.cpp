@@ -185,6 +185,8 @@ DiagramBase::DiagramBase(QWidget *parent):
               scene->removeItem(i);
               scene->update();
             }
+
+            ObjectKeeper::instance()->getUndoStack()->clear();
         }, Qt::QueuedConnection);
 
         connect(_menuBar, &MenuBar::SetCursorPan, this, [this]()
