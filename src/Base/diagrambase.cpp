@@ -27,6 +27,7 @@
 
 #include <QGraphicsRectItem>
 #include <QColorDialog>
+#include <QPushButton>
 
 #include "mainmenu.h"
 #include "diagramview.h"
@@ -178,15 +179,31 @@ DiagramBase::DiagramBase(QWidget *parent):
             this->update();
         });
 
+
         connect(_menuBar->getMainMenu(), &MainMenu::NewFile, this, [this]()
         {
-            for (auto i : ui->graphicsView->items())
-            {
-              scene->removeItem(i);
-              scene->update();
-            }
+            QMessageBox msgBox;
+            QPushButton *okButton     = msgBox.addButton(QMessageBox::Ok);
+            QPushButton *cancelButton = msgBox.addButton(QMessageBox::Cancel);
 
-            ObjectKeeper::instance()->getUndoStack()->clear();
+            msgBox.setText("All Items will be clear , Are you sure ? ");
+
+            msgBox.exec();
+
+            if (msgBox.clickedButton() == okButton)
+            {
+              for (auto i : ui->graphicsView->items())
+              {
+                scene->removeItem(i);
+                scene->update();
+                }
+
+              ObjectKeeper::instance()->getUndoStack()->clear();
+            }
+            else
+            {
+              return;
+            }
         }, Qt::QueuedConnection);
 
         connect(_menuBar, &MenuBar::SetCursorPan, this, [this]()
