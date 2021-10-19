@@ -45,7 +45,7 @@ Sequence::Sequence()
     connect(act3, &QAction::triggered, this, &Sequence::addActivationOccurrence);
 
 
-    QAction *act4 = new QAction("Actor");
+    QAction *act4 = new QAction("Delete");
     act4->setIcon(QIcon(":/icons/Tools/Sequence/Delete.svg"));
     act4->setToolTip(QCoreApplication::translate("MenuBar",
                                                  "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">Actor</font></p></body></html>",
@@ -53,8 +53,46 @@ Sequence::Sequence()
 
     menuBar()->addToolButton(act4);
 
-
     connect(act4, &QAction::triggered, this, &Sequence::addDeleteMessage);
+
+    QAction *act5 = new QAction("ptionLoop");
+// act5->setIcon(QIcon(":/icons/Tools/Sequence/Delete.svg"));
+    act5->setToolTip(QCoreApplication::translate("MenuBar",
+                                                 "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">Actor</font></p></body></html>",
+                                                 nullptr));
+
+    menuBar()->addToolButton(act5);
+
+    connect(act5, &QAction::triggered, this, &Sequence::addOptionLoop);
+
+
+    QAction *act6 = new QAction("addAlternative");
+// act6->setIcon(QIcon(":/icons/Tools/Sequence/Delete.svg"));
+    act6->setToolTip(QCoreApplication::translate("MenuBar",
+                                                 "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">Actor</font></p></body></html>",
+                                                 nullptr));
+
+    menuBar()->addToolButton(act6);
+
+    connect(act6, &QAction::triggered, this, &Sequence::addAlternative);
+
+
+    QAction *act7 = new QAction("Delete");
+    act7->setIcon(QIcon(":/icons/Tools/Sequence/Delete.svg"));
+    act7->setToolTip(QCoreApplication::translate("MenuBar",
+                                                 "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">Actor</font></p></body></html>",
+                                                 nullptr));
+
+    menuBar()->addToolButton(act7);
+
+    QAction *act8 = new QAction("Delete");
+    act8->setIcon(QIcon(":/icons/Tools/Sequence/Delete.svg"));
+    act8->setToolTip(QCoreApplication::translate("MenuBar",
+                                                 "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">Actor</font></p></body></html>",
+                                                 nullptr));
+
+    menuBar()->addToolButton(act8);
+
 
     cmd = new ShapeCommand();
 }

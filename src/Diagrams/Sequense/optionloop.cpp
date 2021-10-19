@@ -28,7 +28,6 @@ void  OptionLoop::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
     Q_UNUSED(widget);
 
     auto  pen = QPen(Qt::black, 2);
-    pen.setStyle(Qt::DashLine);
     pen.setCosmetic(true);
     painter->setBrush(Qt::NoBrush);
     painter->setRenderHint(QPainter::Antialiasing);
@@ -42,10 +41,12 @@ void  OptionLoop::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
     QPointF  points[6] = {
         QPointF(0.0,                                    0.0),
         QPointF(rect().width() / 3,                     0.0),
-        QPointF(rect().width(),     (rect().height() / 5.0)),
-        QPointF(rect().width(),     rect().height()),
+        QPointF(rect().width() / 3, (rect().height() / 5.0)),
+        QPointF(rect().width() / 4, rect().height() / 3),
+        QPointF(0.0,                rect().height() / 3),
         QPointF(0.0, 0.0)
     };
+    painter->drawPolyline(points, 6);
 
     painter->restore();
 }

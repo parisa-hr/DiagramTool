@@ -27,7 +27,6 @@ void  Alternative::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 {
     Q_UNUSED(widget);
     auto  pen = QPen(Qt::black, 2);
-    pen.setStyle(Qt::DashLine);
     pen.setCosmetic(true);
     painter->setBrush(Qt::NoBrush);
     painter->setRenderHint(QPainter::Antialiasing);
