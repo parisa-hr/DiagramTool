@@ -109,6 +109,9 @@ void  Sequence::addLifeLine()
     _lifeLine->setFlag(QGraphicsItem::ItemIsMovable);
     _lifeLine->setFlag(QGraphicsItem::ItemIsSelectable);
     _lifeLine->setFlag(QGraphicsItem::ItemIsFocusable);
+
+    DiagramScene::instance()->addText("New Object", _lifeLine, 0.0, 0.0);
+
     cmd->setItem(_lifeLine);
 
     ObjectKeeper::instance()->createCommand(cmd);
