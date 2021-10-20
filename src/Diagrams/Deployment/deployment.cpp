@@ -95,6 +95,9 @@ void  Deployment::addArtifact()
     _artifact->setFlag(QGraphicsItem::ItemIsMovable);
     _artifact->setFlag(QGraphicsItem::ItemIsSelectable);
     _artifact->setFlag(QGraphicsItem::ItemIsFocusable);
+
+    DiagramScene::instance()->addText("New Artifact", _artifact, 0.0, 0.0);
+
     cmd->setItem(_artifact);
 
     ObjectKeeper::instance()->createCommand(cmd);

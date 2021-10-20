@@ -205,6 +205,8 @@ void  ClassDiagram::addNote()
     _note->setFlag(QGraphicsItem::ItemIsSelectable);
     _note->setFlag(QGraphicsItem::ItemIsFocusable);
 
+    DiagramScene::instance()->addText("New Note", _note, 0.0, 0.0);
+
     cmd->setItem(_note);
     ObjectKeeper::instance()->createCommand(cmd);
 
