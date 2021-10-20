@@ -55,10 +55,10 @@ Sequence::Sequence()
 
     connect(act4, &QAction::triggered, this, &Sequence::addDeleteMessage);
 
-    QAction *act5 = new QAction("ptionLoop");
-// act5->setIcon(QIcon(":/icons/Tools/Sequence/Delete.svg"));
+    QAction *act5 = new QAction("OptionLoop");
+    act5->setIcon(QIcon(":/icons/Tools/Sequence/OptionLoop.svg"));
     act5->setToolTip(QCoreApplication::translate("MenuBar",
-                                                 "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">Actor</font></p></body></html>",
+                                                 "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">OptionLoop</font></p></body></html>",
                                                  nullptr));
 
     menuBar()->addToolButton(act5);
@@ -66,10 +66,10 @@ Sequence::Sequence()
     connect(act5, &QAction::triggered, this, &Sequence::addOptionLoop);
 
 
-    QAction *act6 = new QAction("addAlternative");
-// act6->setIcon(QIcon(":/icons/Tools/Sequence/Delete.svg"));
+    QAction *act6 = new QAction("Alternative");
+    act6->setIcon(QIcon(":/icons/Tools/Sequence/Alternative.svg"));
     act6->setToolTip(QCoreApplication::translate("MenuBar",
-                                                 "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">Actor</font></p></body></html>",
+                                                 "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">Alternative</font></p></body></html>",
                                                  nullptr));
 
     menuBar()->addToolButton(act6);

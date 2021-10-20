@@ -79,5 +79,7 @@
         <file>icons/Tools/Sequence/Activation.svg</file>
         <file>icons/Tools/Sequence/object.svg</file>
         <file>icons/Tools/Sequence/Delete.svg</file>
+        <file>icons/Tools/Sequence/Alternative.svg</file>
+        <file>icons/Tools/Sequence/OptionLoop.svg</file>
     </qresource>
 </RCC>
