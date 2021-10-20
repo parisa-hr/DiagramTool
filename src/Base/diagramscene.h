@@ -20,6 +20,8 @@ public:
         return sInstance;
     }
 
+    void  addText(QString txt, BaseItem *item);
+
 private:
     static DiagramScene                 *sInstance;
     QSharedPointer<GraphicsItemResizer>  resizer;

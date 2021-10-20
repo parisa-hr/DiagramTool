@@ -40,3 +40,14 @@ DiagramScene::~DiagramScene()
 {
     clear();
 }
+
+void  DiagramScene::addText(QString txt, BaseItem *item)
+{
+    QGraphicsTextItem *_useCaseText = new QGraphicsTextItem(txt, item);
+
+    _useCaseText->setTextInteractionFlags(Qt::TextEditorInteraction);
+    _useCaseText->setFlag(QGraphicsItem::ItemIsMovable);
+    _useCaseText->setFlag(QGraphicsItem::ItemIsSelectable);
+    _useCaseText->setZValue(101);
+    _useCaseText->moveBy(item->rect().width() / 4, item->rect().height() / 3);
+}

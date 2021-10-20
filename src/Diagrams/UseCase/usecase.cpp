@@ -105,6 +105,9 @@ void  UseCase::addUsecase()
     _useCase->setFlag(QGraphicsItem::ItemIsMovable);
     _useCase->setFlag(QGraphicsItem::ItemIsSelectable);
     _useCase->setFlag(QGraphicsItem::ItemIsFocusable);
+
+    DiagramScene::instance()->addText("New UseCase", _useCase);
+
     cmd->setItem(_useCase);
     ObjectKeeper::instance()->createCommand(cmd);
 
