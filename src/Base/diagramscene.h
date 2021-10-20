@@ -20,7 +20,7 @@ public:
         return sInstance;
     }
 
-    void  addText(QString txt, BaseItem *item);
+    void  addText(QString txt, BaseItem *item, qreal Px, qreal Py);
 
 private:
     static DiagramScene                 *sInstance;

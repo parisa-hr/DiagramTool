@@ -106,7 +106,7 @@ void  UseCase::addUsecase()
     _useCase->setFlag(QGraphicsItem::ItemIsSelectable);
     _useCase->setFlag(QGraphicsItem::ItemIsFocusable);
 
-    DiagramScene::instance()->addText("New UseCase", _useCase);
+    DiagramScene::instance()->addText("New UseCase", _useCase, _useCase->rect().width() / 4, _useCase->rect().height() / 3);
 
     cmd->setItem(_useCase);
     ObjectKeeper::instance()->createCommand(cmd);
@@ -121,6 +121,9 @@ void  UseCase::addSystemBoundry()
     _systemBoundry->setFlag(QGraphicsItem::ItemIsMovable);
     _systemBoundry->setFlag(QGraphicsItem::ItemIsSelectable);
     _systemBoundry->setFlag(QGraphicsItem::ItemIsFocusable);
+
+    DiagramScene::instance()->addText("New System", _systemBoundry, 0.0, 0.0);
+
     cmd->setItem(_systemBoundry);
     ObjectKeeper::instance()->createCommand(cmd);
 

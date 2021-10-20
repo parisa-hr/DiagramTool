@@ -41,7 +41,7 @@ DiagramScene::~DiagramScene()
     clear();
 }
 
-void  DiagramScene::addText(QString txt, BaseItem *item)
+void  DiagramScene::addText(QString txt, BaseItem *item, qreal Px, qreal Py)
 {
     QGraphicsTextItem *_useCaseText = new QGraphicsTextItem(txt, item);
 
@@ -49,5 +49,5 @@ void  DiagramScene::addText(QString txt, BaseItem *item)
     _useCaseText->setFlag(QGraphicsItem::ItemIsMovable);
     _useCaseText->setFlag(QGraphicsItem::ItemIsSelectable);
     _useCaseText->setZValue(101);
-    _useCaseText->moveBy(item->rect().width() / 4, item->rect().height() / 3);
+    _useCaseText->moveBy(Px, Py);
 }
