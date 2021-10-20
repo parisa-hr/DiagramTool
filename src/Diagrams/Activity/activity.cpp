@@ -112,6 +112,9 @@ void  Activity::addActivityItem()
     _activityItem->setFlag(QGraphicsItem::ItemIsMovable);
     _activityItem->setFlag(QGraphicsItem::ItemIsSelectable);
     _activityItem->setFlag(QGraphicsItem::ItemIsFocusable);
+
+    DiagramScene::instance()->addText("New Activity", _activityItem, _activityItem->rect().width() / 6, _activityItem->rect().height() / 4);
+
     cmd->setItem(_activityItem);
 
     ObjectKeeper::instance()->createCommand(cmd);
