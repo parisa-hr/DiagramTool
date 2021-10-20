@@ -46,7 +46,6 @@ void  DiagramScene::addText(QString txt, BaseItem *item, qreal Px, qreal Py)
     QGraphicsTextItem *_useCaseText = new QGraphicsTextItem(txt, item);
 
     _useCaseText->setTextInteractionFlags(Qt::TextEditorInteraction);
-    _useCaseText->setFlag(QGraphicsItem::ItemIsMovable);
     _useCaseText->setFlag(QGraphicsItem::ItemIsSelectable);
     _useCaseText->setZValue(101);
     _useCaseText->moveBy(Px, Py);
