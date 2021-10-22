@@ -7,6 +7,8 @@
 
 class BaseItem: public QGraphicsItem
 {
+// Q_OBJECT
+
 public:
     explicit BaseItem(QObject *parent = nullptr);
 

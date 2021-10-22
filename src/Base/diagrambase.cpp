@@ -232,129 +232,129 @@ DiagramBase::DiagramBase(QWidget *parent):
 
         connect(_menuBar, &MenuBar::doPrint, this, &DiagramBase::PrintPreview);
 
-        connect(_menuBar, &MenuBar::boldText, this, [this]()
-        {
-            if (!scene->selectedItems().isEmpty())
-            {
-              DiagramTextItem *item = qgraphicsitem_cast<DiagramTextItem *>(scene->selectedItems().first());
+// connect(_menuBar, &MenuBar::boldText, this, [this]()
+// {
+// if (!scene->selectedItems().isEmpty())
+// {
+// DiagramTextItem *item = qgraphicsitem_cast<DiagramTextItem *>(scene->selectedItems().first());
 
-              if (item)
-              {
-                if (font.bold() == true)
-                {
-                  font.setBold(false);
-                  item->setFont(font);
-                    }
-                else
-                {
-                  font.setBold(true);
-                  item->setFont(font);
-                    }
-                }
-            }
-        });
+// if (item)
+// {
+// if (font.bold() == true)
+// {
+// font.setBold(false);
+// item->setFont(font);
+// }
+// else
+// {
+// font.setBold(true);
+// item->setFont(font);
+// }
+// }
+// }
+// });
 
-        connect(_menuBar, &MenuBar::changeFont, this, [this](QFont f)
-        {
-            if (!scene->selectedItems().isEmpty())
-            {
-              DiagramTextItem *item = qgraphicsitem_cast<DiagramTextItem *>(scene->selectedItems().first());
+// connect(_menuBar, &MenuBar::changeFont, this, [this](QFont f)
+// {
+// if (!scene->selectedItems().isEmpty())
+// {
+// DiagramTextItem *item = qgraphicsitem_cast<DiagramTextItem *>(scene->selectedItems().first());
 
-              if (item)
-              {
-                if (font.bold() == true)
-                {
-                  f.setBold(true);
-                    }
-                else
-                {
-                  f.setBold(false);
-                    }
+// if (item)
+// {
+// if (font.bold() == true)
+// {
+// f.setBold(true);
+// }
+// else
+// {
+// f.setBold(false);
+// }
 
-                if (font.italic() == true)
-                {
-                  f.setItalic(true);
-                    }
-                else
-                {
-                  f.setItalic(false);
-                    }
+// if (font.italic() == true)
+// {
+// f.setItalic(true);
+// }
+// else
+// {
+// f.setItalic(false);
+// }
 
-                if (font.underline() == true)
-                {
-                  f.setUnderline(true);
-                    }
-                else
-                {
-                  f.setUnderline(false);
-                    }
+// if (font.underline() == true)
+// {
+// f.setUnderline(true);
+// }
+// else
+// {
+// f.setUnderline(false);
+// }
 
-                f.setPixelSize(font.pointSize());
+// f.setPixelSize(font.pointSize());
 
-                item->setFont(f);
-                font = f;
-                }
-            }
-        });
+// item->setFont(f);
+// font = f;
+// }
+// }
+// });
 
-        connect(_menuBar, &MenuBar::italicText, this, [this]()
-        {
-            if (!scene->selectedItems().isEmpty())
-            {
-              DiagramTextItem *item = qgraphicsitem_cast<DiagramTextItem *>(scene->selectedItems().first());
+// connect(_menuBar, &MenuBar::italicText, this, [this]()
+// {
+// if (!scene->selectedItems().isEmpty())
+// {
+// DiagramTextItem *item = qgraphicsitem_cast<DiagramTextItem *>(scene->selectedItems().first());
 
-              if (item)
-              {
-                if (font.italic() == true)
-                {
-                  font.setItalic(false);
-                  item->setFont(font);
-                    }
-                else
-                {
-                  font.setItalic(true);
-                  item->setFont(font);
-                    }
-                }
-            }
-        });
+// if (item)
+// {
+// if (font.italic() == true)
+// {
+// font.setItalic(false);
+// item->setFont(font);
+// }
+// else
+// {
+// font.setItalic(true);
+// item->setFont(font);
+// }
+// }
+// }
+// });
 
-        connect(_menuBar, &MenuBar::addUnderLine, this, [this]()
-        {
-            if (!scene->selectedItems().isEmpty())
-            {
-              DiagramTextItem *item = qgraphicsitem_cast<DiagramTextItem *>(scene->selectedItems().first());
+// connect(_menuBar, &MenuBar::addUnderLine, this, [this]()
+// {
+// if (!scene->selectedItems().isEmpty())
+// {
+// DiagramTextItem *item = qgraphicsitem_cast<DiagramTextItem *>(scene->selectedItems().first());
 
-              if (item)
-              {
-                if (font.underline() == true)
-                {
-                  font.setUnderline(false);
-                  item->setFont(font);
-                    }
-                else
-                {
-                  font.setUnderline(true);
-                  item->setFont(font);
-                    }
-                }
-            }
-        });
+// if (item)
+// {
+// if (font.underline() == true)
+// {
+// font.setUnderline(false);
+// item->setFont(font);
+// }
+// else
+// {
+// font.setUnderline(true);
+// item->setFont(font);
+// }
+// }
+// }
+// });
 
-        connect(_menuBar, &MenuBar::changeFontSize, this, [this](QString size)
-        {
-            font.setPointSize(size.toInt());
+// connect(_menuBar, &MenuBar::changeFontSize, this, [this](QString size)
+// {
+// font.setPointSize(size.toInt());
 
-            if (!scene->selectedItems().isEmpty())
-            {
-              DiagramTextItem *item = qgraphicsitem_cast<DiagramTextItem *>(scene->selectedItems().first());
+// if (!scene->selectedItems().isEmpty())
+// {
+// DiagramTextItem *item = qgraphicsitem_cast<DiagramTextItem *>(scene->selectedItems().first());
 
-              if (item)
-              {
-                item->setFont(font);
-                }
-            }
-        });
+// if (item)
+// {
+// item->setFont(font);
+// }
+// }
+// });
 
         connect(_menuBar, &MenuBar::changedColor, this, [this]()
         {
@@ -609,13 +609,13 @@ void  DiagramBase::updateZoomLabel()
 
 void  DiagramBase::InsertDiagramText()
 {
-    _textItem = new DiagramTextItem();
+// _textItem = new DiagramTextItem();
 
-    _textItem->setTextInteractionFlags(Qt::TextEditorInteraction);
-    _textItem->setZValue(101);
-    _textItem->setFont(font);
+// _textItem->setTextInteractionFlags(Qt::TextEditorInteraction);
+// _textItem->setZValue(101);
+// _textItem->setFont(font);
 
-    scene->addItem(_textItem);
+// scene->addItem(_textItem);
 }
 
 void  DiagramBase::zoomBy(qreal factor)
