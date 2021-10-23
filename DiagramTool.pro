@@ -49,6 +49,7 @@ HEADERS += \
     src/Diagrams/Deployment/artifact.h \
     src/Diagrams/Deployment/database.h \
     src/Diagrams/Deployment/node.h \
+    src/Diagrams/Relations/assosiation.h \
     src/Diagrams/Sequense/activationoccurrence.h \
     src/Diagrams/Sequense/actornotation.h \
     src/Diagrams/Sequense/alternative.h \
@@ -102,6 +103,7 @@ SOURCES += \
     src/Diagrams/Deployment/artifact.cpp \
     src/Diagrams/Deployment/database.cpp \
     src/Diagrams/Deployment/node.cpp \
+    src/Diagrams/Relations/assosiation.cpp \
     src/Diagrams/Sequense/activationoccurrence.cpp \
     src/Diagrams/Sequense/actornotation.cpp \
     src/Diagrams/Sequense/alternative.cpp \
