@@ -53,6 +53,7 @@ HEADERS += \
     src/Diagrams/Relations/assosiation.h \
     src/Diagrams/Relations/composition.h \
     src/Diagrams/Relations/dependency.h \
+    src/Diagrams/Relations/directassosiation.h \
     src/Diagrams/Relations/generalization.h \
     src/Diagrams/Relations/inheritance.h \
     src/Diagrams/Relations/realization.h \
@@ -113,6 +114,7 @@ SOURCES += \
     src/Diagrams/Relations/assosiation.cpp \
     src/Diagrams/Relations/composition.cpp \
     src/Diagrams/Relations/dependency.cpp \
+    src/Diagrams/Relations/directassosiation.cpp \
     src/Diagrams/Relations/generalization.cpp \
     src/Diagrams/Relations/inheritance.cpp \
     src/Diagrams/Relations/realization.cpp \
