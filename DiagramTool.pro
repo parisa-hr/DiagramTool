@@ -51,6 +51,7 @@ HEADERS += \
     src/Diagrams/Deployment/node.h \
     src/Diagrams/Relations/assosiation.h \
     src/Diagrams/Relations/dependency.h \
+    src/Diagrams/Relations/generalization.h \
     src/Diagrams/Sequense/activationoccurrence.h \
     src/Diagrams/Sequense/actornotation.h \
     src/Diagrams/Sequense/alternative.h \
@@ -106,6 +107,7 @@ SOURCES += \
     src/Diagrams/Deployment/node.cpp \
     src/Diagrams/Relations/assosiation.cpp \
     src/Diagrams/Relations/dependency.cpp \
+    src/Diagrams/Relations/generalization.cpp \
     src/Diagrams/Sequense/activationoccurrence.cpp \
     src/Diagrams/Sequense/actornotation.cpp \
     src/Diagrams/Sequense/alternative.cpp \
