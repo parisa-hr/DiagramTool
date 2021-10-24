@@ -15,10 +15,9 @@ DiagramScene::DiagramScene(QObject *parent):
         {
           item = qgraphicsitem_cast<BaseItem *>(selectedItems().first());
 
-          resizer = QSharedPointer<GraphicsItemResizer>::create(item);
-
           if (item)
           {
+            resizer = QSharedPointer<GraphicsItemResizer>::create(item);
             resizer->setBrush(QColor(64, 64, 64));
             resizer->setMinSize(QSizeF(30, 30));
             resizer->setTargetSize(item->rect().size());
