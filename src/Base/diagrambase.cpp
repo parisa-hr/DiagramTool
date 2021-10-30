@@ -189,6 +189,7 @@ DiagramBase::DiagramBase(QWidget *parent):
             QPushButton *cancelButton = msgBox.addButton(QMessageBox::Cancel);
 
             msgBox.setText("All Items will be clear , Are you sure ? ");
+            msgBox.setIcon(QMessageBox::Critical);
 
             msgBox.exec();
 
@@ -471,11 +472,13 @@ void  DiagramBase::contextMenuEvent(QContextMenuEvent *event)
 
 void  DiagramBase::closeEvent(QCloseEvent *event)
 {
-    QMessageBox *msgBox       = new QMessageBox(this);
+    QMessageBox *msgBox       = new QMessageBox;
     QPushButton *okButton     = msgBox->addButton(QMessageBox::Ok);
     QPushButton *cancelButton = msgBox->addButton(QMessageBox::Cancel);
 
-    msgBox->setText("All Items will be clear , Are you sure ? ");
+    msgBox->setText("All Items will be clear\nAre you sure you want to close it ? ");
+
+    msgBox->setIcon(QMessageBox::Critical);
 
     msgBox->exec();
 
