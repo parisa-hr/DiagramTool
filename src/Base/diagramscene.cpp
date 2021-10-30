@@ -8,7 +8,7 @@ DiagramScene::DiagramScene(QObject *parent):
     QGraphicsScene(parent)
 {
     sInstance = this;
-
+// TODO : fixed This
     connect(this, &QGraphicsScene::selectionChanged, this, [this]()
     {
         if (!selectedItems().isEmpty())
