@@ -42,6 +42,7 @@ DiagramBase::DiagramBase(QWidget *parent):
 {
     ui->setupUi(this);
 
+
     {
         myContextMenu = QSharedPointer<QMenu>::create(this);
         // myContextMenu;
@@ -123,6 +124,7 @@ DiagramBase::DiagramBase(QWidget *parent):
 
     setAutoFillBackground(true);
     setBackgroundRole(QPalette::Base);
+
 
     {
         if (DiagramScene::instance() == nullptr)
@@ -465,6 +467,33 @@ void  DiagramBase::contextMenuEvent(QContextMenuEvent *event)
     // scene->selectedItems().first()->setSelected(true);
 
     myContextMenu->exec(event->pos());
+}
+
+void  DiagramBase::closeEvent(QCloseEvent *event)
+{
+    QMessageBox *msgBox       = new QMessageBox(this);
+    QPushButton *okButton     = msgBox->addButton(QMessageBox::Ok);
+    QPushButton *cancelButton = msgBox->addButton(QMessageBox::Cancel);
+
+    msgBox->setText("All Items will be clear , Are you sure ? ");
+
+    msgBox->exec();
+
+    if (msgBox->clickedButton() == okButton)
+    {
+        for (auto i : ui->graphicsView->items())
+        {
+            scene->removeItem(i);
+            scene->update();
+        }
+
+        ObjectKeeper::instance()->getUndoStack()->clear();
+        event->accept();
+    }
+    else
+    {
+        event->ignore();
+    }
 }
 
 void  DiagramBase::ExportPdf()

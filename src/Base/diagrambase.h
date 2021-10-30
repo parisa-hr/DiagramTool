@@ -12,7 +12,7 @@
 #include "menubar.h"
 
 class QGraphicsScene;
-class DiagramTextItem;
+// class DiagramTextItem;
 
 
 namespace Ui
@@ -56,6 +56,8 @@ protected:
 
     void            contextMenuEvent(QContextMenuEvent *event);
 
+    void            closeEvent(QCloseEvent *event);
+
 private:
     void            zoomBy(qreal factor);
 
@@ -78,17 +80,19 @@ signals:
     void            zoomChanged();
 
 private:
-    Ui::DiagramBase       *ui;
-    DiagramScene          *scene;
-    MenuBar               *_menuBar;
-    QPalette              *_pal;
-    DiagramTextItem       *_textItem;
+    Ui::DiagramBase *ui;
+    DiagramScene    *scene;
+    MenuBar         *_menuBar;
+    QPalette        *_pal;
+// DiagramTextItem       *_textItem;
     QString                path;
     QString                m_currentPath;
     QFont                  font;
     QSharedPointer<QMenu>  myContextMenu;
     QAction               *undoAction;
     QAction               *redoAction;
+
+    // QWidget interface
 };
 
 #endif // DIAGRAMBASE_H
