@@ -5,6 +5,7 @@
 #include "actor.h"
 #include "usecaseitem.h"
 #include "../../Base/objectkeeper.h"
+#include "../../commonItems/note.h"
 #include <src/commonItems/package.h>
 #include <src/commonItems/systemboundry.h>
 
@@ -77,6 +78,17 @@ UseCase::UseCase()
     menuBar()->addToolButton(act6);
 
 
+    QAction *act7 = new QAction("Note");
+    act7->setIcon(QIcon(":/icons/Tools/class/Note.svg"));
+    act7->setToolTip(QCoreApplication::translate("MenuBar",
+                                                 "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">Note</font></p></body></html>",
+                                                 nullptr));
+
+    menuBar()->addToolButton(act7);
+
+    connect(act7, &QAction::triggered, this, &UseCase::addNote);
+
+
     cmd = new ShapeCommand();
 }
 
@@ -142,4 +154,20 @@ void  UseCase::addPackage()
     ObjectKeeper::instance()->createCommand(cmd);
 
     getScene()->addItem(_package);
+}
+
+void  UseCase::addNote()
+{
+    Note *_note = new Note(this);
+
+    _note->setFlag(QGraphicsItem::ItemIsMovable);
+    _note->setFlag(QGraphicsItem::ItemIsSelectable);
+    _note->setFlag(QGraphicsItem::ItemIsFocusable);
+
+    DiagramScene::instance()->addText("New Note", _note, 0.0, 0.0);
+
+    cmd->setItem(_note);
+    ObjectKeeper::instance()->createCommand(cmd);
+
+    getScene()->addItem(_note);
 }

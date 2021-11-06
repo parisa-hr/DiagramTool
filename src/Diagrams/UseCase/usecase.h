@@ -23,6 +23,8 @@ private slots:
 
     void  addPackage();
 
+    void  addNote();
+
 private:
     ShapeCommand *cmd;
 };
