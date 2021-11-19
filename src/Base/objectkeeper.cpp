@@ -4,7 +4,7 @@ ObjectKeeper *ObjectKeeper::sInstance = nullptr;
 
 ObjectKeeper::ObjectKeeper(QGraphicsView *canvas, QObject *parent):
     QObject(parent),
-    _mapCanvas(canvas)
+    _mCanvas(canvas)
 {
     sInstance = this;
     undoStack = new QUndoStack;
@@ -19,9 +19,9 @@ QUndoStack * ObjectKeeper::getUndoStack() const
     return undoStack;
 }
 
-QGraphicsView * ObjectKeeper::getMapCanvas() const
+QGraphicsView * ObjectKeeper::getCanvas() const
 {
-    return _mapCanvas;
+    return _mCanvas;
 }
 
 void  ObjectKeeper::createCommand(DiagramCommand *cmd)

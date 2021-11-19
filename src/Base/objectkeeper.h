@@ -24,11 +24,11 @@ public:
 
     void           createCommand(DiagramCommand *cmd);
 
-    QGraphicsView* getMapCanvas() const;
+    QGraphicsView* getCanvas() const;
 
 private:
     static ObjectKeeper *sInstance;
-    QGraphicsView       *_mapCanvas;
+    QGraphicsView       *_mCanvas;
     QUndoStack          *undoStack;
 };
 

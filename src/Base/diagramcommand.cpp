@@ -1,4 +1,5 @@
 #include "diagramcommand.h"
+#include "diagramscene.h"
 #include "objectkeeper.h"
 
 DiagramCommand::DiagramCommand()
@@ -31,12 +32,12 @@ AddCommand::AddCommand(DiagramCommand *cmd, QUndoCommand *parent):
 
 void  AddCommand::undo()
 {
-    ObjectKeeper::instance()->getMapCanvas()->scene()->removeItem(diagramItem);
-    ObjectKeeper::instance()->getMapCanvas()->update();
+    DiagramScene::instance()->removeItem(diagramItem);
+    DiagramScene::instance()->update();
 }
 
 void  AddCommand::redo()
 {
-    ObjectKeeper::instance()->getMapCanvas()->scene()->addItem(diagramItem);
-    ObjectKeeper::instance()->getMapCanvas()->update();
+    DiagramScene::instance()->addItem(diagramItem);
+    DiagramScene::instance()->update();
 }
