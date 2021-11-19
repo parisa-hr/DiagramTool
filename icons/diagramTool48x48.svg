@@ -2,13 +2,13 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="32"
-   height="32"
-   viewBox="0 0 8.4666665 8.4666665"
+   width="48"
+   height="48"
+   viewBox="0 0 12.7 12.7"
    version="1.1"
    id="svg8"
    inkscape:version="1.1.1 (eb90963e84, 2021-10-02)"
-   sodipodi:docname="diagramTool32x32.svg"
+   sodipodi:docname="diagramTool48x48.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -44,9 +44,9 @@ ol { margin-top: 0px; margin-bottom: 10px }
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="7.919596"
-     inkscape:cx="17.235728"
-     inkscape:cy="19.761109"
+     inkscape:zoom="3.959798"
+     inkscape:cx="45.078057"
+     inkscape:cy="51.39151"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -77,7 +77,7 @@ ol { margin-top: 0px; margin-bottom: 10px }
     <g
        style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-linecap:round;stroke-linejoin:round"
        id="g1046"
-       transform="matrix(0.03013224,0,0,0.03013224,0.45173713,169.45174)">
+       transform="matrix(0.05136573,0,0,0.05136573,-0.09639912,168.9036)">
       <g
          id="g1004"
          style="stroke:none">
