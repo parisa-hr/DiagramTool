@@ -1,4 +1,4 @@
-![icon](icons/diagramTool.svg "DiagramTool")
+![icon](icons/diagramTool32x32.svg "DiagramTool")
 
 
 # DiagramTool
