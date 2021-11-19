@@ -1,3 +1,6 @@
+![icon](icons/diagramTool.svg "DiagramTool")
+
+
 # DiagramTool
 A Software For Draw UML Diagram
 
