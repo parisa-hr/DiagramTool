@@ -3,14 +3,33 @@
 
 #include <QObject>
 
-class DirectAssosiation : public QObject
+#include "src/Base/baseitem.h"
+
+class DirectAssosiation: public QGraphicsLineItem
 {
-    Q_OBJECT
 public:
-    explicit DirectAssosiation(QObject *parent = nullptr);
+    explicit DirectAssosiation(BaseItem *startItem, BaseItem *endItem,
+                               QGraphicsItem *parent = nullptr);
 
-signals:
+    QRectF        boundingRect() const;
 
+    QPainterPath  shape() const override;
+
+    void          paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
+
+    BaseItem    * getMyStartItem() const;
+
+    BaseItem    * getMyEndItem() const;
+
+    void          updatePosition();
+
+    void          setMyColor(const QColor &value);
+
+private:
+    BaseItem  *myStartItem;
+    BaseItem  *myEndItem;
+    QPolygonF  arrowHead;
+    QColor     myColor = Qt::black;
 };
 
 #endif // DIRECTASSOSIATION_H

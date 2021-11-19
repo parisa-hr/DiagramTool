@@ -1,6 +1,8 @@
-#include "diagramscene.h"
+﻿#include "diagramscene.h"
 
 #include <QGraphicsSceneMouseEvent>
+
+#include <src/Diagrams/Relations/directassosiation.h>
 
 DiagramScene *DiagramScene::sInstance = nullptr;
 
@@ -85,6 +87,37 @@ void  DiagramScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 
 void  DiagramScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
+    if (!(_relation == none) && (line != nullptr))
+    {
+        QList<QGraphicsItem *>  startItems = items(line->line().p1());
+
+        if (startItems.count() && (startItems.first() == line))
+        {
+            startItems.removeFirst();
+        }
+
+        QList<QGraphicsItem *>  endItems = items(line->line().p2());
+
+        if (endItems.count() && (endItems.first() == line))
+        {
+            endItems.removeFirst();
+        }
+
+        if ((startItems.count() > 0) && (endItems.count() > 0)
+            && (startItems.first() != endItems.first()))
+        {
+            BaseItem          *startItem = qgraphicsitem_cast<BaseItem *>(startItems.first());
+            BaseItem          *endItem   = qgraphicsitem_cast<BaseItem *>(endItems.first());
+            DirectAssosiation *arrow     = new DirectAssosiation(startItem, endItem);
+            arrow->setZValue(-1000.0);
+            addItem(arrow);
+            arrow->updatePosition();
+        }
+    }
+
+    removeItem(line);
+    delete line;
+    line = nullptr;
     QGraphicsScene::mouseReleaseEvent(event);
 
 // switch (_relation)
