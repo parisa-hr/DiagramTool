@@ -49,3 +49,88 @@ void  DiagramScene::addText(QString txt, BaseItem *item, qreal Px, qreal Py)
     _useCaseText->setZValue(101);
     _useCaseText->moveBy(Px, Py);
 }
+
+void  DiagramScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
+    if (event->button() != Qt::LeftButton)
+    {
+        return;
+    }
+
+    if (!(_relation == none))
+    {
+        line = new QGraphicsLineItem(QLineF(event->scenePos(),
+                                            event->scenePos()));
+        line->setPen(QPen(Qt::black, 2));
+        addItem(line);
+    }
+    else
+    {
+        QGraphicsScene::mousePressEvent(event);
+    }
+}
+
+void  DiagramScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+{
+    if (!(_relation == none) && (line != nullptr))
+    {
+        QLineF  newLine(line->line().p1(), event->scenePos());
+        line->setLine(newLine);
+    }
+    else
+    {
+        QGraphicsScene::mouseMoveEvent(event);
+    }
+}
+
+void  DiagramScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+{
+    QGraphicsScene::mouseReleaseEvent(event);
+
+// switch (_relation)
+// {
+// case _Arow:
+
+// break;
+
+// case _DashArow:
+
+// break;
+// case _Aggregation:
+
+// break;
+// case _Assosiation:
+
+// break;
+// case _Composition:
+
+// break;
+// case _Dependency:
+
+// break;
+// case _DirectAssosiation:
+
+// break;
+// case _Generalization:
+
+// break;
+// case _Inheritance:
+
+// break;
+// case _Realization:
+
+// break;
+// }
+}
+
+void  DiagramScene::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
+{
+    QGraphicsScene::mouseDoubleClickEvent(event);
+
+    _relation = none;
+}
+
+void  DiagramScene::setRelation(Relation relation)
+{
+    _relation = relation;
+}
