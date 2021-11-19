@@ -48,10 +48,6 @@ protected:
 
     void            keyPressEvent(QKeyEvent *event) override;
 
-    void            mousePressEvent(QMouseEvent *event) override;
-
-    void            mouseMoveEvent(QMouseEvent *) override;
-
     void            wheelEvent(QWheelEvent *) override;
 
     void            contextMenuEvent(QContextMenuEvent *event);
@@ -80,19 +76,16 @@ signals:
     void            zoomChanged();
 
 private:
-    Ui::DiagramBase *ui;
-    DiagramScene    *scene;
-    MenuBar         *_menuBar;
-    QPalette        *_pal;
-// DiagramTextItem       *_textItem;
+    Ui::DiagramBase       *ui;
+    DiagramScene          *scene;
+    MenuBar               *_menuBar;
+    QPalette              *_pal;
     QString                path;
     QString                m_currentPath;
     QFont                  font;
     QSharedPointer<QMenu>  myContextMenu;
     QAction               *undoAction;
     QAction               *redoAction;
-
-    // QWidget interface
 };
 
 #endif // DIAGRAMBASE_H

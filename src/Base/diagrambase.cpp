@@ -34,6 +34,7 @@
 #include "exportdialog.h"
 #include "diagramtextitem.h"
 #include "objectkeeper.h"
+#include <QLineF>
 
 #include <src/Base/resizer/graphicsitemresizer.h>
 
@@ -185,8 +186,7 @@ DiagramBase::DiagramBase(QWidget *parent):
         connect(_menuBar->getMainMenu(), &MainMenu::NewFile, this, [this]()
         {
             QMessageBox msgBox;
-            QPushButton *okButton     = msgBox.addButton(QMessageBox::Ok);
-            QPushButton *cancelButton = msgBox.addButton(QMessageBox::Cancel);
+            QPushButton *okButton = msgBox.addButton(QMessageBox::Ok);
 
             msgBox.setText("All Items will be clear , Are you sure ? ");
             msgBox.setIcon(QMessageBox::Critical);
@@ -447,16 +447,6 @@ void  DiagramBase::keyPressEvent(QKeyEvent *event)
     }
 }
 
-void  DiagramBase::mousePressEvent(QMouseEvent *event)
-{
-    if (event->button() == Qt::RightButton)
-    { }
-}
-
-void  DiagramBase::mouseMoveEvent(QMouseEvent *event)
-{
-}
-
 void  DiagramBase::wheelEvent(QWheelEvent *event)
 {
     zoomBy(qPow(1.2, event->angleDelta().y() / 240.0));
@@ -472,9 +462,10 @@ void  DiagramBase::contextMenuEvent(QContextMenuEvent *event)
 
 void  DiagramBase::closeEvent(QCloseEvent *event)
 {
-    QMessageBox *msgBox       = new QMessageBox;
-    QPushButton *okButton     = msgBox->addButton(QMessageBox::Ok);
-    QPushButton *cancelButton = msgBox->addButton(QMessageBox::Cancel);
+    QMessageBox *msgBox   = new QMessageBox;
+    QPushButton *okButton = msgBox->addButton(QMessageBox::Ok);
+
+// QPushButton *cancelButton = msgBox->addButton(QMessageBox::Cancel);
 
     msgBox->setText("All Items will be clear\nAre you sure you want to close it ? ");
 
