@@ -98,7 +98,7 @@ Sequence::Sequence()
                                                  nullptr));
 
 
-    connect(act4, &QAction::triggered, this, []()
+    connect(act8, &QAction::triggered, this, []()
     {
         DiagramScene::instance()->setRelation(DiagramScene::_DashArow);
     });
