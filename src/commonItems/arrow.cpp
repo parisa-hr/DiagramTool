@@ -1,25 +1,24 @@
-#include "directassosiation.h"
-
+#include "arrow.h"
 #include <QPainter>
 #include <QPen>
 #include <QtMath>
 
-DirectAssosiation::DirectAssosiation(QPointF startItem, QPointF endItem, QGraphicsItem *parent):
+Arrow::Arrow(QPointF startItem, QPointF endItem, QGraphicsItem *parent):
     myStartItem(startItem), myEndItem(endItem)
 {
     setAcceptHoverEvents(true);
-    setZValue(101);
+    setZValue(105);
     setFlag(QGraphicsItem::ItemIsMovable);
     setFlag(QGraphicsItem::ItemIsSelectable);
     setFlag(QGraphicsItem::ItemIsFocusable);
 }
 
-QRectF  DirectAssosiation::boundingRect() const
+QRectF  Arrow::boundingRect() const
 {
     return QRectF(myStartItem, myEndItem);
 }
 
-QPainterPath  DirectAssosiation::shape() const
+QPainterPath  Arrow::shape() const
 {
     QPainterPath  path;
 
@@ -28,7 +27,7 @@ QPainterPath  DirectAssosiation::shape() const
     return path;
 }
 
-void  DirectAssosiation::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+void  Arrow::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     Q_UNUSED(widget);
 
@@ -60,7 +59,7 @@ void  DirectAssosiation::paint(QPainter *painter, const QStyleOptionGraphicsItem
     painter->drawPolygon(arrowHead);
 }
 
-void  DirectAssosiation::setMyColor(const QColor &value)
+void  Arrow::setMyColor(const QColor &value)
 {
     myColor = value;
 }

@@ -9,6 +9,7 @@
 #include "diagramscene.h"
 #include "baseitem.h"
 
+#include "diagramtextitem.h"
 #include "menubar.h"
 
 class QGraphicsScene;
@@ -86,6 +87,7 @@ private:
     QSharedPointer<QMenu>  myContextMenu;
     QAction               *undoAction;
     QAction               *redoAction;
+    DiagramTextItem       *_textItem;
 };
 
 #endif // DIAGRAMBASE_H

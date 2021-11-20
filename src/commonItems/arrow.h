@@ -1,15 +1,15 @@
-#ifndef DIRECTASSOSIATION_H
-#define DIRECTASSOSIATION_H
+#ifndef ARROW_H
+#define ARROW_H
 
+#include <QGraphicsItem>
 #include <QObject>
 
-#include "src/Base/baseitem.h"
 
-class DirectAssosiation: public BaseItem
+class Arrow: public QGraphicsItem
 {
 public:
-    explicit DirectAssosiation(QPointF startItem, QPointF endItem,
-                               QGraphicsItem *parent = nullptr);
+    explicit Arrow(QPointF startItem, QPointF endItem,
+                   QGraphicsItem *parent = nullptr);
 
     QRectF        boundingRect() const;
 
@@ -26,4 +26,4 @@ private:
     QColor     myColor = Qt::black;
 };
 
-#endif // DIRECTASSOSIATION_H
+#endif // ARROW_H

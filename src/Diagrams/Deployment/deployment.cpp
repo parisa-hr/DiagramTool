@@ -53,14 +53,14 @@ Deployment::Deployment()
 
     /// Instance  Button in menuBar Class
 
-    QAction *act4 = new QAction("Instance");
-    act4->setIcon(QIcon(":/icons/Tools/Deployment/Instance.svg"));
-    act4->setToolTip(QCoreApplication::translate("MenuBar",
-                                                 "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">Instance</font></p></body></html>",
-                                                 nullptr));
+// QAction *act4 = new QAction("Instance");
+// act4->setIcon(QIcon(":/icons/Tools/Deployment/Instance.svg"));
+// act4->setToolTip(QCoreApplication::translate("MenuBar",
+// "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">Instance</font></p></body></html>",
+// nullptr));
 // connect(act4, &QAction::triggered, this, &Deployment::addInstance);
 
-    menuBar()->addToolButton(act4);
+// menuBar()->addToolButton(act4);
 
     QAction *act5 = new QAction("Database");
     act5->setIcon(QIcon(":/icons/Tools/Deployment/Database.svg"));
@@ -70,6 +70,37 @@ Deployment::Deployment()
     connect(act5, &QAction::triggered, this, &Deployment::addDataBase);
 
     menuBar()->addToolButton(act5);
+
+
+    QAction *act6 = new QAction("Arrow");
+    act6->setIcon(QIcon(":/icons/Tools/usecase/arrow .svg"));
+    act6->setToolTip(QCoreApplication::translate("MenuBar",
+                                                 "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">Arrow</font></p></body></html>",
+                                                 nullptr));
+
+
+    connect(act6, &QAction::triggered, this, []()
+    {
+        DiagramScene::instance()->setRelation(DiagramScene::_Arow);
+    });
+
+
+    menuBar()->addToolButton(act6);
+
+
+    QAction *act7 = new QAction("Dasharrow");
+    act7->setIcon(QIcon(":/icons/Tools/usecase/dashArrow.svg"));
+    act7->setToolTip(QCoreApplication::translate("MenuBar",
+                                                 "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">DashArrow</font></p></body></html>",
+                                                 nullptr));
+
+
+    connect(act7, &QAction::triggered, this, []()
+    {
+        DiagramScene::instance()->setRelation(DiagramScene::_DashArow);
+    });
+
+    menuBar()->addToolButton(act7);
 
 
     cmd = new ShapeCommand();

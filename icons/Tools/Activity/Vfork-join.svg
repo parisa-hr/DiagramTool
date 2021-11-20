@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 64 64"
+   fill="#fff"
+   fill-rule="evenodd"
+   stroke="#000"
+   stroke-linecap="round"
+   stroke-linejoin="round"
+   version="1.1"
+   id="svg4"
+   sodipodi:docname="Vfork-join.svg"
+   inkscape:version="1.1.1 (eb90963e84, 2021-10-02)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:v="http://vecta.io">
+  <metadata
+     id="metadata10">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs8" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1366"
+     inkscape:window-height="670"
+     id="namedview6"
+     showgrid="false"
+     inkscape:zoom="5.8004853"
+     inkscape:cx="26.808102"
+     inkscape:cy="38.876057"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4"
+     inkscape:document-rotation="0"
+     inkscape:pagecheckerboard="0" />
+  <g
+     id="kldzv60j66s"
+     transform="matrix(0,0.11981595,-0.45862352,0,36.586235,2.0460127)"
+     v:symbol="Csj109-tGCedx-MomHbuwX"
+     class=""
+     v:unit="{&quot;strokeWidth&quot;:&quot;px&quot;}">
+    <rect
+       fill="#ff0000"
+       height="20"
+       rx="10"
+       stroke="none"
+       stroke-width="2"
+       width="500"
+       x="0"
+       y="0"
+       id="rect152" />
+    <g
+       class="Text.cls"
+       id="g158">
+      <rect
+         x="0"
+         y="0"
+         width="500"
+         height="20"
+         fill="none"
+         stroke="none"
+         id="rect154" />
+      <text
+         fill="#4f4f4f"
+         fill-opacity="1"
+         stroke="none"
+         id="text156" />
+    </g>
+  </g>
+</svg>

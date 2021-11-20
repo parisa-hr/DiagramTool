@@ -23,7 +23,9 @@ public:
 
     void  addDecisionNode();
 
-    void  addSwimLane();
+    void  addHFork_Join();
+
+    void  addVFork_Join();
 
 private:
     ShapeCommand *cmd;

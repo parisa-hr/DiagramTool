@@ -58,6 +58,12 @@ UseCase::UseCase()
                                                  "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">DashArrow</font></p></body></html>",
                                                  nullptr));
 
+
+    connect(act4, &QAction::triggered, this, []()
+    {
+        DiagramScene::instance()->setRelation(DiagramScene::_DashArow);
+    });
+
     menuBar()->addToolButton(act4);
 
 

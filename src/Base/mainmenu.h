@@ -27,10 +27,6 @@ private slots:
 
     void  on_pb_ExportPDF_clicked();
 
-    void  on_pb_Saveas_clicked();
-
-    void  on_pb_Open_clicked();
-
     void  on_pb_New_clicked();
 
     void on_pb_ExportPng_clicked();
@@ -45,10 +41,6 @@ signals:
     void  HideGrideView();
 
     void  ExportAsPDF();
-
-    void  SaveAs();
-
-    void  OpenFile();
 
     void  NewFile();
 

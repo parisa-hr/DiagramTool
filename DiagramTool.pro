@@ -33,10 +33,11 @@ HEADERS += \
     src/Diagrams/Activity/activityitem.h \
     src/Diagrams/Activity/decisionnode.h \
     src/Diagrams/Activity/finalnode.h \
-    src/Diagrams/Activity/fork_join.h \
+    src/Diagrams/Activity/hfork_join.h \
     src/Diagrams/Activity/initialnode.h \
     src/Diagrams/Activity/startnode.h \
     src/Diagrams/Activity/swimlane.h \
+    src/Diagrams/Activity/vfork_join.h \
     src/Diagrams/Class/boundaryitem.h \
     src/Diagrams/Class/classitem.h \
     src/Diagrams/Class/controlitem.h \
@@ -72,6 +73,8 @@ HEADERS += \
     src/Diagrams/Class/classdiagram.h \
     src/Diagrams/Deployment/deployment.h \ \
     src/Diagrams/UseCase/usecaseitem.h \
+    src/commonItems/arrow.h \
+    src/commonItems/dasharrow.h \
     src/commonItems/note.h \
     src/commonItems/package.h \
     src/commonItems/systemboundry.h
@@ -94,10 +97,11 @@ SOURCES += \
     src/Diagrams/Activity/activityitem.cpp \
     src/Diagrams/Activity/decisionnode.cpp \
     src/Diagrams/Activity/finalnode.cpp \
-    src/Diagrams/Activity/fork_join.cpp \
+    src/Diagrams/Activity/hfork_join.cpp \
     src/Diagrams/Activity/initialnode.cpp \
     src/Diagrams/Activity/startnode.cpp \
     src/Diagrams/Activity/swimlane.cpp \
+    src/Diagrams/Activity/vfork_join.cpp \
     src/Diagrams/Class/boundaryitem.cpp \
     src/Diagrams/Class/classitem.cpp \
     src/Diagrams/Class/controlitem.cpp \
@@ -133,6 +137,8 @@ SOURCES += \
     src/Diagrams/Class/classdiagram.cpp \
     src/Diagrams/Deployment/deployment.cpp \
     src/Diagrams/UseCase/usecaseitem.cpp \
+    src/commonItems/arrow.cpp \
+    src/commonItems/dasharrow.cpp \
     src/commonItems/note.cpp \
     src/commonItems/package.cpp \
     src/commonItems/systemboundry.cpp

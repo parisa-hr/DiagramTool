@@ -27,7 +27,7 @@ Sequence::Sequence()
     QAction *act2 = new QAction("Object");
     act2->setIcon(QIcon(":/icons/Tools/Sequence/object.svg"));
     act2->setToolTip(QCoreApplication::translate("MenuBar",
-                                                 "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">Actor</font></p></body></html>",
+                                                 "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">Object</font></p></body></html>",
                                                  nullptr));
 
     menuBar()->addToolButton(act2);
@@ -38,7 +38,7 @@ Sequence::Sequence()
     QAction *act3 = new QAction("ActivationOccurrence");
     act3->setIcon(QIcon(":/icons/Tools/Sequence/Activation.svg"));
     act3->setToolTip(QCoreApplication::translate("MenuBar",
-                                                 "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">Actor</font></p></body></html>",
+                                                 "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">ActivationOccurrence</font></p></body></html>",
                                                  nullptr));
 
     menuBar()->addToolButton(act3);
@@ -77,20 +77,31 @@ Sequence::Sequence()
     connect(act6, &QAction::triggered, this, &Sequence::addAlternative);
 
 
-    QAction *act7 = new QAction("Delete");
-    act7->setIcon(QIcon(":/icons/Tools/Sequence/Delete.svg"));
+    QAction *act7 = new QAction("Arrow");
+    act7->setIcon(QIcon(":/icons/Tools/usecase/arrow .svg"));
     act7->setToolTip(QCoreApplication::translate("MenuBar",
-                                                 "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">Actor</font></p></body></html>",
+                                                 "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">Arrow</font></p></body></html>",
                                                  nullptr));
+
+
+    connect(act7, &QAction::triggered, this, []()
+    {
+        DiagramScene::instance()->setRelation(DiagramScene::_Arow);
+    });
 
     menuBar()->addToolButton(act7);
 
-    QAction *act8 = new QAction("Delete");
-    act8->setIcon(QIcon(":/icons/Tools/Sequence/Delete.svg"));
+    QAction *act8 = new QAction("DashArrow");
+    act8->setIcon(QIcon(":/icons/Tools/usecase/dashArrow.svg"));
     act8->setToolTip(QCoreApplication::translate("MenuBar",
-                                                 "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">Actor</font></p></body></html>",
+                                                 "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">DashArrow</font></p></body></html>",
                                                  nullptr));
 
+
+    connect(act4, &QAction::triggered, this, []()
+    {
+        DiagramScene::instance()->setRelation(DiagramScene::_DashArow);
+    });
     menuBar()->addToolButton(act8);
 
 

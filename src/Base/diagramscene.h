@@ -8,6 +8,7 @@
 
 #include <src/Base/resizer/graphicsitemresizer.h>
 #include "baseitem.h"
+#include "diagramcommand.h"
 
 class DiagramScene: public QGraphicsScene
 {
@@ -38,7 +39,7 @@ public:
         return sInstance;
     }
 
-    void  addText(QString txt, BaseItem *item, qreal Px, qreal Py);
+    void  addText(QString txt, QGraphicsItem *item, qreal Px, qreal Py);
 
     // QGraphicsScene interface
 
@@ -59,6 +60,9 @@ private:
     BaseItem                            *item      = nullptr;
     QGraphicsLineItem                   *line      = nullptr;
     Relation                             _relation = none;
+    ShapeCommand                        *cmd;
+    QPointF                              _p1;
+    QPointF                              _p2;
 };
 
 #endif // DIAGRAMSCENE_H

@@ -5,7 +5,7 @@
    viewBox="0 0 33.866666 33.866668"
    version="1.1"
    id="svg8"
-   inkscape:version="1.1 (ce6663b3b7, 2021-05-25)"
+   inkscape:version="1.1.1 (eb90963e84, 2021-10-02)"
    sodipodi:docname="Node.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -24,10 +24,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.979899"
-     inkscape:cx="80.812203"
+     inkscape:cx="80.559665"
      inkscape:cy="83.085046"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g842"
      inkscape:document-rotation="0"
      showgrid="false"
      units="px"
@@ -52,21 +52,92 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
-    <path
-       d="M 4.6622291,10.33623 H 24.784909 V 28.716311 H 4.6622291 V 10.33623 M 7.5368975,5.7412102 H 27.659577 L 24.784909,10.33623 H 4.6622291 L 7.5368975,5.7412102 m 20.1226795,0 V 24.121291 l -2.874668,4.59502 V 10.33623"
-       fill="#ffe599"
-       stroke="#000000"
-       stroke-miterlimit="10"
-       pointer-events="all"
-       id="path32"
-       style="stroke-width:0.363443;fill:#fe220d;fill-opacity:1" />
-    <path
-       d="M 4.6622291,10.33623 H 24.784909 V 28.716311 H 4.6622291 V 10.33623 M 7.5368975,5.7412102 H 27.659577 L 24.784909,10.33623 H 4.6622291 L 7.5368975,5.7412102 m 20.1226795,0 V 24.121291 l -2.874668,4.59502 V 10.33623"
+    <g
        fill="none"
        stroke="#000000"
-       stroke-miterlimit="10"
-       pointer-events="all"
-       id="path34"
-       style="stroke-width:0.363443" />
+       stroke-width="1"
+       fill-rule="evenodd"
+       stroke-linecap="square"
+       stroke-linejoin="bevel"
+       id="g842"
+       transform="matrix(1.5194593,0,0,1.5194593,-202.20508,-19.031853)"
+       style="fill:#fe220d;fill-opacity:1;stroke-width:0.239255;stroke-miterlimit:4;stroke-dasharray:none">
+      <g
+         fill="none"
+         stroke="#000000"
+         stroke-opacity="1"
+         stroke-width="1"
+         stroke-linecap="square"
+         stroke-linejoin="bevel"
+         font-family="Ubuntu"
+         font-size="11px"
+         font-weight="400"
+         font-style="normal"
+         id="g830"
+         style="fill:#fe220d;fill-opacity:1;stroke-width:0.239255;stroke-miterlimit:4;stroke-dasharray:none" />
+      <g
+         fill="none"
+         stroke="#000000"
+         stroke-opacity="1"
+         stroke-width="1"
+         stroke-linecap="square"
+         stroke-linejoin="bevel"
+         transform="matrix(0.0752615,0,0,0.0752615,136.306,15.8049)"
+         font-family="Ubuntu"
+         font-size="11px"
+         font-weight="400"
+         font-style="normal"
+         id="g832"
+         style="fill:#fe220d;fill-opacity:1;stroke-width:3.17898;stroke-miterlimit:4;stroke-dasharray:none" />
+      <g
+         fill="#f0ffff"
+         fill-opacity="1"
+         stroke="#000000"
+         stroke-opacity="1"
+         stroke-width="2"
+         stroke-linecap="square"
+         stroke-linejoin="bevel"
+         transform="matrix(0.0752615,0,0,0.0752615,136.306,15.8049)"
+         font-family="Ubuntu"
+         font-size="11px"
+         font-weight="400"
+         font-style="normal"
+         id="g836"
+         style="fill:#fe220d;fill-opacity:1;stroke-width:1.32804397;stroke-miterlimit:4;stroke-dasharray:none">
+        <path
+           vector-effect="non-scaling-stroke"
+           fill-rule="evenodd"
+           d="M 0,20.9 21.1,0 H 211 V 188.1 L 189.9,209 V 20.9 L 211,0 189.9,20.9 H 0 V 209 H 189.9 V 20.9 H 0"
+           id="path834"
+           style="fill:#fe220d;fill-opacity:1;stroke-width:1.32804397;stroke-miterlimit:4;stroke-dasharray:none" />
+      </g>
+      <g
+         fill="none"
+         stroke="#000000"
+         stroke-opacity="1"
+         stroke-width="1"
+         stroke-linecap="square"
+         stroke-linejoin="bevel"
+         transform="matrix(0.0752615,0,0,0.0752615,136.306,15.8049)"
+         font-family="Ubuntu"
+         font-size="11px"
+         font-weight="400"
+         font-style="normal"
+         id="g838"
+         style="fill:#fe220d;fill-opacity:1;stroke-width:3.17898;stroke-miterlimit:4;stroke-dasharray:none" />
+      <g
+         fill="none"
+         stroke="#000000"
+         stroke-opacity="1"
+         stroke-width="1"
+         stroke-linecap="square"
+         stroke-linejoin="bevel"
+         font-family="Ubuntu"
+         font-size="11px"
+         font-weight="400"
+         font-style="normal"
+         id="g840"
+         style="fill:#fe220d;fill-opacity:1;stroke-width:0.239255;stroke-miterlimit:4;stroke-dasharray:none" />
+    </g>
   </g>
 </svg>

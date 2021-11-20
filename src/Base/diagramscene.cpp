@@ -1,8 +1,12 @@
 ﻿#include "diagramscene.h"
+#include "objectkeeper.h"
 
 #include <QGraphicsSceneMouseEvent>
-
+#include <QPolygonF>
+#include <QPointF>
 #include <src/Diagrams/Relations/directassosiation.h>
+#include <src/commonItems/arrow.h>
+#include <src/commonItems/dasharrow.h>
 
 DiagramScene *DiagramScene::sInstance = nullptr;
 
@@ -10,7 +14,7 @@ DiagramScene::DiagramScene(QObject *parent):
     QGraphicsScene(parent)
 {
     sInstance = this;
-// TODO : fixed This
+    // TODO : fixed This
     connect(this, &QGraphicsScene::selectionChanged, this, [this]()
     {
         if (!selectedItems().isEmpty())
@@ -35,6 +39,8 @@ DiagramScene::DiagramScene(QObject *parent):
             }
         }
     });
+
+    cmd = new ShapeCommand();
 }
 
 DiagramScene::~DiagramScene()
@@ -42,7 +48,7 @@ DiagramScene::~DiagramScene()
     clear();
 }
 
-void  DiagramScene::addText(QString txt, BaseItem *item, qreal Px, qreal Py)
+void  DiagramScene::addText(QString txt, QGraphicsItem *item, qreal Px, qreal Py)
 {
     QGraphicsTextItem *_useCaseText = new QGraphicsTextItem(txt, item);
 
@@ -54,20 +60,23 @@ void  DiagramScene::addText(QString txt, BaseItem *item, qreal Px, qreal Py)
 
 void  DiagramScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-    if (event->button() != Qt::LeftButton)
+    if (event->button() == Qt::LeftButton)
     {
-        return;
-    }
-
-    if (!(_relation == none))
-    {
-        line = new QGraphicsLineItem(QLineF(event->scenePos(),
-                                            event->scenePos()));
-        line->setPen(QPen(Qt::black, 2));
-        addItem(line);
+        if (!(_relation == none))
+        {
+            line = new QGraphicsLineItem(QLineF(event->scenePos(),
+                                                event->scenePos()));
+            line->setPen(QPen(Qt::black, 2));
+            addItem(line);
+        }
+        else
+        {
+            QGraphicsScene::mousePressEvent(event);
+        }
     }
     else
     {
+        _relation = none;
         QGraphicsScene::mousePressEvent(event);
     }
 }
@@ -89,29 +98,58 @@ void  DiagramScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
     if (!(_relation == none) && (line != nullptr))
     {
-        QList<QGraphicsItem *>  startItems = items(line->line().p1());
+        _p1 = line->line().p1();
+        _p2 = line->line().p2();
 
-        if (startItems.count() && (startItems.first() == line))
+        switch (_relation)
         {
-            startItems.removeFirst();
-        }
-
-        QList<QGraphicsItem *>  endItems = items(line->line().p2());
-
-        if (endItems.count() && (endItems.first() == line))
+        case _Arow:
         {
-            endItems.removeFirst();
-        }
+            Arrow *arrow = new Arrow(_p2, _p1);
+            cmd->setItem(arrow);
 
-        if ((startItems.count() > 0) && (endItems.count() > 0)
-            && (startItems.first() != endItems.first()))
-        {
-            BaseItem          *startItem = qgraphicsitem_cast<BaseItem *>(startItems.first());
-            BaseItem          *endItem   = qgraphicsitem_cast<BaseItem *>(endItems.first());
-            DirectAssosiation *arrow     = new DirectAssosiation(startItem, endItem);
-            arrow->setZValue(-1000.0);
+            ObjectKeeper::instance()->createCommand(cmd);
             addItem(arrow);
-            arrow->updatePosition();
+            update();
+        }
+
+        break;
+
+        case _DashArow:
+        {
+            DashArrow *_dashArrow = new DashArrow(_p2, _p1);
+            cmd->setItem(_dashArrow);
+
+            ObjectKeeper::instance()->createCommand(cmd);
+            addItem(_dashArrow);
+            update();
+        }
+
+        break;
+        case _Aggregation:
+
+            break;
+        case _Assosiation:
+
+            break;
+        case _Composition:
+
+            break;
+        case _Dependency:
+
+            break;
+        case _DirectAssosiation:
+
+            break;
+        case _Generalization:
+
+            break;
+        case _Inheritance:
+
+            break;
+        case _Realization:
+
+            break;
         }
     }
 
@@ -119,41 +157,6 @@ void  DiagramScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
     delete line;
     line = nullptr;
     QGraphicsScene::mouseReleaseEvent(event);
-
-// switch (_relation)
-// {
-// case _Arow:
-
-// break;
-
-// case _DashArow:
-
-// break;
-// case _Aggregation:
-
-// break;
-// case _Assosiation:
-
-// break;
-// case _Composition:
-
-// break;
-// case _Dependency:
-
-// break;
-// case _DirectAssosiation:
-
-// break;
-// case _Generalization:
-
-// break;
-// case _Inheritance:
-
-// break;
-// case _Realization:
-
-// break;
-// }
 }
 
 void  DiagramScene::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)

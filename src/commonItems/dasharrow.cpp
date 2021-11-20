@@ -1,10 +1,9 @@
-#include "directassosiation.h"
-
+#include "dasharrow.h"
 #include <QPainter>
 #include <QPen>
 #include <QtMath>
 
-DirectAssosiation::DirectAssosiation(QPointF startItem, QPointF endItem, QGraphicsItem *parent):
+DashArrow::DashArrow(QPointF startItem, QPointF endItem, QGraphicsItem *parent):
     myStartItem(startItem), myEndItem(endItem)
 {
     setAcceptHoverEvents(true);
@@ -14,12 +13,12 @@ DirectAssosiation::DirectAssosiation(QPointF startItem, QPointF endItem, QGraphi
     setFlag(QGraphicsItem::ItemIsFocusable);
 }
 
-QRectF  DirectAssosiation::boundingRect() const
+QRectF  DashArrow::boundingRect() const
 {
     return QRectF(myStartItem, myEndItem);
 }
 
-QPainterPath  DirectAssosiation::shape() const
+QPainterPath  DashArrow::shape() const
 {
     QPainterPath  path;
 
@@ -28,7 +27,7 @@ QPainterPath  DirectAssosiation::shape() const
     return path;
 }
 
-void  DirectAssosiation::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+void  DashArrow::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     Q_UNUSED(widget);
 
@@ -45,6 +44,7 @@ void  DirectAssosiation::paint(QPainter *painter, const QStyleOptionGraphicsItem
     painter->setRenderHints(QPainter::Antialiasing);
 
     painter->setBrush(Qt::NoBrush);
+    painter->setPen(QPen(myColor, 1, Qt::DashLine));
 
     painter->drawLine(myStartItem, myEndItem);
     painter->restore();
@@ -60,7 +60,7 @@ void  DirectAssosiation::paint(QPainter *painter, const QStyleOptionGraphicsItem
     painter->drawPolygon(arrowHead);
 }
 
-void  DirectAssosiation::setMyColor(const QColor &value)
+void  DashArrow::setMyColor(const QColor &value)
 {
     myColor = value;
 }

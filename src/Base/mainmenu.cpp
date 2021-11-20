@@ -41,15 +41,6 @@ void  MainMenu::on_pb_ExportPDF_clicked()
   emit  ExportAsPDF();
 }
 
-void  MainMenu::on_pb_Saveas_clicked()
-{
-  emit  SaveAs();
-}
-
-void  MainMenu::on_pb_Open_clicked()
-{
-  emit  OpenFile();
-}
 
 void  MainMenu::on_pb_New_clicked()
 {

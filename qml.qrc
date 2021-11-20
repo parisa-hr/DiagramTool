@@ -81,5 +81,6 @@
         <file>icons/Tools/Sequence/Delete.svg</file>
         <file>icons/Tools/Sequence/Alternative.svg</file>
         <file>icons/Tools/Sequence/OptionLoop.svg</file>
+        <file>icons/Tools/Activity/Vfork-join.svg</file>
     </qresource>
 </RCC>
