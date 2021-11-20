@@ -82,5 +82,6 @@
         <file>icons/Tools/Sequence/Alternative.svg</file>
         <file>icons/Tools/Sequence/OptionLoop.svg</file>
         <file>icons/Tools/Activity/Vfork-join.svg</file>
+        <file>icons/Tools/Communication_path.svg</file>
     </qresource>
 </RCC>

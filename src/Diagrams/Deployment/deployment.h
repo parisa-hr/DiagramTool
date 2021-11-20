@@ -21,6 +21,8 @@ private slots:
 
     void  addComponent();
 
+    void  addPort();
+
 private:
     ShapeCommand *cmd;
 };

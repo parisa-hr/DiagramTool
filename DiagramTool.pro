@@ -74,6 +74,7 @@ HEADERS += \
     src/Diagrams/Deployment/deployment.h \ \
     src/Diagrams/UseCase/usecaseitem.h \
     src/commonItems/arrow.h \
+    src/commonItems/communicationpath.h \
     src/commonItems/dasharrow.h \
     src/commonItems/note.h \
     src/commonItems/package.h \
@@ -138,6 +139,7 @@ SOURCES += \
     src/Diagrams/Deployment/deployment.cpp \
     src/Diagrams/UseCase/usecaseitem.cpp \
     src/commonItems/arrow.cpp \
+    src/commonItems/communicationpath.cpp \
     src/commonItems/dasharrow.cpp \
     src/commonItems/note.cpp \
     src/commonItems/package.cpp \

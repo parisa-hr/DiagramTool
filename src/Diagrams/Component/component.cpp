@@ -91,6 +91,37 @@ Component::Component()
     connect(act7, &QAction::triggered, this, &Component::addNote);
 
 
+    QAction *act8 = new QAction("Communication path");
+    act8->setIcon(QIcon(":/icons/Tools/Communication_path.svg"));
+    act8->setToolTip(QCoreApplication::translate("MenuBar",
+                                                 "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">Communication path</font></p></body></html>",
+                                                 nullptr));
+
+
+    connect(act8, &QAction::triggered, this, []()
+    {
+        DiagramScene::instance()->setRelation(DiagramScene::_Communication_path);
+    });
+
+
+    menuBar()->addToolButton(act8);
+
+
+    QAction *act9 = new QAction("Dasharrow");
+    act9->setIcon(QIcon(":/icons/Tools/usecase/dashArrow.svg"));
+    act9->setToolTip(QCoreApplication::translate("MenuBar",
+                                                 "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">DashArrow</font></p></body></html>",
+                                                 nullptr));
+
+
+    connect(act9, &QAction::triggered, this, []()
+    {
+        DiagramScene::instance()->setRelation(DiagramScene::_DashArow);
+    });
+
+    menuBar()->addToolButton(act9);
+
+
     cmd = new ShapeCommand();
 }
 

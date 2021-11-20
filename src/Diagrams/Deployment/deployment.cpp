@@ -9,6 +9,8 @@
 #include "../../Base/objectkeeper.h"
 
 #include <src/Diagrams/Component/componentitem.h>
+#include <src/Diagrams/Component/port.h>
+#include <src/Diagrams/Component/providedinterface.h>
 
 Deployment::Deployment()
 {
@@ -51,16 +53,15 @@ Deployment::Deployment()
     menuBar()->addToolButton(act3);
 
 
-    /// Instance  Button in menuBar Class
+    QAction *act4 = new QAction("Port");
+    act4->setIcon(QIcon(":/icons/Tools/Component/ProvidedInterface.svg"));
+    act4->setToolTip(QCoreApplication::translate("MenuBar",
+                                                 "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">Port</font></p></body></html>",
+                                                 nullptr));
 
-// QAction *act4 = new QAction("Instance");
-// act4->setIcon(QIcon(":/icons/Tools/Deployment/Instance.svg"));
-// act4->setToolTip(QCoreApplication::translate("MenuBar",
-// "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">Instance</font></p></body></html>",
-// nullptr));
-// connect(act4, &QAction::triggered, this, &Deployment::addInstance);
+    menuBar()->addToolButton(act4);
 
-// menuBar()->addToolButton(act4);
+    connect(act4, &QAction::triggered, this, &Deployment::addPort);
 
     QAction *act5 = new QAction("Database");
     act5->setIcon(QIcon(":/icons/Tools/Deployment/Database.svg"));
@@ -72,8 +73,8 @@ Deployment::Deployment()
     menuBar()->addToolButton(act5);
 
 
-    QAction *act6 = new QAction("Arrow");
-    act6->setIcon(QIcon(":/icons/Tools/usecase/arrow .svg"));
+    QAction *act6 = new QAction("Communication path");
+    act6->setIcon(QIcon(":/icons/Tools/Communication_path.svg"));
     act6->setToolTip(QCoreApplication::translate("MenuBar",
                                                  "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">Arrow</font></p></body></html>",
                                                  nullptr));
@@ -81,7 +82,7 @@ Deployment::Deployment()
 
     connect(act6, &QAction::triggered, this, []()
     {
-        DiagramScene::instance()->setRelation(DiagramScene::_Arow);
+        DiagramScene::instance()->setRelation(DiagramScene::_Communication_path);
     });
 
 
@@ -159,4 +160,17 @@ void  Deployment::addComponent()
 
     ObjectKeeper::instance()->createCommand(cmd);
     getScene()->addItem(_cmpItem);
+}
+
+void  Deployment::addPort()
+{
+    ProvidedInterface *_pInterface = new ProvidedInterface(this);
+
+    _pInterface->setFlag(QGraphicsItem::ItemIsMovable);
+    _pInterface->setFlag(QGraphicsItem::ItemIsSelectable);
+    _pInterface->setFlag(QGraphicsItem::ItemIsFocusable);
+    cmd->setItem(_pInterface);
+
+    ObjectKeeper::instance()->createCommand(cmd);
+    getScene()->addItem(_pInterface);
 }

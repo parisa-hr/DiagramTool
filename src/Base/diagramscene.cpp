@@ -6,6 +6,7 @@
 #include <QPointF>
 #include <src/Diagrams/Relations/directassosiation.h>
 #include <src/commonItems/arrow.h>
+#include <src/commonItems/communicationpath.h>
 #include <src/commonItems/dasharrow.h>
 
 DiagramScene *DiagramScene::sInstance = nullptr;
@@ -122,6 +123,18 @@ void  DiagramScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 
             ObjectKeeper::instance()->createCommand(cmd);
             addItem(_dashArrow);
+            update();
+        }
+
+        break;
+
+        case _Communication_path:
+        {
+            CommunicationPath *_communicationPath = new CommunicationPath(_p2, _p1);
+            cmd->setItem(_communicationPath);
+
+            ObjectKeeper::instance()->createCommand(cmd);
+            addItem(_communicationPath);
             update();
         }
 

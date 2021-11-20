@@ -27,6 +27,7 @@ public:
         _Generalization,
         _Inheritance,
         _Realization,
+        _Communication_path,
         none
     };
 
