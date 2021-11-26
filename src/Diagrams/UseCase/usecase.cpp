@@ -1,4 +1,5 @@
-﻿#include "usecase.h"
+﻿#include "systemboundry.h"
+#include "usecase.h"
 #include <QCoreApplication>
 #include <QDebug>
 #include <QIcon>
@@ -7,7 +8,6 @@
 #include "../../Base/objectkeeper.h"
 #include "../../commonItems/note.h"
 #include <src/commonItems/package.h>
-#include <src/commonItems/systemboundry.h>
 
 UseCase::UseCase()
 {

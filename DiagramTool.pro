@@ -66,6 +66,7 @@ HEADERS += \
     src/Diagrams/Sequense/lifeline.h \
     src/Diagrams/Sequense/optionloop.h \
     src/Diagrams/UseCase/actor.h \
+    src/Diagrams/UseCase/systemboundry.h \
     src/Diagrams/UseCase/usecase.h \
     src/Diagrams/Activity/activity.h \
     src/Diagrams/Component/component.h \
@@ -78,7 +79,6 @@ HEADERS += \
     src/commonItems/dasharrow.h \
     src/commonItems/note.h \
     src/commonItems/package.h \
-    src/commonItems/systemboundry.h
 
 SOURCES += \
         main.cpp \
@@ -131,6 +131,7 @@ SOURCES += \
     src/Diagrams/Sequense/lifeline.cpp \
     src/Diagrams/Sequense/optionloop.cpp \
     src/Diagrams/UseCase/actor.cpp \
+    src/Diagrams/UseCase/systemboundry.cpp \
     src/Diagrams/UseCase/usecase.cpp \
     src/Diagrams/Activity/activity.cpp \
     src/Diagrams/Component/component.cpp \
@@ -143,8 +144,6 @@ SOURCES += \
     src/commonItems/dasharrow.cpp \
     src/commonItems/note.cpp \
     src/commonItems/package.cpp \
-    src/commonItems/systemboundry.cpp
-
 
 FORMS += \
     src/Base/diagrambase.ui \
