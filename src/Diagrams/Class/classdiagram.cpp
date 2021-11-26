@@ -138,6 +138,11 @@ ClassDiagram::ClassDiagram()
                                                  "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">Composition</font></p></body></html>",
                                                  nullptr));
 
+    connect(act7, &QAction::triggered, this, []()
+    {
+        DiagramScene::instance()->setRelation(DiagramScene::_Composition);
+    });
+
     menuBar()->addToolButton(act7);
 
 
@@ -148,6 +153,12 @@ ClassDiagram::ClassDiagram()
     act8->setToolTip(QCoreApplication::translate("MenuBar",
                                                  "<html><head/><body><p  style=\"background-color:white\"><font face=\"Times New Roman\" color=\"dark blue\">Aggregation</font></p></body></html>",
                                                  nullptr));
+
+    connect(act8, &QAction::triggered, this, []()
+    {
+        DiagramScene::instance()->setRelation(DiagramScene::_Aggregation);
+    });
+
 
     menuBar()->addToolButton(act8);
 

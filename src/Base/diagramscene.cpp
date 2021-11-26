@@ -4,6 +4,8 @@
 #include <QGraphicsSceneMouseEvent>
 #include <QPolygonF>
 #include <QPointF>
+#include <src/Diagrams/Relations/aggregation.h>
+#include <src/Diagrams/Relations/composition.h>
 #include <src/Diagrams/Relations/directassosiation.h>
 #include <src/commonItems/arrow.h>
 #include <src/commonItems/communicationpath.h>
@@ -140,14 +142,30 @@ void  DiagramScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 
         break;
         case _Aggregation:
+        {
+            Aggregation *_aggregation = new Aggregation(_p2, _p1);
+            cmd->setItem(_aggregation);
 
-            break;
+            ObjectKeeper::instance()->createCommand(cmd);
+            addItem(_aggregation);
+            update();
+        }
+
+        break;
         case _Assosiation:
 
             break;
         case _Composition:
+        {
+            Composition *_composition = new Composition(_p2, _p1);
+            cmd->setItem(_composition);
 
-            break;
+            ObjectKeeper::instance()->createCommand(cmd);
+            addItem(_composition);
+            update();
+        }
+
+        break;
         case _Dependency:
 
             break;
