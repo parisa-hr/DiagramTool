@@ -385,6 +385,7 @@ DiagramBase::DiagramBase(QWidget *parent):
 
         connect(_menuBar, &MenuBar::doRedo, ObjectKeeper::instance()->getUndoStack(), &QUndoStack::redo);
     }
+    cmd = new ShapeCommand();
 }
 
 DiagramBase::~DiagramBase()
@@ -641,6 +642,10 @@ void  DiagramBase::InsertDiagramText()
     _textItem->setTextInteractionFlags(Qt::TextEditorInteraction);
     _textItem->setZValue(101);
     _textItem->setFont(font);
+
+    cmd->setItem(_textItem);
+
+    ObjectKeeper::instance()->createCommand(cmd);
 
     scene->addItem(_textItem);
 }

@@ -10,6 +10,7 @@
 #include <src/commonItems/arrow.h>
 #include <src/commonItems/communicationpath.h>
 #include <src/commonItems/dasharrow.h>
+#include <QDebug>
 
 DiagramScene *DiagramScene::sInstance = nullptr;
 
@@ -26,6 +27,7 @@ DiagramScene::DiagramScene(QObject *parent):
 
           if (item)
           {
+            qDebug() << "Item Type " << item->type();
             resizer = QSharedPointer<GraphicsItemResizer>::create(item);
             resizer->setBrush(QColor(64, 64, 64));
             resizer->setMinSize(QSizeF(30, 30));

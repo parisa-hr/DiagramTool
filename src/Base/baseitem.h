@@ -10,6 +10,11 @@ class BaseItem: public QGraphicsItem
 // Q_OBJECT
 
 public:
+    enum
+    {
+        Type = UserType + 1
+    };
+
     explicit BaseItem(QObject *parent = nullptr);
 
     QRectF  rect() const;
@@ -23,6 +28,11 @@ public:
     QColor  color() const;
 
     void    setColor(const QColor &color);
+
+    int     type() const override
+    {
+        return Type;
+    }
 
 private:
     QRectF  _rect  = QRectF(0, 0, 100, 100);

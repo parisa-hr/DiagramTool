@@ -16,7 +16,7 @@ public:
         Type = UserType + 3
     };
 
-    DiagramTextItem( QGraphicsItem *parent = nullptr);
+    DiagramTextItem(QGraphicsItem *parent = nullptr);
 
     int  type() const override
     {
@@ -29,8 +29,6 @@ signals:
     void      selectedChange(QGraphicsItem *item);
 
 protected:
-
-
     QVariant  itemChange(GraphicsItemChange change, const QVariant &value) override;
 
     void      focusOutEvent(QFocusEvent *event) override;

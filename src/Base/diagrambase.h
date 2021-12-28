@@ -88,6 +88,7 @@ private:
     QAction               *undoAction;
     QAction               *redoAction;
     DiagramTextItem       *_textItem;
+    ShapeCommand          *cmd;
 };
 
 #endif // DIAGRAMBASE_H
