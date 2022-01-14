@@ -10,10 +10,9 @@
 1. **UseCase**
 2. **Activity**
 3. **Class**
-4.  **Component**
+4. **Component**
 5. **Deployment**
-6. **Relations**
-7. **Sequense**
+6. **Sequense**
 
 **The Main Menu:**
 
