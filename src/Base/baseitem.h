@@ -7,8 +7,6 @@
 
 class BaseItem: public QGraphicsItem
 {
-// Q_OBJECT
-
 public:
     enum
     {
