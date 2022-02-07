@@ -511,7 +511,7 @@ void  DiagramBase::ExportPdf()
 
     QString   fileName = fileDialog.selectedFiles().first();
     QPrinter  printer(QPrinter::HighResolution);
-    printer.setOrientation(QPrinter::Landscape);
+    printer.setPageOrientation(QPageLayout::Landscape);
 
     printer.setOutputFormat(QPrinter::PdfFormat);
     printer.setOutputFileName(fileName);
@@ -609,7 +609,7 @@ void  DiagramBase::PrintPreview()
     scene->update();
 
     QPrinter  printer(QPrinter::HighResolution);
-    printer.setOrientation(QPrinter::Landscape);
+    printer.setPageOrientation(QPageLayout::Landscape);
 
     QPrintPreviewDialog  preview(&printer, ui->graphicsView);
     connect(&preview, &QPrintPreviewDialog::paintRequested, this, &DiagramBase::print);

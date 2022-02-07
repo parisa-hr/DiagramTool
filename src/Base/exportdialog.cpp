@@ -1,7 +1,6 @@
 #include "exportdialog.h"
 
 #include <QApplication>
-#include <QDesktopWidget>
 #include <QDialogButtonBox>
 #include <QFileDialog>
 #include <QFormLayout>
@@ -15,6 +14,7 @@
 #include <QVBoxLayout>
 
 #include <QImageWriter>
+#include <QApplication>
 
 #include <QDebug>
 
@@ -39,7 +39,7 @@ ExportDialog::ExportDialog(QWidget *parent)
 
     QHBoxLayout *fileLayout = new QHBoxLayout;
     fileLayout->addWidget(m_fileNameLineEdit);
-    m_fileNameLineEdit->setMinimumWidth(QApplication::desktop()->availableGeometry(this).width() / 6);
+    m_fileNameLineEdit->setMinimumWidth(this->width() / 6);
     QPushButton *browseButton = new QPushButton(tr("Browse..."), this);
     fileLayout->addWidget(browseButton);
     connect(browseButton, &QAbstractButton::clicked, this, &ExportDialog::browse);
