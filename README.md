@@ -43,7 +43,7 @@
 
 ### Requirements :
 
-QT 6.2.2 or hiegher
+QT 6.2.2 or higher
 
 
 
