@@ -40,4 +40,10 @@
 13. **Remove and Delete Item**
 14. **ZoomIn and ZoomOut by mouse**
 
+###Requirements :
+
+QT 6.2.2 or hiegher
+
+
+
 
